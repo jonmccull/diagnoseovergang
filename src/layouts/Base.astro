@@ -1,6 +1,11 @@
 ---
 import "../styles/global.css";
-import { SITE_NAME, INDEPENDENCE_DISCLAIMER } from "../config";
+import {
+  SITE_NAME,
+  INDEPENDENCE_DISCLAIMER,
+  WHO_ATTRIBUTION,
+  WHO_SOURCE_URL,
+} from "../config";
 
 interface Props {
   title: string;
@@ -32,12 +37,29 @@ const { title, description } = Astro.props;
     <footer class="mt-16 border-t border-slate-200 bg-white">
       <div class="mx-auto max-w-3xl space-y-3 px-4 py-8 text-sm text-slate-600">
         <p>{INDEPENDENCE_DISCLAIMER}</p>
-        {/*
-          Reserved (milestone 2/3): WHO-attribusjon (§11) på sider som viser
-          ICD-11-innhold, og "basert på ICD-11 MMS, versjon <release>" (§7.3).
-        */}
+        <p>
+          {WHO_ATTRIBUTION}
+          <a href={WHO_SOURCE_URL} class="underline hover:text-slate-900">{WHO_SOURCE_URL}</a>
+        </p>
+        <p id="release-note" hidden>
+          Basert på ICD-11 MMS, versjon <span id="release-version"></span>.
+        </p>
         <p><a href="/personvern" class="underline hover:text-slate-900">Personvern</a></p>
       </div>
+      <script>
+        import { fetchHealth } from "../lib/who";
+
+        const note = document.getElementById("release-note");
+        const version = document.getElementById("release-version");
+        if (note && version) {
+          fetchHealth()
+            .then((h) => {
+              version.textContent = h.release;
+              note.hidden = false;
+            })
+            .catch(() => {}); // release line simply stays hidden
+        }
+      </script>
     </footer>
   </body>
 </html>

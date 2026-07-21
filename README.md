@@ -71,6 +71,20 @@ npm run deploy:pages    # astro build + wrangler pages deploy
 
 Eller push til `main` med CI-secrets satt.
 
+## API
+
+| Endpunkt | Hva |
+|---|---|
+| `GET /api/health` | Status + pinnet MMS-release |
+| `GET /api/icd/entity/:code` | Normalisert offisiell entitet (kode, tittel, URI, WHO-browserlenke) for koder i pilotens PD-sett (§7.4). 404 utenfor settet; 503 med norsk feilmelding hvis WHO er nede og cache er tom. |
+
+Flyt: KV-cache → WHO OAuth-token (KV-cachet, TTL under `expires_in`) →
+codeinfo → entitet → Zod-validering → KV. Nattlig cron (03:00 UTC) forvarmer
+hele PD-settet, så siste gode kopi overlever WHO-nedetid.
+
+Test cron lokalt: `npx wrangler dev --test-scheduled` og
+`curl "http://localhost:8787/__scheduled?cron=0+3+*+*+*"`.
+
 ## ICD-11-release
 
 MMS-releasen er pinnet i `worker/wrangler.toml` (`ICD_RELEASE`) slik at innhold

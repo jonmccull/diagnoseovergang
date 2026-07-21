@@ -15,8 +15,8 @@ binding = "FEEDBACK_DB"        # feedback only (§5) — editorial stays content
 database_name = "diagnoseovergang-feedback"
 database_id = "02c04af8-8e09-47f7-94ad-bccd6360f6f4"
 
-# [triggers]
-# crons = ["0 3 * * *"]        # nightly PD pre-warm (M2) + feedback retention (M6)
+[triggers]
+crons = ["0 3 * * *"]          # nightly PD pre-warm (§6.4) + feedback retention (M6)
 
 # Secrets via `wrangler secret put` (never in this file):
 #   WHO_CLIENT_ID, WHO_CLIENT_SECRET, TURNSTILE_SECRET, IP_HASH_SALT

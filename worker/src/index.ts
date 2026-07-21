@@ -1,20 +1,23 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
-
-type Bindings = {
-  ICD_RELEASE: string;
-  API_BASE: string;
-  ICD_CACHE: KVNamespace;
-  FEEDBACK_DB: D1Database;
-  // M2 secrets: WHO_CLIENT_ID, WHO_CLIENT_SECRET
-  // M6 secrets: TURNSTILE_SECRET, IP_HASH_SALT
-};
+import { icd } from "./routes/icd";
+import { prewarmPdEntities } from "./cron";
+import type { Bindings } from "./bindings";
 
 const app = new Hono<{ Bindings: Bindings }>();
 
-// M1: open CORS so the pages.dev origin can reach workers.dev. Tightened to the
-// deployed origins in M2; unnecessary once /api/* routes on the same custom domain.
-app.use("/api/*", cors());
+// Unnecessary once /api/* routes on the same custom domain as the site.
+app.use(
+  "/api/*",
+  cors({
+    origin: (origin) => {
+      if (/^https:\/\/([a-z0-9-]+\.)?diagnoseovergang\.pages\.dev$/.test(origin))
+        return origin;
+      if (/^http:\/\/localhost:\d+$/.test(origin)) return origin;
+      return null;
+    },
+  })
+);
 
 app.get("/api/health", (c) =>
   c.json({
@@ -24,4 +27,11 @@ app.get("/api/health", (c) =>
   })
 );
 
-export default app;
+app.route("/api/icd", icd);
+
+export default {
+  fetch: app.fetch,
+  scheduled: (_event, env, ctx) => {
+    ctx.waitUntil(prewarmPdEntities(env));
+  },
+} satisfies ExportedHandler<Bindings>;
