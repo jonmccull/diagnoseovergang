@@ -1,0 +1,30 @@
+---
+import Base from "../layouts/Base.astro";
+import EditorialBlock from "../components/EditorialBlock.astro";
+import { PdSeverityTraitTool } from "../components/PdSeverityTraitTool";
+---
+
+<Base
+  title="Kodehjelp: alvorlighetsgrad og trekk"
+  description="Pedagogisk hjelpemiddel for å sette sammen et ICD-11-kodemønster for personlighetsforstyrrelser: alvorlighetsgrad + trekkdomener."
+>
+  <nav aria-label="Brødsmulesti" class="mb-6 text-sm">
+    <a href="/" class="text-slate-600 underline hover:text-slate-900"
+      >← Til forsiden</a
+    >
+  </nav>
+
+  <h1 class="text-3xl font-bold tracking-tight text-slate-900">
+    Kodehjelp: alvorlighetsgrad og trekk
+  </h1>
+  <p class="mt-4 max-w-prose text-lg text-slate-700">
+    Sett sammen et ICD-11-kodemønster steg for steg: velg alvorlighetsgrad,
+    angi fremtredende trekkdomener, og legg eventuelt til borderline-mønster.
+  </p>
+
+  <section class="mt-8">
+    <EditorialBlock status="draft">
+      <PdSeverityTraitTool client:load />
+    </EditorialBlock>
+  </section>
+</Base>

@@ -13,3 +13,7 @@ export const INDEPENDENCE_DISCLAIMER =
 export const WHO_ATTRIBUTION =
   "Inneholder materiale fra ICD-11 (International Classification of Diseases, 11th Revision), © Verdens helseorganisasjon (WHO). Brukt under lisensen CC BY-ND 3.0 IGO. Offisielle koder og titler er hentet fra WHOs ICD-11 API. Kilde:";
 export const WHO_SOURCE_URL = "https://icd.who.int";
+
+// Decision-support tool disclaimer — render verbatim (brief §11).
+export const DECISION_SUPPORT_DISCLAIMER =
+  "Pedagogisk hjelpemiddel, ikke et diagnostisk verktøy. Klinisk vurdering og offisielle ICD-11-retningslinjer er alltid overordnet.";
