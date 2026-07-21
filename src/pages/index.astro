@@ -2,9 +2,16 @@
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import EntryContent from "../components/EntryContent.astro";
+import EditorialBlock from "../components/EditorialBlock.astro";
+import { CrosswalkExplorer } from "../components/CrosswalkExplorer";
+import { buildCrosswalkItems } from "../lib/crosswalk";
 import { SITE_TAGLINE } from "../config";
 
 const entries = await getCollection("pd");
+const crosswalkItems = buildCrosswalkItems(entries);
+const genericCaveat =
+  entries.find((e) => e.data.kind === "overview")?.data.caveats_nb ??
+  "Overgangen er ikke én-til-én; flere trekkdomener kan være aktuelle samtidig.";
 const overview = entries.find((e) => e.data.kind === "overview");
 const diagnoses = entries.filter((e) => e.data.kind === "diagnosis-change");
 const severity = entries.filter((e) => e.data.kind === "severity");
@@ -33,6 +40,21 @@ const sections = [
     ICD-10 til ICD-11 for personlighetsforstyrrelser – med offisielle
     ICD-11-koder og titler hentet direkte fra WHO.
   </p>
+
+  <section class="mt-10" aria-label="Krysskoblingsoppslag">
+    <EditorialBlock status="draft">
+      <h2 class="text-xl font-semibold text-slate-900">
+        Fra ICD-10-kode til ICD-11
+      </h2>
+      <div class="mt-4">
+        <CrosswalkExplorer
+          client:load
+          items={crosswalkItems}
+          genericCaveat_nb={genericCaveat}
+        />
+      </div>
+    </EditorialBlock>
+  </section>
 
   {
     overview && (
