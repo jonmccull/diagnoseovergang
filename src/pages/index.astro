@@ -1,0 +1,43 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE_TAGLINE } from "../config";
+---
+
+<Base
+  title="Forside"
+  description="Norsk ressurs som forklarer hva som endres fra ICD-10 til ICD-11 for personlighetsforstyrrelser."
+>
+  <h1 class="text-3xl font-bold tracking-tight text-slate-900">
+    {SITE_TAGLINE}
+  </h1>
+  <p class="mt-4 max-w-prose text-lg text-slate-700">
+    En fri, norskspråklig ressurs som forklarer hva som endres i overgangen fra
+    ICD-10 til ICD-11 for personlighetsforstyrrelser. Innhold kommer.
+  </p>
+
+  <section aria-label="Systemstatus" class="mt-10">
+    <div class="rounded-lg border border-slate-200 bg-white p-4 text-sm">
+      <p>
+        API-status:
+        <span id="api-status" class="font-medium text-slate-500">kontrollerer …</span>
+      </p>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import { fetchHealth } from "../lib/who";
+
+  const el = document.getElementById("api-status");
+  if (el) {
+    fetchHealth()
+      .then((h) => {
+        el.textContent = `tilkoblet (${h.service}, ICD-11 MMS ${h.release})`;
+        el.className = "font-medium text-green-700";
+      })
+      .catch(() => {
+        el.textContent = "ikke tilgjengelig";
+        el.className = "font-medium text-red-700";
+      });
+  }
+</script>

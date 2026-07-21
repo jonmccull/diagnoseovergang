@@ -1,0 +1,6 @@
+# Copy to worker/.dev.vars for local dev. Never commit real values (brief §6).
+# Needed from milestone 2 (WHO) and milestone 6 (Turnstile/feedback) — not for M1.
+WHO_CLIENT_ID = ""
+WHO_CLIENT_SECRET = ""
+TURNSTILE_SECRET = ""
+IP_HASH_SALT = ""

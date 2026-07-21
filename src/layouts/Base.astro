@@ -1,0 +1,43 @@
+---
+import "../styles/global.css";
+import { SITE_NAME, INDEPENDENCE_DISCLAIMER } from "../config";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="nb">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · {SITE_NAME}</title>
+    {description && <meta name="description" content={description} />}
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
+    <header class="border-b border-slate-200 bg-white">
+      <div class="mx-auto max-w-3xl px-4 py-4">
+        <a href="/" class="text-lg font-semibold text-slate-900">{SITE_NAME}</a>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-3xl px-4 py-10">
+      <slot />
+    </main>
+
+    <footer class="mt-16 border-t border-slate-200 bg-white">
+      <div class="mx-auto max-w-3xl space-y-3 px-4 py-8 text-sm text-slate-600">
+        <p>{INDEPENDENCE_DISCLAIMER}</p>
+        {/*
+          Reserved (milestone 2/3): WHO-attribusjon (§11) på sider som viser
+          ICD-11-innhold, og "basert på ICD-11 MMS, versjon <release>" (§7.3).
+        */}
+        <p><a href="/personvern" class="underline hover:text-slate-900">Personvern</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

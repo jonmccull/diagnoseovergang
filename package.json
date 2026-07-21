@@ -1,0 +1,33 @@
+{
+  "name": "diagnoseovergang",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "workspaces": [
+    "worker"
+  ],
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "typecheck": "astro check && npm run typecheck --workspace worker",
+    "deploy:pages": "npm run build && wrangler pages deploy",
+    "deploy:worker": "npm run deploy --workspace worker"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.2.0",
+    "astro": "^5.7.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "^5.7.0",
+    "wrangler": "^4.20.0"
+  }
+}

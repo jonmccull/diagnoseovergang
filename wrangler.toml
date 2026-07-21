@@ -1,0 +1,4 @@
+# Cloudflare Pages config for the Astro frontend.
+# Deploy: npm run deploy:pages  (project must exist — see README "Førstegangsoppsett")
+name = "diagnoseovergang"
+pages_build_output_dir = "./dist"
