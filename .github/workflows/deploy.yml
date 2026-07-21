@@ -19,6 +19,8 @@ jobs:
       - run: npm ci
 
       - run: npm run build
+        env:
+          PUBLIC_API_BASE: https://diagnoseovergang-api.hey-697.workers.dev
 
       - run: npm run typecheck --workspace worker
 
