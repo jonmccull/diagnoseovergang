@@ -1,0 +1,15 @@
+{
+  "id": "trekk-hemningsloshet",
+  "kind": "trait-domain",
+  "title_nb": "Trekkdomene: Hemningsløshet (6D11.3)",
+  "icd10": [
+    { "code": "F60.30", "label_nb": "Emosjonelt ustabil personlighetsforstyrrelse, impulsiv type" },
+    { "code": "F60.2", "label_nb": "Dyssosial personlighetsforstyrrelse" }
+  ],
+  "icd11": [{ "code": "6D11.3" }],
+  "whatChanged_nb": "Hemningsløshet beskriver impulsivitet, risikoatferd og handling på innskytelse uten hensyn til konsekvenser.",
+  "whatToDoNow_nb": "Emosjonelt ustabil, impulsiv type (F60.30) peker ofte mot dette domenet. Dyssosial (F60.2) kan også peke hit når impulsiviteten er fremtredende.",
+  "caveats_nb": "«Peker ofte mot» er redaksjonell veiledning basert på klinisk overlapp, ikke en offisiell eller fastsatt mapping. Flere domener kan være aktuelle samtidig.",
+  "source": "editorial",
+  "status": "draft"
+}

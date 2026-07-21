@@ -1,0 +1,16 @@
+{
+  "id": "trekk-negativ-affektivitet",
+  "kind": "trait-domain",
+  "title_nb": "Trekkdomene: Negativ affektivitet (6D11.0)",
+  "icd10": [
+    { "code": "F60.6", "label_nb": "Engstelig (unnvikende) personlighetsforstyrrelse" },
+    { "code": "F60.7", "label_nb": "Avhengig personlighetsforstyrrelse" },
+    { "code": "F60.3", "label_nb": "Emosjonelt ustabil personlighetsforstyrrelse" }
+  ],
+  "icd11": [{ "code": "6D11.0" }],
+  "whatChanged_nb": "Negativ affektivitet beskriver en tendens til å oppleve et bredt spekter av negative følelser – som angst, bekymring, nedstemthet, skam og sinne – oftere og sterkere enn situasjonen tilsier.",
+  "whatToDoNow_nb": "ICD-10-typene engstelig/unnvikende (F60.6), avhengig (F60.7) og emosjonelt ustabil (F60.3) peker ofte mot dette domenet. Vurder om negativ affektivitet er fremtredende, og kombiner med andre aktuelle domener.",
+  "caveats_nb": "«Peker ofte mot» er redaksjonell veiledning basert på klinisk overlapp, ikke en offisiell eller fastsatt mapping. Flere domener kan være aktuelle samtidig.",
+  "source": "editorial",
+  "status": "draft"
+}

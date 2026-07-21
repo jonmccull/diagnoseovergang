@@ -1,0 +1,12 @@
+{
+  "id": "fra-kategorier-til-dimensjoner",
+  "kind": "overview",
+  "title_nb": "Fra kategorier til dimensjoner: personlighetsforstyrrelser i ICD-11",
+  "icd10": null,
+  "icd11": null,
+  "whatChanged_nb": "ICD-10 delte personlighetsforstyrrelser inn i separate typer (blant annet paranoid, schizoid, dyssosial, emosjonelt ustabil, tvangspreget). ICD-11 fjerner disse typene og erstatter dem med én diagnose – personlighetsforstyrrelse (6D10) – der klinikeren først vurderer alvorlighetsgrad og deretter angir hvilke fremtredende personlighetstrekk som er til stede.",
+  "whatToDoNow_nb": "Vurder først alvorlighetsgrad: lett (6D10.0), moderat (6D10.1) eller alvorlig (6D10.2). Angi deretter ett eller flere fremtredende trekkdomener (6D11). Ved behov kan borderline-mønster (6D11.5) legges til. Sub-terskel vansker kodes som personlighetsvansker (QE50.7), som ikke er en psykisk lidelse.",
+  "caveats_nb": "Overgangen er ikke én-til-én. En ICD-10-type tilsvarer sjelden nøyaktig ett ICD-11-trekkdomene; flere trekk kan være aktuelle samtidig, og alvorlighetsgrad er nå det bærende prinsippet.",
+  "source": "editorial",
+  "status": "draft"
+}

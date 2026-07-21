@@ -1,0 +1,15 @@
+{
+  "id": "trekk-tilbaketrekning",
+  "kind": "trait-domain",
+  "title_nb": "Trekkdomene: Tilbaketrekning (6D11.1)",
+  "icd10": [
+    { "code": "F60.1", "label_nb": "Schizoid personlighetsforstyrrelse" },
+    { "code": "F60.6", "label_nb": "Engstelig (unnvikende) personlighetsforstyrrelse" }
+  ],
+  "icd11": [{ "code": "6D11.1" }],
+  "whatChanged_nb": "Tilbaketrekning beskriver gjennomgående sosial og emosjonell avstand – lite interesse for nære relasjoner, begrenset følelsesuttrykk og tilbaketrukkethet.",
+  "whatToDoNow_nb": "Schizoid (F60.1) peker ofte mot dette domenet. Engstelig/unnvikende (F60.6) kan peke hit når unngåelsen først og fremst handler om distansering, ikke frykt for avvisning.",
+  "caveats_nb": "«Peker ofte mot» er redaksjonell veiledning basert på klinisk overlapp, ikke en offisiell eller fastsatt mapping. Flere domener kan være aktuelle samtidig.",
+  "source": "editorial",
+  "status": "draft"
+}

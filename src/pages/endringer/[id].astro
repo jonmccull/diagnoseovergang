@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import EntryContent from "../../components/EntryContent.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("pd");
+  // The overview entry lives on the front page, not under /endringer/.
+  return entries
+    .filter((e) => e.data.kind !== "overview")
+    .map((e) => ({ params: { id: e.id }, props: { entry: e } }));
+}
+
+const { entry } = Astro.props;
+---
+
+<Base title={entry.data.title_nb}>
+  <nav aria-label="Brødsmulesti" class="mb-6 text-sm">
+    <a href="/" class="text-slate-600 underline hover:text-slate-900"
+      >← Til forsiden</a
+    >
+  </nav>
+  <EntryContent entry={entry} />
+</Base>

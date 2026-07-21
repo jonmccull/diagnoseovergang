@@ -71,6 +71,20 @@ npm run deploy:pages    # astro build + wrangler pages deploy
 
 Eller push til `main` med CI-secrets satt.
 
+## Redigere innhold
+
+Redaksjonelt innhold ligger som én JSON-fil per oppføring i
+[src/content/pd/](src/content/pd/) (filnavn = `id`), validert mot
+[schema/content.ts](schema/content.ts) ved bygg — en kliniker kan redigere
+prosa uten å røre appkode; endringer går via PR.
+
+Regler appen håndhever (§8):
+
+- `source: "editorial"` → alltid merket **«Redaksjonelt innhold – ikke fra WHO»**
+- `status: "draft"` → **«Utkast – ikke klinisk kvalitetssikret»**-merke
+- Offisielle ICD-11-titler lagres **aldri** i innholdet — kun koder; titler
+  hentes live fra workeren, så vi aldri driver fra WHO
+
 ## API
 
 | Endpunkt | Hva |

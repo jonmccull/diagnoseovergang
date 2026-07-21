@@ -1,0 +1,109 @@
+---
+/**
+ * Renders one PdCommentaryEntry (§8). Layout per §12: side-by-side
+ * ICD-10 (før) vs ICD-11 (nå) where codes exist, then the editorial sections.
+ * Everything except the official WHO cards sits inside EditorialBlock (§3.3).
+ */
+import type { CollectionEntry } from "astro:content";
+import EditorialBlock from "./EditorialBlock.astro";
+import IcdEntityCard from "./IcdEntityCard.astro";
+
+interface Props {
+  entry: CollectionEntry<"pd">;
+  headingLevel?: "h1" | "h2";
+}
+
+const { entry, headingLevel = "h1" } = Astro.props;
+const d = entry.data;
+const Heading = headingLevel;
+const Sub = headingLevel === "h1" ? "h2" : "h3";
+const hasCodes = (d.icd10?.length ?? 0) > 0 || (d.icd11?.length ?? 0) > 0;
+---
+
+<article data-entry-id={d.id}>
+  <EditorialBlock status={d.status}>
+    <Heading class="text-2xl font-bold tracking-tight text-slate-900">
+      {d.title_nb}
+    </Heading>
+
+    {
+      hasCodes && (
+        <section
+          aria-label="Kodesammenligning ICD-10 og ICD-11"
+          class="mt-5 grid gap-4 md:grid-cols-2"
+        >
+          <div>
+            <p class="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-600">
+              Før – ICD-10
+            </p>
+            {d.icd10?.length ? (
+              <ul class="space-y-2">
+                {d.icd10.map((ref) => (
+                  <li class="rounded-lg border border-slate-200 bg-white p-4">
+                    <span class="font-mono font-semibold">{ref.code}</span>
+                    <span aria-hidden="true"> · </span>
+                    <span>{ref.label_nb}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="text-sm text-slate-500">Ingen direkte ICD-10-motpart.</p>
+            )}
+          </div>
+          <div>
+            <p class="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-600">
+              Nå – ICD-11
+            </p>
+            {d.icd11?.length ? (
+              <ul class="space-y-2">
+                {d.icd11.map((ref) => (
+                  <li>
+                    <IcdEntityCard code={ref.code} />
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="text-sm text-slate-500">Se løpende tekst.</p>
+            )}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="mt-6 max-w-prose">
+      <Sub class="text-lg font-semibold text-slate-900">Hva endres?</Sub>
+      <p class="mt-2 text-slate-800">{d.whatChanged_nb}</p>
+    </section>
+
+    <section class="mt-5 max-w-prose">
+      <Sub class="text-lg font-semibold text-slate-900">Hva gjør du nå?</Sub>
+      <p class="mt-2 text-slate-800">{d.whatToDoNow_nb}</p>
+    </section>
+
+    {
+      d.caveats_nb && (
+        <section class="mt-5 max-w-prose">
+          <Sub class="text-lg font-semibold text-slate-900">Verdt å merke seg</Sub>
+          <p class="mt-2 text-slate-800">{d.caveats_nb}</p>
+        </section>
+      )
+    }
+
+    {
+      d.sources?.length && (
+        <section class="mt-5 max-w-prose">
+          <Sub class="text-lg font-semibold text-slate-900">Kilder</Sub>
+          <ul class="mt-2 list-disc pl-5 text-slate-800">
+            {d.sources.map((s) => (
+              <li>
+                <a href={s.url} class="underline hover:text-slate-950">
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </EditorialBlock>
+</article>

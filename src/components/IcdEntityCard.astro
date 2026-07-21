@@ -1,0 +1,76 @@
+---
+/**
+ * Official ICD-11 entity display — guardrail §3.1: code + official title +
+ * link to the WHO browser always together. The title is fetched live from
+ * OUR worker (never stored in editorial content, §8) and shown in English
+ * (Norwegian is not an API language, §7.3). Degrades per §7.5: on failure the
+ * code stays visible with a non-blocking notice.
+ */
+interface Props {
+  code: string;
+}
+
+const { code } = Astro.props;
+// §7.4: QE50.7 is a "factor influencing health status", not a mental disorder —
+// the UI must say so wherever it appears.
+const isFactorCode = code.startsWith("QE");
+---
+
+<div
+  data-source="who"
+  data-icd-code={code}
+  class="rounded-lg border border-sky-200 bg-white p-4"
+>
+  <p class="mb-1 text-xs font-medium uppercase tracking-wide text-sky-800">
+    Offisiell ICD-11 (WHO)
+  </p>
+  <p class="text-slate-900">
+    <span class="font-mono font-semibold">{code}</span>
+    <span aria-hidden="true"> · </span>
+    <span data-icd-title lang="en" class="italic text-slate-500"
+      >henter offisiell tittel …</span
+    >
+  </p>
+  {
+    isFactorCode && (
+      <p class="mt-1 text-xs text-slate-600">
+        Ikke en psykisk lidelse – kode for «faktorer som påvirker helsetilstand».
+      </p>
+    )
+  }
+  <p class="mt-2 text-sm" data-icd-link hidden>
+    <a href="#" class="text-sky-800 underline hover:text-sky-950"
+      >Se i WHOs ICD-11-nettleser</a
+    >
+  </p>
+  <p class="mt-1 text-xs text-slate-500">
+    Offisiell tittel vises på engelsk, hentet fra WHOs ICD-11 API.
+  </p>
+</div>
+
+<script>
+  import { fetchIcdEntity } from "../lib/who";
+
+  document
+    .querySelectorAll<HTMLElement>("[data-icd-code]")
+    .forEach(async (el) => {
+      const code = el.dataset.icdCode;
+      const titleEl = el.querySelector<HTMLElement>("[data-icd-title]");
+      const linkWrap = el.querySelector<HTMLElement>("[data-icd-link]");
+      const link = linkWrap?.querySelector<HTMLAnchorElement>("a");
+      if (!code || !titleEl) return;
+      try {
+        const entity = await fetchIcdEntity(code);
+        titleEl.textContent = entity.title;
+        titleEl.classList.remove("italic", "text-slate-500");
+        if (linkWrap && link) {
+          link.href = entity.browserUrl;
+          linkWrap.hidden = false;
+        }
+      } catch {
+        // §7.5: never hard-fail — code remains visible with a notice.
+        titleEl.textContent = "kunne ikke hente offisiell tittel akkurat nå";
+        titleEl.removeAttribute("lang");
+      }
+    });
+</script>

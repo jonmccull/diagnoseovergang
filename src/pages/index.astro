@@ -1,6 +1,24 @@
 ---
+import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
+import EntryContent from "../components/EntryContent.astro";
 import { SITE_TAGLINE } from "../config";
+
+const entries = await getCollection("pd");
+const overview = entries.find((e) => e.data.kind === "overview");
+const diagnoses = entries.filter((e) => e.data.kind === "diagnosis-change");
+const severity = entries.filter((e) => e.data.kind === "severity");
+const traits = entries
+  .filter((e) => e.data.kind === "trait-domain")
+  .sort((a, b) =>
+    (a.data.icd11?.[0]?.code ?? "").localeCompare(b.data.icd11?.[0]?.code ?? "")
+  );
+
+const sections = [
+  { heading: "Alvorlighetsgrad", items: severity },
+  { heading: "Diagnoser: fra ICD-10-kode til ICD-11", items: diagnoses },
+  { heading: "Trekkdomener og mønstre (6D11)", items: traits },
+];
 ---
 
 <Base
@@ -12,32 +30,40 @@ import { SITE_TAGLINE } from "../config";
   </h1>
   <p class="mt-4 max-w-prose text-lg text-slate-700">
     En fri, norskspråklig ressurs som forklarer hva som endres i overgangen fra
-    ICD-10 til ICD-11 for personlighetsforstyrrelser. Innhold kommer.
+    ICD-10 til ICD-11 for personlighetsforstyrrelser – med offisielle
+    ICD-11-koder og titler hentet direkte fra WHO.
   </p>
 
-  <section aria-label="Systemstatus" class="mt-10">
-    <div class="rounded-lg border border-slate-200 bg-white p-4 text-sm">
-      <p>
-        API-status:
-        <span id="api-status" class="font-medium text-slate-500">kontrollerer …</span>
-      </p>
-    </div>
-  </section>
-</Base>
-
-<script>
-  import { fetchHealth } from "../lib/who";
-
-  const el = document.getElementById("api-status");
-  if (el) {
-    fetchHealth()
-      .then((h) => {
-        el.textContent = `tilkoblet (${h.service}, ICD-11 MMS ${h.release})`;
-        el.className = "font-medium text-green-700";
-      })
-      .catch(() => {
-        el.textContent = "ikke tilgjengelig";
-        el.className = "font-medium text-red-700";
-      });
+  {
+    overview && (
+      <div class="mt-10">
+        <EntryContent entry={overview} headingLevel="h2" />
+      </div>
+    )
   }
-</script>
+
+  {
+    sections.map(({ heading, items }) => (
+      <section class="mt-10">
+        <h2 class="text-xl font-semibold text-slate-900">{heading}</h2>
+        <ul class="mt-3 space-y-2">
+          {items.map((e) => (
+            <li>
+              <a
+                href={`/endringer/${e.id}`}
+                class="block rounded-lg border border-slate-200 bg-white p-4 hover:border-slate-400"
+              >
+                <span class="font-medium text-slate-900">{e.data.title_nb}</span>
+                {e.data.status === "draft" && (
+                  <span class="ml-2 inline-flex items-center rounded-full bg-slate-200 px-2 py-0.5 text-xs text-slate-700">
+                    Utkast
+                  </span>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</Base>

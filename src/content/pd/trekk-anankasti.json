@@ -1,0 +1,14 @@
+{
+  "id": "trekk-anankasti",
+  "kind": "trait-domain",
+  "title_nb": "Trekkdomene: Anankasti (6D11.4)",
+  "icd10": [
+    { "code": "F60.5", "label_nb": "Tvangspreget (anankastisk) personlighetsforstyrrelse" }
+  ],
+  "icd11": [{ "code": "6D11.4" }],
+  "whatChanged_nb": "Anankasti beskriver perfeksjonisme, rigid kontroll, opptatthet av regler og orden, og vansker med å delegere eller endre planer.",
+  "whatToDoNow_nb": "Tvangspreget (anankastisk) personlighetsforstyrrelse (F60.5) peker ofte mot dette domenet.",
+  "caveats_nb": "«Peker ofte mot» er redaksjonell veiledning basert på klinisk overlapp, ikke en offisiell eller fastsatt mapping. Flere domener kan være aktuelle samtidig.",
+  "source": "editorial",
+  "status": "draft"
+}

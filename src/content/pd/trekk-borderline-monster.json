@@ -1,0 +1,14 @@
+{
+  "id": "trekk-borderline-monster",
+  "kind": "trait-domain",
+  "title_nb": "Borderline-mønster (6D11.5)",
+  "icd10": [
+    { "code": "F60.31", "label_nb": "Emosjonelt ustabil personlighetsforstyrrelse, borderline type" }
+  ],
+  "icd11": [{ "code": "6D11.5" }],
+  "whatChanged_nb": "Borderline-mønsteret er ikke et trekkdomene, men et eget kvalifiserende mønster – ustabilitet i relasjoner, selvbilde og affekt, med impulsivitet – som kan angis i tillegg til trekkdomenene.",
+  "whatToDoNow_nb": "Emosjonelt ustabil, borderline type (F60.31) peker ofte mot dette mønsteret. Se egen omtale av F60.31 for full re-kodingsveiledning.",
+  "caveats_nb": "«Peker ofte mot» er redaksjonell veiledning basert på klinisk overlapp, ikke en offisiell eller fastsatt mapping. Flere domener kan være aktuelle samtidig.",
+  "source": "editorial",
+  "status": "draft"
+}

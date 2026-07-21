@@ -1,0 +1,16 @@
+{
+  "id": "alvorlighetsgrad",
+  "kind": "severity",
+  "title_nb": "Alvorlighetsgrad – det nye organiserende prinsippet",
+  "icd10": null,
+  "icd11": [
+    { "code": "6D10.0" },
+    { "code": "6D10.1" },
+    { "code": "6D10.2" },
+    { "code": "QE50.7" }
+  ],
+  "whatChanged_nb": "ICD-11 gjør alvorlighetsgrad sentral. Graden bestemmes av omfanget av forstyrrelse i selvfungering og mellommenneskelig fungering, risiko for skade og påvirkning på funksjon over tid – ikke av hvilken 'type' pasienten passer inn i.",
+  "whatToDoNow_nb": "Bruk lett (6D10.0), moderat (6D10.1) eller alvorlig (6D10.2). Under terskel for diagnose: personlighetsvansker (QE50.7).",
+  "source": "editorial",
+  "status": "draft"
+}

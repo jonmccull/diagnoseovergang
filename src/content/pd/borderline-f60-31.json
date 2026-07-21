@@ -1,0 +1,13 @@
+{
+  "id": "borderline-f60-31",
+  "kind": "diagnosis-change",
+  "title_nb": "Emosjonelt ustabil / borderline (F60.31) i ICD-11",
+  "icd10": [
+    { "code": "F60.31", "label_nb": "Emosjonelt ustabil personlighetsforstyrrelse, borderline type" }
+  ],
+  "icd11": [{ "code": "6D11.5" }],
+  "whatChanged_nb": "Borderline forsvinner som egen type. I ICD-11 settes diagnosen personlighetsforstyrrelse med alvorlighetsgrad, og borderline-mønster (6D11.5) kan angis som et eget kvalifiserende trekk. Negativ affektivitet (6D11.0) er ofte også fremtredende.",
+  "whatToDoNow_nb": "Sett alvorlighetsgrad (6D10.0/.1/.2), legg til borderline-mønster (6D11.5), og vurder aktuelle trekkdomener som negativ affektivitet (6D11.0) og eventuelt hemningsløshet (6D11.3).",
+  "source": "editorial",
+  "status": "draft"
+}
