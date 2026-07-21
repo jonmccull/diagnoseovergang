@@ -6,15 +6,14 @@ compatibility_date = "2026-07-01"
 ICD_RELEASE = "2025-01"        # pinned MMS release (§7.3); shown in footer; confirm choice in M2
 API_BASE = "https://id.who.int"
 
-# ── Uncomment + fill after resource creation (see README "Førstegangsoppsett") ──
-# [[kv_namespaces]]
-# binding = "ICD_CACHE"        # WHO token + PD entity cache (§6)
-# id = "<KV_NAMESPACE_ID>"     # npx wrangler kv namespace create ICD_CACHE
+[[kv_namespaces]]
+binding = "ICD_CACHE"          # WHO token + PD entity cache (§6)
+id = "f9fd7c1fd3d542098abd8d25fc4529d0"
 
-# [[d1_databases]]
-# binding = "FEEDBACK_DB"      # feedback only (§5) — editorial stays content-as-code
-# database_name = "diagnoseovergang-feedback"
-# database_id = "<D1_DATABASE_ID>"  # npx wrangler d1 create diagnoseovergang-feedback
+[[d1_databases]]
+binding = "FEEDBACK_DB"        # feedback only (§5) — editorial stays content-as-code
+database_name = "diagnoseovergang-feedback"
+database_id = "02c04af8-8e09-47f7-94ad-bccd6360f6f4"
 
 # [triggers]
 # crons = ["0 3 * * *"]        # nightly PD pre-warm (M2) + feedback retention (M6)

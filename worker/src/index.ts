@@ -4,8 +4,10 @@ import { cors } from "hono/cors";
 type Bindings = {
   ICD_RELEASE: string;
   API_BASE: string;
-  // M2: ICD_CACHE (KVNamespace), WHO_CLIENT_ID, WHO_CLIENT_SECRET
-  // M6: FEEDBACK_DB (D1Database), TURNSTILE_SECRET, IP_HASH_SALT
+  ICD_CACHE: KVNamespace;
+  FEEDBACK_DB: D1Database;
+  // M2 secrets: WHO_CLIENT_ID, WHO_CLIENT_SECRET
+  // M6 secrets: TURNSTILE_SECRET, IP_HASH_SALT
 };
 
 const app = new Hono<{ Bindings: Bindings }>();
