@@ -1,0 +1,22 @@
+{
+  "id": "angstlidelser-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Angst- eller fryktrelaterte lidelser: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F40", "label_nb": "Fobiske angstlidelser" },
+    { "code": "F41", "label_nb": "Andre angstlidelser" },
+    { "code": "F93.0", "label_nb": "Separasjonsangst hos barn" },
+    { "code": "F94.0", "label_nb": "Selektiv mutisme" }
+  ],
+  "icd11": [
+    { "code": "6B00" },
+    { "code": "6B04" },
+    { "code": "6B05" },
+    { "code": "6B06" }
+  ],
+  "whatChanged_nb": "ICD-10 blandet fobiske og andre angstlidelser (F40–F41) med tvangslidelse i samme område, og plasserte separasjonsangst (F93.0) og selektiv mutisme (F94.0) i barnekapitlet. ICD-11 skiller ut angst- eller fryktrelaterte lidelser som egen gruppering, adskilt fra den nye tvangslidelsesgrupperingen. I tråd med livsløpsperspektivet flyttes separasjonsangst (6B05) og selektiv mutisme (6B06) inn her og kan diagnostiseres uavhengig av alder. Skillet mellom lidelsene bygger på hva frykten er rettet mot.",
+  "whatToDoNow_nb": "Velg diagnose ut fra fryktens fokus: generalisert angstlidelse (6B00) ved gjennomgripende bekymring, sosial angstlidelse (6B04) ved frykt for sosial vurdering. Vurder separasjonsangst (6B05) og selektiv mutisme (6B06) også hos ungdom og voksne, ikke bare barn. Kod tvangslidelse i den egne tvangslidelsesgrupperingen, ikke her.",
+  "caveats_nb": "At tvangslidelse er skilt ut i egen gruppering betyr at «angst» ikke lenger er samlekategorien den var i ICD-10. Den nye tvangslidelsesgrupperingen får egen omtale.",
+  "source": "editorial",
+  "status": "draft"
+}

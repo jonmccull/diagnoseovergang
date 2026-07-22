@@ -1,0 +1,24 @@
+{
+  "id": "psykoselidelser-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Schizofreni eller andre primære psykotiske lidelser: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F20", "label_nb": "Schizofreni, med faste undertyper" },
+    { "code": "F21", "label_nb": "Schizotyp lidelse" },
+    { "code": "F22", "label_nb": "Vedvarende vrangforestillingslidelser" },
+    { "code": "F23", "label_nb": "Akutte og forbigående psykoser" }
+  ],
+  "icd11": [
+    { "code": "6A20" },
+    { "code": "6A21" },
+    { "code": "6A22" },
+    { "code": "6A23" },
+    { "code": "6A24" },
+    { "code": "6A25" }
+  ],
+  "whatChanged_nb": "ICD-10 samlet disse tilstandene i F20–F29 og beskrev schizofreni med faste undertyper (paranoid, hebefren, kataton med flere). ICD-11 omdøper grupperingen til «schizofreni eller andre primære psykotiske lidelser» og bygger den om rundt et felles sett symptomdomener som vurderes på tvers av diagnosene, i stedet for undertyper. Undertypene av schizofreni forsvinner, katatoni løftes ut som egen tverrdiagnostisk gruppering, og alle tilstandene beskrives med forløps- og alvorlighetsspesifikatorer.",
+  "whatToDoNow_nb": "Velg først riktig hoveddiagnose i grupperingen: schizofreni (6A20), schizoaffektiv lidelse (6A21), schizotyp lidelse (6A22), akutt og forbigående psykotisk lidelse (6A23) eller vrangforestillingslidelse (6A24). Beskriv deretter det kliniske bildet med symptomdomenene (6A25) og forløp, i stedet for å lete etter en undertype. Symptomdomenene brukes på samme måte på tvers av hele grupperingen.",
+  "caveats_nb": "Symptomdomene-vurderingen (6A25) er en felles beskrivelsesramme for grupperingen, ikke en egen diagnose – den utfyller hoveddiagnosen. Katatoni og schizofreni har egne omtaler.",
+  "source": "editorial",
+  "status": "draft"
+}

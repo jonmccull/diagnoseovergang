@@ -1,0 +1,21 @@
+{
+  "id": "nevroutviklingsforstyrrelser-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Nevroutviklingsforstyrrelser: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F70", "label_nb": "Psykisk utviklingshemming" },
+    { "code": "F80", "label_nb": "Spesifikke utviklingsforstyrrelser av tale og språk" },
+    { "code": "F84", "label_nb": "Gjennomgripende utviklingsforstyrrelser (inkl. autisme, Asperger)" },
+    { "code": "F90", "label_nb": "Hyperkinetiske forstyrrelser" }
+  ],
+  "icd11": [
+    { "code": "6A00" },
+    { "code": "6A02" },
+    { "code": "6A05" }
+  ],
+  "whatChanged_nb": "ICD-10 spredte disse tilstandene over «psykisk utviklingshemming» (F70–F79) og «utviklingsforstyrrelser» i barnekapitlet (F80–F89), sammen med hyperkinetiske forstyrrelser (F90) i blokken for atferds- og følelsesmessige forstyrrelser hos barn. ICD-11 samler dem i én gruppering, nevroutviklingsforstyrrelser, med et livsløpsperspektiv i stedet for «forstyrrelser med start i barndommen». Intellektuell utviklingsforstyrrelse (6A00) reformuleres, autismespekterforstyrrelse (6A02) slår sammen de tidligere F84-undertypene til én dimensjonal diagnose, og hyperkinetisk forstyrrelse blir ADHD (6A05) med presentasjonsformer.",
+  "whatToDoNow_nb": "Se etter nevroutviklingsforstyrrelser på tvers av alder, ikke bare hos barn – diagnosene kan stilles og videreføres i voksen alder. Bruk autismespekterforstyrrelse (6A02) i stedet for de gamle undertypene som Asperger, og ADHD (6A05) med angitt presentasjon i stedet for hyperkinetisk forstyrrelse. Intellektuell utviklingsforstyrrelse (6A00) har egen omtale om reformuleringen fra «psykisk utviklingshemming».",
+  "caveats_nb": "Sammenslåingen av autismeundertypene betyr at en tidligere Asperger-diagnose nå inngår i ett spekter beskrevet med spesifikatorer for språk og intellektuell funksjon, ikke som en egen kategori.",
+  "source": "editorial",
+  "status": "draft"
+}

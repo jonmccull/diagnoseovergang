@@ -1,0 +1,23 @@
+{
+  "id": "stemningslidelser-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Stemningslidelser: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F30", "label_nb": "Manisk episode" },
+    { "code": "F31", "label_nb": "Bipolar affektiv lidelse" },
+    { "code": "F32", "label_nb": "Depressiv episode" },
+    { "code": "F33", "label_nb": "Tilbakevendende depressiv lidelse" },
+    { "code": "F41.2", "label_nb": "Blandet angstlidelse og depressiv lidelse" }
+  ],
+  "icd11": [
+    { "code": "6A60" },
+    { "code": "6A70" },
+    { "code": "6A71" },
+    { "code": "6A73" }
+  ],
+  "whatChanged_nb": "ICD-10 delte stemningslidelsene i separate blokker (F30–F39) med egne underkoder for alvorlighetsgrad og forløp. ICD-11 organiserer grupperingen i to hovedgrener – bipolare og beslektede lidelser (6A60-serien) og depressive lidelser (6A70-serien) – og bygger begge opp av episodetyper (depressiv, manisk, hypoman, blandet) som byggeklosser med spesifikatorer, i stedet for faste underkoder. Skillet mellom bipolar type I og type II gjøres eksplisitt, og blandet depressiv og angstlidelse (6A73) flyttes inn i stemningsgrupperingen fra angstområdet.",
+  "whatToDoNow_nb": "Plasser pasienten i riktig gren: bipolar (fra 6A60) eller depressiv (enkeltepisode 6A70, tilbakevendende 6A71). Beskriv gjeldende episode med spesifikatorer for type, alvorlighetsgrad og eventuelle psykotiske symptomer, i stedet for å lete etter én fast underkode. Husk at blandet depressiv og angstlidelse (6A73) nå kodes som en stemningslidelse.",
+  "caveats_nb": "Overgangen er ikke én-til-én: samme ICD-10-underkode kan nå tilsvare ulike kombinasjoner av episodetype og spesifikatorer. Bipolar lidelse har egen omtale.",
+  "source": "editorial",
+  "status": "draft"
+}

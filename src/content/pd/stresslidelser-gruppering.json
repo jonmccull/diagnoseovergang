@@ -1,0 +1,22 @@
+{
+  "id": "stresslidelser-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Lidelser spesifikt forbundet med stress: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F43", "label_nb": "Reaksjoner på alvorlig belastning og tilpasningsforstyrrelser" },
+    { "code": "F62.0", "label_nb": "Vedvarende personlighetsendring etter katastrofal opplevelse" }
+  ],
+  "icd11": [
+    { "code": "6B40" },
+    { "code": "6B41" },
+    { "code": "6B42" },
+    { "code": "6B43" },
+    { "code": "6B44" },
+    { "code": "6B45" }
+  ],
+  "whatChanged_nb": "I ICD-10 lå de stressutløste tilstandene spredt i F43, og et krav om en utløsende hendelse gjaldt egentlig bare akutt stressreaksjon og PTSD. ICD-11 samler dem i en egen gruppering der en identifiserbar stressende eller traumatisk hendelse er et felles inngangskrav. Grupperingen får to nye diagnoser – kompleks PTSD (6B41) og forlenget sorglidelse (6B42) – PTSD (6B40) strammes inn, tilpasningsforstyrrelse (6B43) omdefineres til et smalere bilde, og akutt stressreaksjon flyttes helt ut av lidelseskapitlet og regnes ikke lenger som en psykisk lidelse.",
+  "whatToDoNow_nb": "Bekreft at det finnes en identifiserbar stressor før du velger en kode herfra. Skill PTSD (6B40) fra kompleks PTSD (6B41), og vurder forlenget sorg (6B42) som egen diagnose ved langvarig, funksjonsnedsettende sorg. Reaktiv tilknytningsforstyrrelse (6B44) og distansert sosial kontaktforstyrrelse (6B45) hører også hjemme her. Slutt å bruke akutt stressreaksjon som en psykiatrisk diagnose – den beskrives nå som en normalreaksjon utenfor kapittel 06.",
+  "caveats_nb": "Tilpasningsforstyrrelse er smalere enn i ICD-10 og skal ikke lenger fungere som en sekkediagnose for enhver belastning. Egne omtaler dekker de enkelte diagnosene i grupperingen.",
+  "source": "editorial",
+  "status": "draft"
+}
