@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+/*
+ * Safari/WebKit text-selection bleed fix.
+ *
+ * WebKit paints the selection highlight ("selection gaps") across the widest
+ * selected ancestor block that qualifies as a "selection root". Our editorial
+ * text sits in centered max-width blocks whose ancestors are all static /
+ * overflow:visible, so WebKit walks up to <body> and fills the gap edge-to-edge
+ * — a highlighted paragraph bleeds the full window width. (Blink clips to line
+ * boxes, so Chrome is unaffected.)
+ *
+ * Giving each editorial text block its own overflow clip makes it a WebKit
+ * selection root, containing the highlight to the text. No visual effect
+ * otherwise — these blocks have no overflowing content. Scoped to editorial
+ * content only; the WHO panel (data-source="who") is deliberately untouched.
+ */
+[data-source="editorial"] :is(h1, h2, h3, p) {
+  overflow: hidden;
+}
