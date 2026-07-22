@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import EntryContent from "../../components/EntryContent.astro";
+import WhoOfficialPanel from "../../components/WhoOfficialPanel.astro";
 
 export async function getStaticPaths() {
   const entries = await getCollection("pd");
@@ -12,6 +13,9 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+// Amendment B.1: one official WHO panel per ICD-11 code the entry references,
+// on diagnosis detail pages only (not the front-page overview).
+const icd11Codes = entry.data.icd11 ?? [];
 ---
 
 <Base title={entry.data.title_nb}>
@@ -21,4 +25,14 @@ const { entry } = Astro.props;
     >
   </nav>
   <EntryContent entry={entry} />
+
+  {
+    icd11Codes.length > 0 && (
+      <section aria-label="Offisiell WHO-tekst" class="mt-8 space-y-3">
+        {icd11Codes.map((ref) => (
+          <WhoOfficialPanel code={ref.code} />
+        ))}
+      </section>
+    )
+  }
 </Base>

@@ -18,6 +18,9 @@ const MmsEntityRaw = z.object({
   "@id": z.string(),
   code: z.string(),
   title: z.object({ "@value": z.string() }),
+  // Present on most entities, absent on many groupings/residual categories.
+  // Same `{ "@value": string }` shape as title (Amendment B.1).
+  definition: z.object({ "@value": z.string() }).optional(),
   source: z.string().optional(), // foundation URI
   browserUrl: z.string().optional(),
 });
@@ -127,6 +130,7 @@ export async function fetchEntityFromWho(
   return IcdEntity.parse({
     code: raw.code,
     title: raw.title["@value"],
+    definition: raw.definition?.["@value"] ?? null,
     uri: https(raw["@id"]),
     foundationUri: raw.source ? https(raw.source) : null,
     browserUrl:

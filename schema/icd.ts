@@ -6,6 +6,10 @@ import { z } from "zod";
 export const IcdEntity = z.object({
   code: z.string(),
   title: z.string(), // official English title from the WHO API — never editorial
+  // Official English definition from the WHO API where the entity has one;
+  // null when absent (many grouping/residual entities carry no definition).
+  // Never editorial — displayed as-is in the WHO panel (Amendment B.1).
+  definition: z.string().nullable(),
   uri: z.string(), // canonical linearization URI (@id)
   foundationUri: z.string().nullable(),
   browserUrl: z.string(), // link to the official WHO browser entry

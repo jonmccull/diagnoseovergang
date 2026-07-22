@@ -1,0 +1,223 @@
+---
+/**
+ * Amendment B.1 — "Offisiell WHO-tekst (engelsk)" panel.
+ *
+ * A collapsible, collapsed-by-default panel showing ONLY official WHO content
+ * for one ICD-11 code: official English title + definition (where available),
+ * the code, the canonical URI, a link to the WHO browser, and the verbatim WHO
+ * attribution block (§11). It is the inverse of the "ikke fra WHO" editorial
+ * treatment — this box is exclusively WHO content, so it carries the sky/blue
+ * WHO styling (mirrors IcdEntityCard.astro) and is clearly labelled as such.
+ *
+ * Data is fetched live from OUR worker (§6, §7.3); the official English title
+ * and definition are never stored in editorial content (§8). Degrades per §7.5:
+ * on failure the code stays visible with a non-blocking notice.
+ *
+ * Amendment B.2 (compliance-critical): translation is left entirely to the
+ * user's own browser. There is deliberately NO translate="no" on this panel, NO
+ * translate button, and NO call to any translation service — only the neutral
+ * hint line below. See the ruling in Brief Amendment 01 §B.2.
+ */
+import { WHO_ATTRIBUTION, WHO_SOURCE_URL } from "../config";
+
+interface Props {
+  code: string;
+}
+
+const { code } = Astro.props;
+
+// §7.4: QE50.7 is a "factor influencing health status", not a mental disorder.
+const isFactorCode = code.startsWith("QE");
+
+// Verbatim neutral hint (Amendment B.2). Do NOT paraphrase.
+const TRANSLATION_HINT =
+  "Tips: nettleserens innebygde oversettelsesfunksjon kan brukes på dette panelet. Maskinoversettelse kan inneholde feil og er ikke en offisiell oversettelse.";
+
+// Neutral fallback shown when the entity has no official WHO definition.
+const NO_DEFINITION_NB =
+  "Ingen offisiell definisjon er tilgjengelig for denne koden.";
+---
+
+<details
+  data-source="who"
+  data-who-panel
+  data-who-code={code}
+  class="group rounded-lg border border-sky-300 bg-sky-50/70"
+>
+  <summary
+    class="flex cursor-pointer items-center justify-between gap-3 rounded-lg px-4 py-3 text-sky-900 marker:content-none hover:bg-sky-100/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+  >
+    <span class="flex flex-col">
+      <span class="text-xs font-medium uppercase tracking-wide text-sky-800">
+        Offisiell WHO-tekst (engelsk)
+      </span>
+      <span class="text-sm text-slate-700">
+        <span class="font-mono font-semibold text-slate-900">{code}</span>
+        <span aria-hidden="true"> · </span>
+        <span data-who-summary-title lang="en" class="italic text-slate-500"
+          >henter offisiell tittel …</span
+        >
+      </span>
+    </span>
+    <span
+      aria-hidden="true"
+      class="shrink-0 text-sky-700 transition-transform group-open:rotate-180"
+      >▾</span
+    >
+  </summary>
+
+  <div class="border-t border-sky-200 px-4 py-4">
+    {
+      isFactorCode && (
+        <p class="mb-3 text-xs text-slate-600">
+          Ikke en psykisk lidelse – kode for «faktorer som påvirker
+          helsetilstand».
+        </p>
+      )
+    }
+
+    <dl class="space-y-3 text-sm">
+      <div>
+        <dt class="text-xs font-semibold uppercase tracking-wide text-sky-800">
+          Tittel
+        </dt>
+        <dd data-who-title lang="en" class="mt-0.5 text-slate-900 italic">
+          henter offisiell tittel …
+        </dd>
+      </div>
+
+      <div>
+        <dt class="text-xs font-semibold uppercase tracking-wide text-sky-800">
+          Definisjon
+        </dt>
+        <dd
+          data-who-definition
+          lang="en"
+          class="mt-0.5 text-slate-500 italic"
+        >
+          henter offisiell definisjon …
+        </dd>
+      </div>
+
+      <div>
+        <dt class="text-xs font-semibold uppercase tracking-wide text-sky-800">
+          Kode
+        </dt>
+        <dd class="mt-0.5 font-mono font-semibold text-slate-900">{code}</dd>
+      </div>
+
+      <div>
+        <dt class="text-xs font-semibold uppercase tracking-wide text-sky-800">
+          URI
+        </dt>
+        <dd
+          data-who-uri
+          class="mt-0.5 break-all font-mono text-xs text-slate-500"
+        >
+          henter kanonisk URI …
+        </dd>
+      </div>
+    </dl>
+
+    <p class="mt-3 text-sm" data-who-link hidden>
+      <a href="#" class="text-sky-800 underline hover:text-sky-950"
+        >Se i WHOs ICD-11-nettleser</a
+      >
+    </p>
+
+    {/* WHO attribution block (§11) — rendered verbatim; source is a link. */}
+    <p class="mt-4 border-t border-sky-200 pt-3 text-xs text-slate-600">
+      {WHO_ATTRIBUTION}{" "}
+      <a href={WHO_SOURCE_URL} class="text-sky-800 underline hover:text-sky-950"
+        >{WHO_SOURCE_URL}</a
+      >
+    </p>
+
+    {/*
+      Amendment B.2 hint — verbatim, under the panel content. Intentionally the
+      only occurrence of "oversett" and it is descriptive, not an action button.
+      No translate="no" anywhere in this panel: the browser may translate it.
+    */}
+    <p class="mt-3 text-xs italic text-slate-500">{TRANSLATION_HINT}</p>
+  </div>
+</details>
+
+<script is:inline define:vars={{ NO_DEFINITION_NB }}>
+  // Fallback text for entities with no official WHO definition, passed in from
+  // the component so it stays a single source of truth.
+  window.__WHO_NO_DEFINITION_NB = NO_DEFINITION_NB;
+</script>
+
+<script>
+  import { fetchIcdEntity } from "../lib/who";
+
+  const noDefinition: string =
+    (window as unknown as { __WHO_NO_DEFINITION_NB?: string })
+      .__WHO_NO_DEFINITION_NB ??
+    "Ingen offisiell definisjon er tilgjengelig for denne koden.";
+
+  document
+    .querySelectorAll<HTMLElement>("[data-who-panel]")
+    .forEach(async (el) => {
+      const code = el.dataset.whoCode;
+      const summaryTitleEl = el.querySelector<HTMLElement>(
+        "[data-who-summary-title]"
+      );
+      const titleEl = el.querySelector<HTMLElement>("[data-who-title]");
+      const defEl = el.querySelector<HTMLElement>("[data-who-definition]");
+      const uriEl = el.querySelector<HTMLElement>("[data-who-uri]");
+      const linkWrap = el.querySelector<HTMLElement>("[data-who-link]");
+      const link = linkWrap?.querySelector<HTMLAnchorElement>("a");
+      if (!code) return;
+
+      try {
+        const entity = await fetchIcdEntity(code);
+
+        if (summaryTitleEl) {
+          summaryTitleEl.textContent = entity.title;
+          summaryTitleEl.classList.remove("italic", "text-slate-500");
+        }
+        if (titleEl) {
+          titleEl.textContent = entity.title;
+          titleEl.classList.remove("italic", "text-slate-500");
+        }
+        if (defEl) {
+          if (entity.definition && entity.definition.trim().length > 0) {
+            defEl.textContent = entity.definition;
+            defEl.classList.remove("italic", "text-slate-500");
+            defEl.classList.add("text-slate-800");
+          } else {
+            // Graceful absence — neutral Norwegian note (our own text, not WHO).
+            defEl.textContent = noDefinition;
+            defEl.removeAttribute("lang");
+            defEl.classList.remove("text-slate-500");
+            defEl.classList.add("text-slate-600");
+          }
+        }
+        if (uriEl) {
+          uriEl.textContent = entity.uri;
+          uriEl.classList.remove("italic");
+        }
+        if (linkWrap && link) {
+          link.href = entity.browserUrl;
+          linkWrap.hidden = false;
+        }
+      } catch {
+        // §7.5: never hard-fail — the code stays visible with a notice.
+        const notice = "kunne ikke hente offisiell WHO-tekst akkurat nå";
+        if (summaryTitleEl) {
+          summaryTitleEl.textContent = notice;
+          summaryTitleEl.removeAttribute("lang");
+        }
+        if (titleEl) {
+          titleEl.textContent = notice;
+          titleEl.removeAttribute("lang");
+        }
+        if (defEl) {
+          defEl.textContent = notice;
+          defEl.removeAttribute("lang");
+        }
+        if (uriEl) uriEl.textContent = "—";
+      }
+    });
+</script>
