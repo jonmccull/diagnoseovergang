@@ -56,6 +56,20 @@ current state and open threads.
 - Report style: lead with outcome + how it was verified; flag any deviation
   from the briefs explicitly rather than absorbing it silently.
 
+## Session wrap-up (suggestions, not automatic)
+
+At the natural conclusion of a task, **offer** these — surface them as options,
+don't run them unprompted:
+
+- `/session-brief` — capture a structured snapshot of the session.
+- `/refactor-sweep` — surface any refactor / improvement candidates noticed
+  during the work.
+- This project is mirrored as a **pointer stub** in Jon's Obsidian second-brain
+  (`2. PROJECTS/- Active Projects/Diagnoseovergang.md` in "Jon´s Vault", on the
+  2018 MacBook Pro — reach it via the `macbook-pro-ops` skill over SSH). It's
+  deliberately coarse; `docs/session-handoff.md` stays the source of truth. If a
+  task materially changed the project's phase/status, offer to update that stub.
+
 ## Environment
 
 - This shell resolves Node 20.9 but wrangler needs Node 22 — prefix wrangler
