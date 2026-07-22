@@ -6,7 +6,7 @@
     { "code": "F60.5", "label_nb": "Tvangspreget (anankastisk) personlighetsforstyrrelse" }
   ],
   "icd11": [{ "code": "6D11.4" }],
-  "whatChanged_nb": "Anankasti beskriver perfeksjonisme, rigid kontroll, opptatthet av regler og orden, og vansker med å delegere eller endre planer.",
+  "whatChanged_nb": "Der ICD-10 hadde tvangspreget (anankastisk) personlighetsforstyrrelse som egen type (F60.5), er anankasti i ICD-11 ett av fem trekkdomener som angis etter at alvorlighetsgrad er satt. Domenet fanger opp en gjennomgående orientering mot perfeksjonisme, kontroll og orden.",
   "whatToDoNow_nb": "Tvangspreget (anankastisk) personlighetsforstyrrelse (F60.5) peker ofte mot dette domenet.",
   "caveats_nb": "«Peker ofte mot» er redaksjonell veiledning basert på klinisk overlapp, ikke en offisiell eller fastsatt mapping. Flere domener kan være aktuelle samtidig.",
   "source": "editorial",

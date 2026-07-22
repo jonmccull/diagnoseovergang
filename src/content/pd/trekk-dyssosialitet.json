@@ -6,7 +6,7 @@
     { "code": "F60.2", "label_nb": "Dyssosial personlighetsforstyrrelse" }
   ],
   "icd11": [{ "code": "6D11.2" }],
-  "whatChanged_nb": "Dyssosialitet beskriver manglende hensyn til andres rettigheter og følelser, egosentrisitet og utnyttende atferd.",
+  "whatChanged_nb": "ICD-10s dyssosiale personlighetsforstyrrelse (F60.2) er i ICD-11 ikke lenger en egen type, men fanges opp av trekkdomenet dyssosialitet – ett av fem domener som angis etter at alvorlighetsgrad er satt. Domenet dreier seg om manglende hensyn til andres rettigheter og følelser.",
   "whatToDoNow_nb": "Dyssosial personlighetsforstyrrelse (F60.2) peker ofte mot dette domenet. Vurder også hemningsløshet (6D11.3) ved uttalt impulsivitet.",
   "caveats_nb": "«Peker ofte mot» er redaksjonell veiledning basert på klinisk overlapp, ikke en offisiell eller fastsatt mapping. Flere domener kan være aktuelle samtidig.",
   "source": "editorial",
