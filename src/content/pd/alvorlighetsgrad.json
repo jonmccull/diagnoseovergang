@@ -9,7 +9,7 @@
     { "code": "6D10.2" },
     { "code": "QE50.7" }
   ],
-  "whatChanged_nb": "ICD-11 gjør alvorlighetsgrad sentral. Graden bestemmes av omfanget av forstyrrelse i selvfungering og mellommenneskelig fungering, risiko for skade og påvirkning på funksjon over tid – ikke av hvilken 'type' pasienten passer inn i.",
+  "whatChanged_nb": "ICD-10 organiserte personlighetsforstyrrelser etter type, uten alvorlighetsgrad som organiserende akse. ICD-11 snur dette: alvorlighetsgrad blir det bærende prinsippet, og hvilke trekk som er fremtredende kommer i andre rekke. Graden vurderes ut fra hvor omfattende vanskene i selv- og mellommenneskelig fungering er – ikke ut fra hvilken 'type' pasienten passer inn i.",
   "whatToDoNow_nb": "Bruk lett (6D10.0), moderat (6D10.1) eller alvorlig (6D10.2). Under terskel for diagnose: personlighetsvansker (QE50.7).",
   "source": "editorial",
   "status": "draft"
