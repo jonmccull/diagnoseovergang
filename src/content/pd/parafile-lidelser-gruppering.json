@@ -1,0 +1,21 @@
+{
+  "id": "parafile-lidelser-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Parafile lidelser: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F65", "label_nb": "Forstyrrelser i seksuelle objektvalg (seksuelle preferanser)" },
+    { "code": "F65.0", "label_nb": "Fetisjisme" },
+    { "code": "F65.5", "label_nb": "Sadomasochisme" }
+  ],
+  "icd11": [
+    { "code": "6D30" },
+    { "code": "6D31" },
+    { "code": "6D32" },
+    { "code": "6D36" }
+  ],
+  "whatChanged_nb": "ICD-10s «forstyrrelser i seksuelle objektvalg» (F65) klassifiserte en rekke ikke-normative seksuelle interesser som lidelser i seg selv, blant annet fetisjisme og sadomasochisme. ICD-11 omdøper grupperingen til parafile lidelser og legger et samtykke- og skadekriterium til grunn: en interesse er bare en lidelse når den involverer ikke-samtykkende personer eller gir betydelig lidelse eller risiko. Rene uttrykk for konsensuell variasjon (som fetisjisme og sadomasochisme) er fjernet som diagnoser.",
+  "whatToDoNow_nb": "Diagnostiser en parafil lidelse bare når kriteriet om ikke-samtykkende part eller vesentlig lidelse/risiko er oppfylt. Ikke kod konsensuell, ikke-normativ seksuell atferd som lidelse. Bruk kategorien for solitær eller konsensuell atferd (6D36) kun der det foreligger markert lidelse hos personen selv.",
+  "caveats_nb": "Dette er en verdimessig forskyvning, ikke bare en omkoding: fjerningen av rent konsensuelle kategorier er begrunnet i å redusere stigmatisering, og krever at klinikeren aktivt vurderer samtykke og skade.",
+  "source": "editorial",
+  "status": "draft"
+}

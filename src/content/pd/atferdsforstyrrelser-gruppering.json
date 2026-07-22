@@ -1,0 +1,19 @@
+{
+  "id": "atferdsforstyrrelser-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Atferdsforstyrrelser eller dyssosiale forstyrrelser: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F91", "label_nb": "Atferdsforstyrrelser" },
+    { "code": "F91.3", "label_nb": "Opposisjonell atferdsforstyrrelse" },
+    { "code": "F92", "label_nb": "Blandet forstyrrelse av atferd og følelser" }
+  ],
+  "icd11": [
+    { "code": "6C90" },
+    { "code": "6C91" }
+  ],
+  "whatChanged_nb": "ICD-10 plasserte atferdsforstyrrelser (F91) og blandede atferds- og følelsesforstyrrelser (F92) i barnekapitlet. ICD-11 omdøper grupperingen til atferdsforstyrrelser eller dyssosiale forstyrrelser og gir den et livsløpsperspektiv, med to diagnoser: opposisjonell atferdsforstyrrelse (6C90) og atferds-dyssosial forstyrrelse (6C91). Begge kan nå beskrives med spesifikatorer, blant annet «med begrensede prososiale følelser».",
+  "whatToDoNow_nb": "Vurder disse forstyrrelsene ut fra atferdsmønster snarere enn alder alene. Bruk spesifikatoren for begrensede prososiale følelser der den er relevant, siden den har betydning for forløp og tiltak. Angi debut i barne-/ungdomsalder eller senere som del av beskrivelsen.",
+  "caveats_nb": "Den tidligere blandingskategorien for atferd og følelser (F92) videreføres ikke som egen enhet; komorbid emosjonell problematikk kodes i stedet ved siden av.",
+  "source": "editorial",
+  "status": "draft"
+}

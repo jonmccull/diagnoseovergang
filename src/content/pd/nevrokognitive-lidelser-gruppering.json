@@ -1,0 +1,21 @@
+{
+  "id": "nevrokognitive-lidelser-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Nevrokognitive lidelser: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F00", "label_nb": "Demens ved Alzheimers sykdom" },
+    { "code": "F05", "label_nb": "Delirium som ikke skyldes alkohol eller andre psykoaktive stoffer" },
+    { "code": "F09", "label_nb": "Uspesifisert organisk eller symptomatisk psykisk lidelse" }
+  ],
+  "icd11": [
+    { "code": "6D70" },
+    { "code": "6D71" },
+    { "code": "6D72" },
+    { "code": "6D80" }
+  ],
+  "whatChanged_nb": "ICD-10 samlet disse tilstandene som «organiske, inklusive symptomatiske, psykiske lidelser» (F00–F09). ICD-11 omdøper grupperingen til nevrokognitive lidelser og forlater begrepet «organisk». Grupperingen får en ny diagnose – lett nevrokognitiv lidelse (6D71) – for kognitiv svikt under demensterskel, og demens beskrives med årsak (for eksempel Alzheimers sykdom, 6D80) angitt separat i stedet for som faste underkoder. Delirium (6D70) og amnestisk lidelse (6D72) inngår i grupperingen.",
+  "whatToDoNow_nb": "Slutt å bruke «organisk» som inngang; velg nevrokognitiv lidelse etter bilde og forløp. Bruk lett nevrokognitiv lidelse (6D71) der svikten er målbar, men under demensnivå. Kod demens og angi underliggende årsak separat, i stedet for å lete etter én kombinert kode.",
+  "caveats_nb": "At «organisk» utgår er også et signal: skillet organisk/funksjonell som strukturerte ICD-10-kapitlet, er forlatt som ordnende prinsipp.",
+  "source": "editorial",
+  "status": "draft"
+}

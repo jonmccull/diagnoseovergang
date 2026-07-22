@@ -1,0 +1,20 @@
+{
+  "id": "dissosiative-lidelser-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Dissosiative lidelser: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F44", "label_nb": "Dissosiative lidelser (konversjonslidelser)" },
+    { "code": "F48.1", "label_nb": "Depersonaliserings- og derealiseringssyndrom" }
+  ],
+  "icd11": [
+    { "code": "6B60" },
+    { "code": "6B61" },
+    { "code": "6B64" },
+    { "code": "6B66" }
+  ],
+  "whatChanged_nb": "ICD-10 samlet dissosiative lidelser og konversjonslidelser i F44 og plasserte depersonalisering/derealisering separat blant «andre nevrotiske lidelser» (F48.1). ICD-11 rydder grupperingen: konversjonssymptomer omtales nå som dissosiativ nevrologisk symptomlidelse (6B60), depersonaliserings- og derealiseringslidelse (6B66) flyttes inn i grupperingen, og dissosiativ identitetslidelse (6B64) suppleres med en partiell form. Betegnelsen «konversjon» tones ned til fordel for et rent dissosiativt rammeverk.",
+  "whatToDoNow_nb": "Bruk dissosiativ nevrologisk symptomlidelse (6B60) der du før tenkte konversjonslidelse. Kod depersonalisering/derealisering (6B66) som en dissosiativ lidelse, ikke som en nevrotisk restkategori. Skill mellom full og partiell dissosiativ identitetslidelse når identitetsforstyrrelsen er til stede.",
+  "caveats_nb": "Flyttingen av depersonalisering/derealisering betyr at klinikere som lette etter den blant «andre nevrotiske lidelser», nå må finne den i den dissosiative grupperingen.",
+  "source": "editorial",
+  "status": "draft"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "svangerskap-barsel-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Psykiske lidelser knyttet til svangerskap, fødsel og barseltid: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F53", "label_nb": "Psykiske lidelser i barseltid, ikke klassifisert annet sted" }
+  ],
+  "icd11": [
+    { "code": "6E20" },
+    { "code": "6E21" }
+  ],
+  "whatChanged_nb": "ICD-10s F53 var en restkategori som bare skulle brukes for barsellidelser man ikke kunne klassifisere andre steder. ICD-11 beholder en gruppering for tilstander knyttet til svangerskap, fødsel og barseltid, men bruker den som et tillegg til den egentlige diagnosen: den primære lidelsen (for eksempel en depressiv lidelse) kodes, og grupperingskoden angir tilknytningen til perioden – uten psykotiske symptomer (6E20) eller med psykotiske symptomer (6E21).",
+  "whatToDoNow_nb": "Kod alltid den underliggende psykiske lidelsen først, og legg til 6E20 eller 6E21 for å markere tilknytningen til svangerskap eller barseltid. Bruk skillet med/uten psykotiske symptomer, som er klinisk avgjørende ved barselpsykose. Ikke bruk grupperingen som en selvstendig restdiagnose slik F53 ofte ble brukt.",
+  "caveats_nb": "Tilknytningen gjelder typisk fra svangerskap til om lag seks uker etter fødsel. Grupperingen erstatter ikke en fullverdig diagnose, men supplerer den.",
+  "source": "editorial",
+  "status": "draft"
+}

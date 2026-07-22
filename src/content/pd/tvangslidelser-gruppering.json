@@ -1,0 +1,22 @@
+{
+  "id": "tvangslidelser-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Tvangslidelse eller relaterte lidelser: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F42", "label_nb": "Tvangslidelse" },
+    { "code": "F45.2", "label_nb": "Hypokondrisk lidelse" },
+    { "code": "F63.3", "label_nb": "Trikotillomani" }
+  ],
+  "icd11": [
+    { "code": "6B20" },
+    { "code": "6B21" },
+    { "code": "6B23" },
+    { "code": "6B24" },
+    { "code": "6B25" }
+  ],
+  "whatChanged_nb": "I ICD-10 lå tvangslidelse (F42) tett opp mot angstlidelsene, mens beslektede tilstander var spredt: hypokondri under somatoforme lidelser (F45.2) og trikotillomani under vane- og impulslidelser (F63.3). ICD-11 samler dem i en egen gruppering, tvangslidelse eller relaterte lidelser, bygget rundt et felles trekk med repetitive tanker og handlinger. Grupperingen får en ny diagnose – samlelidelse (6B24) – og trekker inn dysmorfofobi (6B21), hypokondri (6B23) og kroppsfokuserte repetitive atferdslidelser som trikotillomani (6B25).",
+  "whatToDoNow_nb": "Ikke let etter tvangsrelaterte tilstander i angst- eller somatoformblokken lenger. Vurder samlelidelse (6B24) som egen diagnose, ikke som en variant av tvangslidelse. Kod hypokondri her (6B23), ikke under kroppslig plage, og plasser trikotillomani og hudplukking under kroppsfokuserte repetitive atferdslidelser (6B25).",
+  "caveats_nb": "Hypokondri (helseangst) er flyttet hit fra det somatoforme området – en av de mindre intuitive forflytningene, siden mange fortsatt forbinder den med kroppslige plager.",
+  "source": "editorial",
+  "status": "draft"
+}

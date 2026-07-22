@@ -1,0 +1,19 @@
+{
+  "id": "kroppslig-plage-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Lidelser med kroppslig plage eller kroppslig opplevelse: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F45", "label_nb": "Somatoforme lidelser" },
+    { "code": "F45.0", "label_nb": "Somatiseringslidelse" },
+    { "code": "F45.4", "label_nb": "Vedvarende somatoform smertelidelse" }
+  ],
+  "icd11": [
+    { "code": "6C20" },
+    { "code": "6C21" }
+  ],
+  "whatChanged_nb": "ICD-10 hadde en hel blokk med somatoforme lidelser (F45) delt i typer som somatisering, somatoform autonom dysfunksjon og vedvarende somatoform smerte, alle bygget på ideen om «medisinsk uforklarte» symptomer. ICD-11 erstatter dette med én diagnose – kroppslig plage-lidelse (6C20) – gradert etter alvorlighet. Det avgjørende er ikke lenger at symptomene er uforklarte, men at de er belastende og ledsaget av uforholdsmessig oppmerksomhet. Hypokondri flyttes ut til tvangsrelaterte lidelser, og en ny diagnose, kroppsintegritetsdysfori (6C21), kommer til.",
+  "whatToDoNow_nb": "Bruk kroppslig plage-lidelse (6C20) med alvorlighetsgrad i stedet for å velge en somatoform undertype. Slutt å bygge diagnosen på at symptomene er «uforklarte»; en kroppslig plage-lidelse kan foreligge samtidig med en påvist somatisk sykdom. Kod helseangst/hypokondri i tvangslidelsesgrupperingen (6B23), ikke her.",
+  "caveats_nb": "Skiftet bort fra «medisinsk uforklart» er et prinsipielt brudd med somatoform-tenkningen og krever ofte at klinikeren legger om vurderingsmåten, ikke bare koden.",
+  "source": "editorial",
+  "status": "draft"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "spiseforstyrrelser-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Spise- eller mateforstyrrelser: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F50", "label_nb": "Spiseforstyrrelser" },
+    { "code": "F98.2", "label_nb": "Spedbarns- og småbarnsmatingsforstyrrelse" },
+    { "code": "F98.3", "label_nb": "Pica hos spedbarn og barn" }
+  ],
+  "icd11": [
+    { "code": "6B80" },
+    { "code": "6B81" },
+    { "code": "6B82" },
+    { "code": "6B83" },
+    { "code": "6B84" }
+  ],
+  "whatChanged_nb": "ICD-10 skilte spiseforstyrrelser hos voksne (F50) fra mateforstyrrelser i barndommen (F98). ICD-11 slår dem sammen til én gruppering, spise- eller mateforstyrrelser, med et livsløpsperspektiv. Grupperingen får to nye diagnoser – overspisingslidelse (6B82) og unnvikende/restriktiv matinntaksforstyrrelse (6B83) – og anoreksi (6B80) omdefineres: amenoré-kravet fjernes, og alvorlighetsgrad basert på farlig lav kroppsvekt bygges inn.",
+  "whatToDoNow_nb": "Diagnostiser mating- og spiseforstyrrelser på tvers av alder i samme gruppering. Bruk overspisingslidelse (6B82) og unnvikende/restriktiv matinntaksforstyrrelse (6B83) der ICD-10 tvang deg til en uspesifisert restkategori. Ikke krev fravær av menstruasjon for anoreksi (6B80); vurder i stedet grad av undervekt.",
+  "caveats_nb": "Overspisingslidelse har egen omtale. Sammenslåingen betyr at pica (6B84) og drøvtygging nå diagnostiseres hos voksne på lik linje med barn.",
+  "source": "editorial",
+  "status": "draft"
+}
