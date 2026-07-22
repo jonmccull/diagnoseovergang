@@ -8,3 +8,6 @@ dist/
 !.env.example
 !.env.production
 .DS_Store
+
+# generated at build time (git SHA changes every commit)
+src/content-version.ts

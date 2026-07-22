@@ -17,3 +17,20 @@ export const WHO_SOURCE_URL = "https://icd.who.int";
 // Decision-support tool disclaimer — render verbatim (brief §11).
 export const DECISION_SUPPORT_DISCLAIMER =
   "Pedagogisk hjelpemiddel, ikke et diagnostisk verktøy. Klinisk vurdering og offisielle ICD-11-retningslinjer er alltid overordnet.";
+
+// Feedback form microcopy — render verbatim above the fields (brief §11/§9.6).
+export const FEEDBACK_NO_PATIENT_INFO =
+  "Ikke inkluder pasientidentifiserbar informasjon eller opplysninger fra journal.";
+export const FEEDBACK_EMAIL_PURPOSE =
+  "E-postadressen din brukes kun til å svare deg om dette forslaget, og slettes senest 12 måneder etter innsending.";
+// Consent checkbox label — verbatim, unchecked by default (brief §11).
+export const FEEDBACK_CONSENT_LABEL =
+  "Jeg samtykker til at e-postadressen min og tilbakemeldingen lagres slik at forslaget kan besvares og vurderes.";
+// Discoverability hint under each editorial block (brief §12).
+export const FEEDBACK_HINT =
+  "Ser du noe som bør endres? Marker teksten og foreslå en endring.";
+
+// Turnstile site key (public). Test key by default — replace with the real
+// key before the feedback feature goes public.
+export const TURNSTILE_SITEKEY: string =
+  import.meta.env.PUBLIC_TURNSTILE_SITEKEY ?? "1x00000000000000000000AA";

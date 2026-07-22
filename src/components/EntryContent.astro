@@ -7,6 +7,7 @@
 import type { CollectionEntry } from "astro:content";
 import EditorialBlock from "./EditorialBlock.astro";
 import IcdEntityCard from "./IcdEntityCard.astro";
+import { FEEDBACK_HINT } from "../config";
 
 interface Props {
   entry: CollectionEntry<"pd">;
@@ -22,7 +23,10 @@ const hasCodes = (d.icd10?.length ?? 0) > 0 || (d.icd11?.length ?? 0) > 0;
 
 <article data-entry-id={d.id}>
   <EditorialBlock status={d.status}>
-    <Heading class="text-2xl font-bold tracking-tight text-slate-900">
+    <Heading
+      data-field="title_nb"
+      class="text-2xl font-bold tracking-tight text-slate-900"
+    >
       {d.title_nb}
     </Heading>
 
@@ -70,19 +74,19 @@ const hasCodes = (d.icd10?.length ?? 0) > 0 || (d.icd11?.length ?? 0) > 0;
       )
     }
 
-    <section class="mt-6 max-w-prose">
+    <section class="mt-6 max-w-prose" data-field="whatChanged_nb">
       <Sub class="text-lg font-semibold text-slate-900">Hva endres?</Sub>
       <p class="mt-2 text-slate-800">{d.whatChanged_nb}</p>
     </section>
 
-    <section class="mt-5 max-w-prose">
+    <section class="mt-5 max-w-prose" data-field="whatToDoNow_nb">
       <Sub class="text-lg font-semibold text-slate-900">Hva gjør du nå?</Sub>
       <p class="mt-2 text-slate-800">{d.whatToDoNow_nb}</p>
     </section>
 
     {
       d.caveats_nb && (
-        <section class="mt-5 max-w-prose">
+        <section class="mt-5 max-w-prose" data-field="caveats_nb">
           <Sub class="text-lg font-semibold text-slate-900">Verdt å merke seg</Sub>
           <p class="mt-2 text-slate-800">{d.caveats_nb}</p>
         </section>
@@ -106,4 +110,18 @@ const hasCodes = (d.icd10?.length ?? 0) > 0 || (d.icd11?.length ?? 0) > 0;
       )
     }
   </EditorialBlock>
+
+  {/* Feedback affordance (§9.1/§12): highlight-to-comment hint + fallback button.
+      The FeedbackWidget island (mounted globally) wires the click. */}
+  <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-500">
+    <p>{FEEDBACK_HINT}</p>
+    <button
+      type="button"
+      data-feedback-trigger
+      data-entry-id={d.id}
+      class="underline hover:text-slate-800"
+    >
+      Gi tilbakemelding
+    </button>
+  </div>
 </article>

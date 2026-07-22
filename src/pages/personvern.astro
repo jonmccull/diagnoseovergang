@@ -1,12 +1,73 @@
 ---
 import Base from "../layouts/Base.astro";
+
+// Privacy page (brief §11/§9.6). Plain Norwegian, one screen. Owner contact is
+// configurable in one place.
+const CONTACT_EMAIL = "hey@jonm.cc";
 ---
 
-<Base title="Personvern">
+<Base
+  title="Personvern"
+  description="Hvordan tilbakemeldinger behandles: hva som samles inn, hvorfor, lagring og sletting."
+>
   <h1 class="text-3xl font-bold tracking-tight text-slate-900">Personvern</h1>
-  {/* Fullt innhold per brief §11 kommer i milepæl 6 (tilbakemeldingsfunksjonen). */}
-  <p class="mt-4 max-w-prose text-lg text-slate-700">
-    Denne siden beskriver hvordan tilbakemeldinger behandles. Innholdet
-    publiseres sammen med tilbakemeldingsfunksjonen.
-  </p>
+  <div class="mt-6 max-w-prose space-y-6 text-slate-800">
+    <section>
+      <h2 class="text-lg font-semibold text-slate-900">Hva samles inn</h2>
+      <p class="mt-2">
+        Når du sender en tilbakemelding, lagrer vi: selve tilbakemeldingen,
+        eventuell markert tekst du kommenterte, e-postadressen din, rollen din
+        og tidspunktet. Vi bruker ikke informasjonskapsler for denne funksjonen
+        og lagrer ingen sporingsidentifikatorer. IP-adressen din lagres bare som
+        en saltet hash, utelukkende for å motvirke misbruk – aldri i klartekst.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-slate-900">Formål</h2>
+      <p class="mt-2">
+        Opplysningene brukes til å kvalitetssikre det redaksjonelle innholdet og
+        til å svare deg om forslaget ditt. E-postadressen brukes kun til å svare
+        deg om denne tilbakemeldingen. Vi bruker den ikke til markedsføring og
+        deler den ikke med andre.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-slate-900">Behandlingsgrunnlag</h2>
+      <p class="mt-2">
+        Behandlingsgrunnlaget er samtykke, som du gir ved å krysse av i skjemaet
+        når du sender inn. Du kan når som helst trekke samtykket tilbake ved å
+        kontakte oss.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-slate-900">Lagring</h2>
+      <p class="mt-2">
+        Tilbakemeldinger lagres i Cloudflare D1 (SQLite). Data behandles innenfor
+        EU/EØS-jurisdiksjon. Tilbakemeldinger vises aldri offentlig – de går kun
+        til den som drifter ressursen.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-slate-900">Sletting og oppbevaring</h2>
+      <p class="mt-2">
+        E-postadressen din slettes eller anonymiseres senest 12 måneder etter
+        innsending, eller ved pilotens slutt – det som kommer først.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-slate-900">Dine rettigheter</h2>
+      <p class="mt-2">
+        Du har rett til innsyn i og sletting av opplysningene dine. Send en
+        henvendelse til
+        <a href={`mailto:${CONTACT_EMAIL}`} class="underline hover:text-slate-950"
+          >{CONTACT_EMAIL}</a
+        >, så håndterer vi forespørselen.
+      </p>
+    </section>
+  </div>
 </Base>

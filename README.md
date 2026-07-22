@@ -108,6 +108,44 @@ manuelt med `npm run derive-codes`.
 Test cron lokalt: `npx wrangler dev --test-scheduled` og
 `curl "http://localhost:8787/__scheduled?cron=0+3+*+*+*"`.
 
+## Tilbakemeldinger (§9)
+
+Besøkende kan markere redaksjonell tekst og foreslå endringer («Foreslå en
+endring»), eller bruke «Gi tilbakemelding»-knappen per oppføring. Innsendinger
+er **private** (vises aldri offentlig) og krever e-post, rolle og samtykke.
+Pipeline i workeren: Turnstile-verifisering → rate limit (5/time per IP-hash) →
+Zod-validering → D1. IP lagres kun som saltet hash. En nattlig cron
+anonymiserer innsendinger eldre enn 12 måneder (e-post og IP-hash nulles;
+kommentar/rolle/status beholdes) per §9.6.
+
+**Eiergjennomgang (pilot):** ingen web-admin ennå (krever eget domene +
+Cloudflare Access). Les innsendinger med:
+
+```sh
+cd worker
+npx wrangler d1 execute diagnoseovergang-feedback --remote \
+  --command "SELECT id, created_at, entry_id, field, selected_text, comment, email, role, status FROM feedback WHERE status='new' ORDER BY created_at DESC"
+```
+
+CSV-eksport:
+
+```sh
+npx wrangler d1 export diagnoseovergang-feedback --remote --output feedback-backup.sql
+```
+
+Statusoverganger (`new → triaged → actioned/dismissed`) settes med en
+tilsvarende `UPDATE feedback SET status='triaged' WHERE id='…'`.
+Slette-forespørsler (GDPR): `DELETE FROM feedback WHERE email='…'`.
+Hvis en innsending ser ut til å inneholde pasientdata: slett umiddelbart
+(delete-on-sight, §9.6.6).
+
+**Ikke bygget (bevisst):** e-postutsending fra appen (eieren svarer manuelt i
+piloten; en valgfri kvitteringsmail kan vurderes senere, §9.4).
+
+**Turnstile:** testnøkler er i bruk (alltid-pass). Bytt til ekte nøkler før
+lansering: site key i `.env.production` (`PUBLIC_TURNSTILE_SITEKEY`) og
+`npx wrangler secret put TURNSTILE_SECRET` i `worker/`.
+
 ## ICD-11-release
 
 MMS-releasen er pinnet i `worker/wrangler.toml` (`ICD_RELEASE`) slik at innhold

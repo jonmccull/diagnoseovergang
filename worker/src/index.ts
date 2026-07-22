@@ -1,7 +1,8 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { icd } from "./routes/icd";
-import { prewarmEntities } from "./cron";
+import { feedback } from "./routes/feedback";
+import { prewarmEntities, purgeExpiredFeedback } from "./cron";
 import type { Bindings } from "./bindings";
 
 const app = new Hono<{ Bindings: Bindings }>();
@@ -28,10 +29,12 @@ app.get("/api/health", (c) =>
 );
 
 app.route("/api/icd", icd);
+app.route("/api/feedback", feedback);
 
 export default {
   fetch: app.fetch,
   scheduled: (_event, env, ctx) => {
     ctx.waitUntil(prewarmEntities(env));
+    ctx.waitUntil(purgeExpiredFeedback(env));
   },
 } satisfies ExportedHandler<Bindings>;

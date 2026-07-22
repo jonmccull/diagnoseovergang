@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "derive-codes": "node scripts/derive-codes.mjs",
+    "predev": "node scripts/derive-codes.mjs",
     "dev": "astro dev",
     "prebuild": "node scripts/derive-codes.mjs",
     "build": "astro build",
