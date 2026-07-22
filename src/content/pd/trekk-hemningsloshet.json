@@ -7,7 +7,7 @@
     { "code": "F60.2", "label_nb": "Dyssosial personlighetsforstyrrelse" }
   ],
   "icd11": [{ "code": "6D11.3" }],
-  "whatChanged_nb": "Hemningsløshet beskriver impulsivitet, risikoatferd og handling på innskytelse uten hensyn til konsekvenser.",
+  "whatChanged_nb": "Hemningsløshet er ett av ICD-11s fem trekkdomener som erstatter de kategoriske PF-typene. Der ICD-10 fordelte impulsivitet på typer som emosjonelt ustabil impulsiv type (F60.30), angis den nå som et trekkdomene etter at alvorlighetsgrad er satt. Domenet dreier seg om impulsivitet og handling på innskytelse uten hensyn til konsekvenser.",
   "whatToDoNow_nb": "Emosjonelt ustabil, impulsiv type (F60.30) peker ofte mot dette domenet. Dyssosial (F60.2) kan også peke hit når impulsiviteten er fremtredende.",
   "caveats_nb": "«Peker ofte mot» er redaksjonell veiledning basert på klinisk overlapp, ikke en offisiell eller fastsatt mapping. Flere domener kan være aktuelle samtidig.",
   "source": "editorial",

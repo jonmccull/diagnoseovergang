@@ -7,7 +7,7 @@
     { "code": "F60.6", "label_nb": "Engstelig (unnvikende) personlighetsforstyrrelse" }
   ],
   "icd11": [{ "code": "6D11.1" }],
-  "whatChanged_nb": "Tilbaketrekning beskriver gjennomgående sosial og emosjonell avstand – lite interesse for nære relasjoner, begrenset følelsesuttrykk og tilbaketrukkethet.",
+  "whatChanged_nb": "Tilbaketrekning er ett av ICD-11s fem trekkdomener som erstatter de kategoriske PF-typene. Der ICD-10 hadde schizoid type (F60.1), angis sosial og emosjonell distansering nå som dette trekkdomenet etter at alvorlighetsgrad er satt. Domenet dreier seg om lite interesse for nære relasjoner og begrenset følelsesuttrykk.",
   "whatToDoNow_nb": "Schizoid (F60.1) peker ofte mot dette domenet. Engstelig/unnvikende (F60.6) kan peke hit når unngåelsen først og fremst handler om distansering, ikke frykt for avvisning.",
   "caveats_nb": "«Peker ofte mot» er redaksjonell veiledning basert på klinisk overlapp, ikke en offisiell eller fastsatt mapping. Flere domener kan være aktuelle samtidig.",
   "source": "editorial",

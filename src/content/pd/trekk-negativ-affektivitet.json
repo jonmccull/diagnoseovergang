@@ -8,7 +8,7 @@
     { "code": "F60.3", "label_nb": "Emosjonelt ustabil personlighetsforstyrrelse" }
   ],
   "icd11": [{ "code": "6D11.0" }],
-  "whatChanged_nb": "Negativ affektivitet beskriver en tendens til å oppleve et bredt spekter av negative følelser – som angst, bekymring, nedstemthet, skam og sinne – oftere og sterkere enn situasjonen tilsier.",
+  "whatChanged_nb": "Negativ affektivitet er ett av ICD-11s fem trekkdomener som erstatter de kategoriske PF-typene. Tendenser som i ICD-10 var fordelt på typer som engstelig/unnvikende (F60.6), avhengig (F60.7) og emosjonelt ustabil (F60.3), angis nå som dette trekkdomenet etter at alvorlighetsgrad er satt. Domenet handler om en tilbøyelighet til negative følelser som angst, nedstemthet og sinne.",
   "whatToDoNow_nb": "ICD-10-typene engstelig/unnvikende (F60.6), avhengig (F60.7) og emosjonelt ustabil (F60.3) peker ofte mot dette domenet. Vurder om negativ affektivitet er fremtredende, og kombiner med andre aktuelle domener.",
   "caveats_nb": "«Peker ofte mot» er redaksjonell veiledning basert på klinisk overlapp, ikke en offisiell eller fastsatt mapping. Flere domener kan være aktuelle samtidig.",
   "source": "editorial",
