@@ -28,8 +28,14 @@ const MmsEntityRaw = z.object({
 const TOKEN_KEY = "who:token";
 const TOKEN_URL = "https://icdaccessmanagement.who.int/connect/token";
 
+// Bump when the cached IcdEntity shape changes so a deploy self-invalidates
+// stale-shaped KV entries instead of serving them to a stricter parser.
+// v2: added `definition` (Amendment B.1). Old v1 keys are simply ignored and
+// re-fetched on first request; the nightly cron re-warms the new keys.
+const CACHE_VERSION = "v2";
+
 export const entityKey = (release: string, code: string) =>
-  `who:entity:${release}:${code}`;
+  `who:entity:${CACHE_VERSION}:${release}:${code}`;
 
 // WHO ids use http:// scheme; normalize for display/linking and refetching.
 const https = (uri: string) => uri.replace(/^http:/, "https:");
