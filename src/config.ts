@@ -2,7 +2,7 @@
 // Final name is a stakeholder decision; change it here, nowhere else.
 export const SITE_NAME = "Diagnoseovergang";
 export const SITE_TAGLINE =
-  "Fra ICD-10 til ICD-11 for personlighetsforstyrrelser";
+  "Fra ICD-10 til ICD-11 for psykiske lidelser";
 
 // Independence disclaimer — render verbatim, globally (brief §11).
 export const INDEPENDENCE_DISCLAIMER =

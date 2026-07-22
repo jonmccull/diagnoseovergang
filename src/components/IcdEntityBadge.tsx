@@ -47,6 +47,9 @@ export function IcdEntityBadge({ code }: { code: string }) {
           >
             WHO-nettleser
           </a>
+          <span className="w-full break-all font-mono text-[0.65rem] text-slate-500">
+            {state.entity.uri}
+          </span>
         </>
       )}
       {state.status === "error" && (

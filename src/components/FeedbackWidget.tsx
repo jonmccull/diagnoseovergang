@@ -225,7 +225,7 @@ function FeedbackDialog({
     !!token &&
     status === "idle";
 
-  async function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!token) return;
     setStatus("sending");

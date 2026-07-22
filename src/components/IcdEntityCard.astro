@@ -43,6 +43,12 @@ const isFactorCode = code.startsWith("QE");
       >Se i WHOs ICD-11-nettleser</a
     >
   </p>
+  <p
+    data-icd-uri
+    hidden
+    class="mt-2 break-all font-mono text-[0.7rem] text-slate-500"
+  >
+  </p>
   <p class="mt-1 text-xs text-slate-500">
     Offisiell tittel vises på engelsk, hentet fra WHOs ICD-11 API.
   </p>
@@ -58,6 +64,7 @@ const isFactorCode = code.startsWith("QE");
       const titleEl = el.querySelector<HTMLElement>("[data-icd-title]");
       const linkWrap = el.querySelector<HTMLElement>("[data-icd-link]");
       const link = linkWrap?.querySelector<HTMLAnchorElement>("a");
+      const uriEl = el.querySelector<HTMLElement>("[data-icd-uri]");
       if (!code || !titleEl) return;
       try {
         const entity = await fetchIcdEntity(code);
@@ -66,6 +73,10 @@ const isFactorCode = code.startsWith("QE");
         if (linkWrap && link) {
           link.href = entity.browserUrl;
           linkWrap.hidden = false;
+        }
+        if (uriEl) {
+          uriEl.textContent = entity.uri;
+          uriEl.hidden = false;
         }
       } catch {
         // §7.5: never hard-fail — code remains visible with a notice.
