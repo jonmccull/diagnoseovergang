@@ -34,8 +34,13 @@ current-state-only (no history log).
    until Jon explicitly says the pause point is reached. When he does: §A–§D in
    order; if the §D history scrub finds any secret or real feedback data, STOP
    and report to Jon before rewriting history or rotating anything; Jon flips
-   repo visibility manually himself. (One §C item — briefs moved into
-   `docs/` — was pulled forward with Jon's ok.)
+   repo visibility manually himself. (Two §C items were pulled forward with
+   Jon's ok: briefs moved into `docs/`, and CODEOWNERS added.)
+   **Post-flip step:** enable branch protection on `main` (require PR +
+   code-owner review, `enforce_admins: true`) — attempted 2026-07-22 but
+   GitHub requires Pro for protection on private repos, so it must wait until
+   the repo is public. Until then the no-direct-push rule in CLAUDE.md is
+   convention, not enforced.
 4. **Tier 1 clinician pass (A.5.2):** Vegard has not yet been asked to skim
    the Tier 1 entries. Entries stay `draft` until Jon actions this.
 5. **Release pin:** `2025-01` confirmed working across all served codes.
