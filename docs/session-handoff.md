@@ -1,6 +1,6 @@
 # Session handoff — current state & one-time context
 
-Last updated: 2026-07-22 (Tier 2 grouping overviews built). This file carries
+Last updated: 2026-07-22 (Milestone 7 compliance pass done). This file carries
 decisions and state that are NOT in the briefs. Update it when a session
 materially changes project state; keep it current-state-only (no history log).
 
@@ -11,19 +11,24 @@ materially changes project state; keep it current-state-only (no history log).
 - Milestones 1–6 of the main brief are built, deployed, and verified. From
   Amendment 01: schema extension, derived entity cache, all 11 Tier 1 entries,
   and the WHO panel (B.1) are live.
-- **Tier 2 grouping overviews: DONE and complete** (all 17 built — the full
+- **Tier 2 grouping overviews: DONE, merged, deployed** (all 17 — the full
   A.3/A.4 set, one per Chapter 06 grouping not already covered by Tier 1 or the
-  existing PD overview). Delivered in **PR #2**
-  (`content/tier2-grouping-overviews`), **open and awaiting Jon's merge** — not
-  yet merged or deployed. All ship `status: "draft"`. Every ICD-11 code was
-  verified live against the pinned `2025-01` release before writing.
-  `derived-codes.json` grew 25 → 76 codes, so **the worker must be redeployed
-  on merge** or the new codes stay `outside_scope` (§7.5 fallback in the WHO
-  panels until then) — CI-on-merge handles this. (PR #1 was auto-closed by
-  GitHub when its branch was renamed to drop `-batch1`; #2 supersedes it.)
-- **Not built yet:** milestone 7 compliance pass (now includes A.5.1 per-entry
-  checks and the B.2 no-translation audit) → milestone 8 (Vitest/Playwright,
-  a11y pass).
+  existing PD overview). Shipped via **PR #2**; the worker redeploy that the
+  new codes needed (`derived-codes.json` grew 25 → 76) ran on merge, so they
+  resolve live rather than falling to §7.5. All still `status: "draft"`.
+- **Milestone 7 compliance pass: DONE, merged (PR #4), deployed.** Full audit
+  against build-brief §13 + Amendment 01 §A.5.1 (per-entry discipline check)
+  and §B.2 (no-translation audit). Structural guardrails all pass with no code
+  changes (editorial labels, draft badges, disclaimers, feedback microcopy +
+  privacy, no translation pathway anywhere, no redistributable mapping
+  artifact, no bulk WHO text). The §A.5.1 test was applied to all 37 entries:
+  30 passed, 0 hard fails; 6 that leaned toward a WHO-style definition were
+  reframed to delta commentary (5 trait-domain `whatChanged_nb` + gaming
+  `whatToDoNow_nb`). Left as deliberate judgment-keeps: `kompleks-ptsd-6b41`
+  (6B40-vs-6B41 discriminator), `ptsd-6b40`, `csbd-6c72`,
+  `overspisingslidelse-6b82`. Content-only, no schema/code/codes changed.
+- **Not built yet:** milestone 8 (Vitest unit + Playwright e2e for the three
+  islands incl. feedback, a11y pass, README).
 - CI: push to `main` → GitHub Actions builds and deploys both targets
   (secrets `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` are set; pipeline
   verified green).
@@ -55,6 +60,11 @@ materially changes project state; keep it current-state-only (no history log).
    the Tier 1 entries. Entries stay `draft` until Jon actions this.
 5. **Release pin:** `2025-01` confirmed working across all served codes.
    Upgrading the release is a deliberate, standalone change (footer shows it).
+6. **Front-page copy still PD-scoped.** `SITE_TAGLINE` + the index intro say
+   "for personlighetsforstyrrelser", but scope is now all of Chapter 06.
+   Surfaced during the milestone-7 pass — accuracy, not a compliance guardrail.
+   Reword `SITE_TAGLINE` in `src/config.ts` (+ the index.astro intro) when you
+   settle final naming.
 
 ## In-chat decisions not recorded in the briefs
 
