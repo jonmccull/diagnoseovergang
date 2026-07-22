@@ -17,9 +17,18 @@ export const Icd11Ref = z.object({
   code: z.string().regex(/^[0-9A-Z]{2,5}(\.[0-9A-Z]{1,2})?$/, "ICD-11-kode, f.eks. 6D11.5"),
 });
 
-export const PdCommentaryEntry = z.object({
+export const CommentaryEntry = z.object({
   id: z.string(),
-  kind: z.enum(["overview", "diagnosis-change", "severity", "trait-domain"]),
+  kind: z.enum([
+    "overview",
+    "diagnosis-change",
+    "severity",
+    "trait-domain",
+    // Amendment A.2 — Chapter 06 expansion
+    "grouping-overview", // what changed across a whole grouping
+    "new-diagnosis", // did not exist in ICD-10
+    "relocation", // moved chapters/groupings (e.g. gender incongruence)
+  ]),
   title_nb: z.string(),
   icd10: z.array(Icd10Ref).nullable(),
   icd11: z.array(Icd11Ref).nullable(),
@@ -35,4 +44,4 @@ export const PdCommentaryEntry = z.object({
   reviewedAt: z.string().optional(),
 });
 
-export type PdCommentaryEntry = z.infer<typeof PdCommentaryEntry>;
+export type CommentaryEntry = z.infer<typeof CommentaryEntry>;

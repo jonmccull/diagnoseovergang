@@ -1,0 +1,11 @@
+{
+  "id": "overspisingslidelse-6b82",
+  "kind": "new-diagnosis",
+  "title_nb": "Overspisingslidelse (6B82) – ny diagnose i ICD-11",
+  "icd10": null,
+  "icd11": [{ "code": "6B82" }],
+  "whatChanged_nb": "ICD-10 fanget overspising dårlig; nærmeste kode var «overspising forbundet med psykiske forstyrrelser» (F50.4), uten en tydelig avgrenset diagnose. ICD-11 innfører overspisingslidelse som egen diagnose, med gjentatte episoder der personen mister kontroll over matinntaket uten å bruke regelmessig kompenserende atferd etterpå.",
+  "whatToDoNow_nb": "Skill fra bulimi ved at det ikke foreligger regelmessig kompensering (oppkast, faste eller overtrening). Kod 6B82 når kontrolltap under overspisingsepisoder er det dominerende trekket.",
+  "source": "editorial",
+  "status": "draft"
+}

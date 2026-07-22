@@ -1,0 +1,12 @@
+{
+  "id": "csbd-6c72",
+  "kind": "new-diagnosis",
+  "title_nb": "Tvangsmessig seksuell atferdslidelse (6C72) – ny diagnose",
+  "icd10": null,
+  "icd11": [{ "code": "6C72" }],
+  "whatChanged_nb": "ICD-10 hadde ingen dekkende diagnose; «overdreven seksuell lyst» (F52.7) var vag og lite brukt. ICD-11 innfører tvangsmessig seksuell atferdslidelse under impulskontrollidelser, kjennetegnet av vedvarende mislykkede forsøk på å kontrollere intense seksuelle impulser med påfølgende funksjonstap.",
+  "whatToDoNow_nb": "Kod 6C72 ved et vedvarende mønster over tid (vanligvis minst seks måneder) med kontrolltap og tydelig lidelse eller funksjonstap. Diagnosen bygger på kontrolltapet, ikke på atferdens innhold.",
+  "caveats_nb": "Diagnosen skal ikke brukes til å patologisere høy seksuell lyst eller normvariasjon, og moralsk eller religiøst betinget skam alene er ikke grunnlag for diagnose.",
+  "source": "editorial",
+  "status": "draft"
+}

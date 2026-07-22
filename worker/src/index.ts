@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { icd } from "./routes/icd";
-import { prewarmPdEntities } from "./cron";
+import { prewarmEntities } from "./cron";
 import type { Bindings } from "./bindings";
 
 const app = new Hono<{ Bindings: Bindings }>();
@@ -32,6 +32,6 @@ app.route("/api/icd", icd);
 export default {
   fetch: app.fetch,
   scheduled: (_event, env, ctx) => {
-    ctx.waitUntil(prewarmPdEntities(env));
+    ctx.waitUntil(prewarmEntities(env));
   },
 } satisfies ExportedHandler<Bindings>;

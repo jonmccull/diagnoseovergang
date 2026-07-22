@@ -7,12 +7,14 @@
     "worker"
   ],
   "scripts": {
+    "derive-codes": "node scripts/derive-codes.mjs",
     "dev": "astro dev",
+    "prebuild": "node scripts/derive-codes.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "typecheck": "astro check && npm run typecheck --workspace worker",
     "deploy:pages": "npm run build && wrangler pages deploy",
-    "deploy:worker": "npm run deploy --workspace worker"
+    "deploy:worker": "node scripts/derive-codes.mjs && npm run deploy --workspace worker"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.0",

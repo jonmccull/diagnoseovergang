@@ -94,7 +94,16 @@ Regler appen håndhever (§8):
 
 Flyt: KV-cache → WHO OAuth-token (KV-cachet, TTL under `expires_in`) →
 codeinfo → entitet → Zod-validering → KV. Nattlig cron (03:00 UTC) forvarmer
-hele PD-settet, så siste gode kopi overlever WHO-nedetid.
+det **avledede kodesettet**, så siste gode kopi overlever WHO-nedetid.
+
+### Avledet kodesett (Amendment A.6)
+
+`scripts/derive-codes.mjs` samler alle `icd11[].code` fra innholdet pluss
+kapittel 06-grupperingsankre og skriver `schema/derived-codes.json`. Både
+workerens scope-vakt (hvilke koder `/api/icd/entity/:code` betjener) og cron-
+forvarmingen leser denne fila, så cachen skalerer automatisk med innhold uten
+et manuelt synkroniseringspunkt. Kjøres av `prebuild` og `deploy:worker`; kjør
+manuelt med `npm run derive-codes`.
 
 Test cron lokalt: `npx wrangler dev --test-scheduled` og
 `curl "http://localhost:8787/__scheduled?cron=0+3+*+*+*"`.

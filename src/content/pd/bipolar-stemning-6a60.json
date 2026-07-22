@@ -1,0 +1,12 @@
+{
+  "id": "bipolar-stemning-6a60",
+  "kind": "diagnosis-change",
+  "title_nb": "Bipolar lidelse og stemningsgrupperingen (F31 → 6A60/6A61)",
+  "icd10": [{ "code": "F31", "label_nb": "Bipolar affektiv lidelse" }],
+  "icd11": [{ "code": "6A60" }, { "code": "6A61" }],
+  "whatChanged_nb": "ICD-10 samlet bipolar lidelse i F31 uten et tydelig skille mellom type I og type II. ICD-11 skiller disse eksplisitt, og stemningsgrupperingen er bygget opp rundt episodetyper (depressiv, manisk, hypoman, blandet) som byggeklosser i stedet for faste underkoder.",
+  "whatToDoNow_nb": "Avgjør type I (minst én manisk eller blandet episode) mot type II (hypoman episode pluss depressiv episode, uten noen gang full mani). Beskriv gjeldende episode med spesifikatorer i stedet for å lete etter én fast underkode.",
+  "caveats_nb": "Skillet mellom mani og hypomani blir avgjørende for typevalget og bør vurderes nøye.",
+  "source": "editorial",
+  "status": "draft"
+}

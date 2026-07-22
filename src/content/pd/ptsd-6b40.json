@@ -1,0 +1,11 @@
+{
+  "id": "ptsd-6b40",
+  "kind": "diagnosis-change",
+  "title_nb": "PTSD (F43.1 → 6B40): innsnevret kjerne",
+  "icd10": [{ "code": "F43.1", "label_nb": "Posttraumatisk stresslidelse" }],
+  "icd11": [{ "code": "6B40" }],
+  "whatChanged_nb": "ICD-10s PTSD-begrep var vidt og fanget mange reaksjoner etter belastning. ICD-11 strammer inn diagnosen til tre kjerneelementer: gjenopplevelse av traumet i nåtid (ikke bare påtrengende minner), unngåelse av det som minner om traumet, og en vedvarende følelse av forhøyet trussel. Reaksjoner som ikke passer denne kjernen, faller nå enten utenfor eller hører hjemme under kompleks PTSD.",
+  "whatToDoNow_nb": "Kontroller at alle tre kjerneelementene er til stede før du setter 6B40. Ved langvarig traume med tilleggsvansker i selvorganisering, vurder kompleks PTSD (6B41) i stedet.",
+  "source": "editorial",
+  "status": "draft"
+}

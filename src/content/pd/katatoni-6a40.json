@@ -1,0 +1,12 @@
+{
+  "id": "katatoni-6a40",
+  "kind": "grouping-overview",
+  "title_nb": "Katatoni – egen tverrdiagnostisk gruppering",
+  "icd10": [{ "code": "F20.2", "label_nb": "Kataton schizofreni (undertype)" }],
+  "icd11": [{ "code": "6A40" }],
+  "whatChanged_nb": "I ICD-10 var katatoni først og fremst en undertype av schizofreni (F20.2). ICD-11 løfter katatoni ut som en egen gruppering som kan opptre på tvers av diagnoser – sammen med schizofreni, stemningslidelser, autisme eller somatiske tilstander.",
+  "whatToDoNow_nb": "Kod katatoni uavhengig av grunnlidelsen. Bruk 6A40 når katatonien er knyttet til en annen psykisk lidelse. Ikke gi en schizofrenidiagnose bare for å få kodet katatonien.",
+  "caveats_nb": "Fordi katatoni nå er tverrdiagnostisk, må du aktivt vurdere den også utenfor psykosespekteret.",
+  "source": "editorial",
+  "status": "draft"
+}

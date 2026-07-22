@@ -1,0 +1,12 @@
+{
+  "id": "kjonnsinkongruens-relokasjon",
+  "kind": "relocation",
+  "title_nb": "Kjønnsinkongruens – flyttet ut av psykiske lidelser",
+  "icd10": [{ "code": "F64", "label_nb": "Kjønnsidentitetsforstyrrelser (under psykiske lidelser)" }],
+  "icd11": [{ "code": "HA60" }, { "code": "HA61" }],
+  "whatChanged_nb": "ICD-10 klassifiserte kjønnsidentitet under psykiske lidelser (F64) og hadde egne kategorier knyttet til seksuell orientering (F66). ICD-11 fjerner dette fra kapittel 06: kjønnsinkongruens er flyttet til kapittel 17 (tilstander knyttet til seksuell helse), og de orienteringsbaserte kategoriene er slettet helt.",
+  "whatToDoNow_nb": "Ikke kod kjønnsinkongruens som en psykisk lidelse. Bruk HA60 (ungdom og voksne) eller HA61 (barn) i kapittel 17. Flyttingen er en bevisst avpsykiatrisering og bør formidles som det.",
+  "caveats_nb": "Kapittel 17 er ellers utenfor denne ressursens omfang. Denne oppføringen er en peker til hvor temaet nå hører hjemme.",
+  "source": "editorial",
+  "status": "draft"
+}

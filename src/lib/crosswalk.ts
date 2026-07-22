@@ -2,11 +2,12 @@
 // Derives F60.x → editorial-entry links from the content collection, so
 // editing an entry's icd10 list updates the explorer without code changes.
 import type { CollectionEntry } from "astro:content";
+import type { CommentaryEntry } from "../../schema/content";
 import { ICD10_PD, type Icd10PdItem } from "../data/icd10-pd";
 
 export type CrosswalkEntrySummary = {
   id: string;
-  kind: "overview" | "diagnosis-change" | "severity" | "trait-domain";
+  kind: CommentaryEntry["kind"];
   title_nb: string;
   whatToDoNow_nb: string;
   caveats_nb?: string;
@@ -24,12 +25,15 @@ const refMatches = (refCode: string, itemCode: string) =>
   itemCode.startsWith(refCode) ||
   refCode.startsWith(itemCode);
 
-const KIND_ORDER: Record<CrosswalkEntrySummary["kind"], number> = {
+// PD-crosswalk display order; kinds not listed sort last. The crosswalk is
+// PD-scoped, so the Chapter-06 kinds rarely appear here, but the type allows them.
+const KIND_ORDER: Partial<Record<CommentaryEntry["kind"], number>> = {
   "diagnosis-change": 0,
   "trait-domain": 1,
   severity: 2,
   overview: 3,
 };
+const kindOrder = (k: CommentaryEntry["kind"]) => KIND_ORDER[k] ?? 99;
 
 export function buildCrosswalkItems(
   entries: CollectionEntry<"pd">[]
@@ -48,6 +52,6 @@ export function buildCrosswalkItems(
         caveats_nb: e.data.caveats_nb,
         icd11: e.data.icd11?.map((r) => r.code) ?? [],
       }))
-      .sort((a, b) => KIND_ORDER[a.kind] - KIND_ORDER[b.kind]),
+      .sort((a, b) => kindOrder(a.kind) - kindOrder(b.kind)),
   }));
 }

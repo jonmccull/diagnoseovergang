@@ -1,0 +1,12 @@
+{
+  "id": "intellektuell-utvikling-6a00",
+  "kind": "diagnosis-change",
+  "title_nb": "Fra «psykisk utviklingshemming» (F70–F79) til 6A00",
+  "icd10": [{ "code": "F70", "label_nb": "Psykisk utviklingshemming (F70–F79)" }],
+  "icd11": [{ "code": "6A00" }],
+  "whatChanged_nb": "ICD-10s «psykisk utviklingshemming» (F70–F79) var i praksis gradert etter IQ. ICD-11 omdøper og rekonseptualiserer dette som «forstyrrelser i intellektuell utvikling», og alvorlighetsgrad bestemmes av både intellektuell og adaptiv fungering – ikke av IQ alene. Tilstanden er plassert i den nye grupperingen for nevroutviklingsforstyrrelser.",
+  "whatToDoNow_nb": "Sett alvorlighetsgrad ut fra standardiserte mål på både intellektuell og adaptiv fungering. Den eldre betegnelsen «mental retardation» / «psykisk utviklingshemming» som IQ-basert kategori utgår.",
+  "caveats_nb": "Der normerte tester mangler, åpner ICD-11 for skjønnsmessig fastsetting av alvorlighetsgrad; dokumentér grunnlaget.",
+  "source": "editorial",
+  "status": "draft"
+}

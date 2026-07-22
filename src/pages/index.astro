@@ -13,19 +13,25 @@ const genericCaveat =
   entries.find((e) => e.data.kind === "overview")?.data.caveats_nb ??
   "Overgangen er ikke én-til-én; flere trekkdomener kan være aktuelle samtidig.";
 const overview = entries.find((e) => e.data.kind === "overview");
-const diagnoses = entries.filter((e) => e.data.kind === "diagnosis-change");
-const severity = entries.filter((e) => e.data.kind === "severity");
+const byKind = (kind: string) =>
+  entries
+    .filter((e) => e.data.kind === kind)
+    .sort((a, b) => a.data.title_nb.localeCompare(b.data.title_nb, "nb"));
 const traits = entries
   .filter((e) => e.data.kind === "trait-domain")
   .sort((a, b) =>
     (a.data.icd11?.[0]?.code ?? "").localeCompare(b.data.icd11?.[0]?.code ?? "")
   );
 
+// Ordered to mirror the clinical priority of the rollout (Amendment A.4).
 const sections = [
-  { heading: "Alvorlighetsgrad", items: severity },
-  { heading: "Diagnoser: fra ICD-10-kode til ICD-11", items: diagnoses },
+  { heading: "Nye diagnoser i ICD-11", items: byKind("new-diagnosis") },
+  { heading: "Diagnoser som er endret", items: byKind("diagnosis-change") },
+  { heading: "Grupperinger som er endret", items: byKind("grouping-overview") },
+  { heading: "Flyttet ut av kapittel 06", items: byKind("relocation") },
+  { heading: "Alvorlighetsgrad", items: byKind("severity") },
   { heading: "Trekkdomener og mønstre (6D11)", items: traits },
-];
+].filter((s) => s.items.length > 0);
 ---
 
 <Base

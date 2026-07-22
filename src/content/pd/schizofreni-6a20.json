@@ -1,0 +1,12 @@
+{
+  "id": "schizofreni-6a20",
+  "kind": "diagnosis-change",
+  "title_nb": "Schizofreni (F20 → 6A20): undertypene forsvinner",
+  "icd10": [{ "code": "F20", "label_nb": "Schizofreni, med undertyper (paranoid, hebefren, kataton m.fl.)" }],
+  "icd11": [{ "code": "6A20" }],
+  "whatChanged_nb": "ICD-10 delte schizofreni i faste undertyper (paranoid F20.0, hebefren F20.1, kataton F20.2 med flere). ICD-11 fjerner undertypene helt. Bildet beskrives i stedet med symptomdomener og forløpsspesifikatorer, og grupperingen er omdøpt til «schizofreni eller andre primære psykotiske lidelser».",
+  "whatToDoNow_nb": "Slutt å velge undertype. Sett 6A20 og angi aktuelle symptomdomener (for eksempel positive, negative eller depressive symptomer) og forløp (første episode, multiple episoder, kontinuerlig). Katatoni kodes nå separat – se egen omtale.",
+  "caveats_nb": "Overgangen er ikke en ren omdøping av undertypene: to pasienter som før fikk samme undertype, kan nå få ulike domene- og forløpsbeskrivelser.",
+  "source": "editorial",
+  "status": "draft"
+}

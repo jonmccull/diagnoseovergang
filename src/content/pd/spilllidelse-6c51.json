@@ -1,0 +1,12 @@
+{
+  "id": "spilllidelse-6c51",
+  "kind": "new-diagnosis",
+  "title_nb": "Spilllidelse / gaming disorder (6C51) – ny diagnose",
+  "icd10": null,
+  "icd11": [{ "code": "6C51" }],
+  "whatChanged_nb": "ICD-10 hadde ingen diagnose for avhengighetspreget dataspilling. ICD-11 innfører spilllidelse under grupperingen «lidelser som skyldes rusmidler eller avhengighetsskapende atferd», som en parallell til pengespilllidelse.",
+  "whatToDoNow_nb": "Diagnosen krever et vedvarende mønster over tid (vanligvis minst tolv måneder): tap av kontroll over spillingen, at spill prioriteres foran andre aktiviteter, og at spillingen fortsetter tross tydelige negative konsekvenser og funksjonstap.",
+  "caveats_nb": "Høyt tidsbruk på spill alene, uten kontrolltap og funksjonstap, er ikke en lidelse.",
+  "source": "editorial",
+  "status": "draft"
+}

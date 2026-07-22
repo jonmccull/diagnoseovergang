@@ -1,0 +1,12 @@
+{
+  "id": "forlenget-sorg-6b42",
+  "kind": "new-diagnosis",
+  "title_nb": "Forlenget sorglidelse (6B42) – ny diagnose i ICD-11",
+  "icd10": null,
+  "icd11": [{ "code": "6B42" }],
+  "whatChanged_nb": "ICD-10 regnet ikke sorg som en lidelse og hadde ingen diagnose for patologisk forlenget sorg. ICD-11 innfører forlenget sorglidelse for tilfeller der sorgreaksjonen blir vedvarende og funksjonsnedsettende, og varer klart lenger enn det som er forventet ut fra personens sosiale og kulturelle kontekst.",
+  "whatToDoNow_nb": "Skill fra normal sorg på varighet og funksjonstap over tid, ikke på intensitet alene. Vurder diagnosen først når reaksjonen tydelig overskrider forventet sosial og kulturell norm og hemmer daglig fungering.",
+  "caveats_nb": "Tidsterskelen må tolkes i lys av kulturell kontekst. Unngå å patologisere kulturelt normale eller ritualiserte sorguttrykk.",
+  "source": "editorial",
+  "status": "draft"
+}

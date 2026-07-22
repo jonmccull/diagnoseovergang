@@ -1,0 +1,12 @@
+{
+  "id": "kompleks-ptsd-6b41",
+  "kind": "new-diagnosis",
+  "title_nb": "Kompleks PTSD (6B41) – ny diagnose i ICD-11",
+  "icd10": null,
+  "icd11": [{ "code": "6B41" }],
+  "whatChanged_nb": "ICD-10 hadde ingen egen diagnose for kompleks traumatisering. Slike bilder ble presset inn i PTSD (F43.1) eller kodet som «vedvarende personlighetsendring etter katastrofal opplevelse» (F62.0). ICD-11 innfører kompleks PTSD som egen diagnose ved siden av PTSD, typisk etter langvarig eller gjentatt traume der personen har hatt liten mulighet til å komme seg unna.",
+  "whatToDoNow_nb": "Vurder først om PTSD-kjernen (6B40) er oppfylt. Foreligger i tillegg vedvarende vansker med affektregulering, et negativt selvbilde og problemer med å opprettholde relasjoner, kod 6B41 i stedet. De to diagnosene stilles ikke samtidig.",
+  "caveats_nb": "6B40 og 6B41 er gjensidig utelukkende. Skillet ligger i tilleggsvanskene, ikke i alvorlighetsgraden av selve PTSD-symptomene.",
+  "source": "editorial",
+  "status": "draft"
+}

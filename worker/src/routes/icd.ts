@@ -1,24 +1,25 @@
 import { Hono } from "hono";
-import { PD_CODES } from "../../../schema/icd";
+import derived from "../../../schema/derived-codes.json";
 import { getEntity } from "../lib/who";
 import type { Bindings } from "../bindings";
 
-// The pilot serves only the fixed PD working set (§7.4) — this is deliberate
-// scope control, not a cache limitation: the worker must not become an open
-// proxy for the whole classification.
-const PD_SET = new Set<string>(PD_CODES);
+// The worker serves only the derived content set (Amendment A.6): every ICD-11
+// code referenced in editorial content plus the Chapter 06 grouping anchors.
+// This is deliberate scope control — the worker must not become an open proxy
+// for the whole classification — and it scales automatically with content.
+const ALLOWED = new Set<string>(derived.codes);
 
 export const icd = new Hono<{ Bindings: Bindings }>();
 
 icd.get("/entity/:code", async (c) => {
   const code = c.req.param("code").toUpperCase();
 
-  if (!PD_SET.has(code)) {
+  if (!ALLOWED.has(code)) {
     return c.json(
       {
-        error: "outside_pilot_scope",
+        error: "outside_scope",
         message_nb:
-          "Koden er utenfor pilotens omfang (personlighetsforstyrrelser, ICD-11 kapittel 06).",
+          "Koden er utenfor ressursens omfang (ICD-11 kapittel 06 og refererte relokasjoner).",
       },
       404
     );
