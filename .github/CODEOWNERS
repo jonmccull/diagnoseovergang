@@ -1,0 +1,8 @@
+# Review gate (Amendment 02 §C): a PR review is the one human checkpoint
+# before content ships — there is no clinician pre-review elsewhere.
+* @jonmccull
+
+# Editorial content and compliance-critical strings: explicitly owner-reviewed.
+/src/content/ @jonmccull
+/src/config.ts @jonmccull
+/schema/ @jonmccull
