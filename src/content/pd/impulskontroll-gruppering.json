@@ -1,0 +1,21 @@
+{
+  "id": "impulskontroll-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Impulskontrollforstyrrelser: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F63", "label_nb": "Vane- og impulslidelser" },
+    { "code": "F63.0", "label_nb": "Patologisk spillelidenskap" },
+    { "code": "F63.3", "label_nb": "Trikotillomani" }
+  ],
+  "icd11": [
+    { "code": "6C70" },
+    { "code": "6C71" },
+    { "code": "6C72" },
+    { "code": "6C73" }
+  ],
+  "whatChanged_nb": "ICD-10s «vane- og impulslidelser» (F63) blandet sammen tilstander som senere viste seg å høre hjemme andre steder. ICD-11 renser grupperingen til det som handler om gjentatt svikt i å motstå en impuls: pyromani (6C70), kleptomani (6C71) og en ny diagnose, intermitterende eksplosiv lidelse (6C73). Patologisk spillelidenskap flyttes ut til avhengighetsatferd, trikotillomani flyttes ut til tvangsrelaterte lidelser, og tvangsmessig seksuell atferdsforstyrrelse (6C72) plasseres inn her som ny diagnose.",
+  "whatToDoNow_nb": "Forvent en smalere gruppering. Ikke søk pengespill eller trikotillomani her lenger – de er flyttet. Bruk intermitterende eksplosiv lidelse (6C73) for gjentatte utbrudd av aggresjon som ikke forklares bedre av en annen diagnose, og tvangsmessig seksuell atferdsforstyrrelse (6C72) etter kriteriene i den egne omtalen.",
+  "caveats_nb": "Tvangsmessig seksuell atferdsforstyrrelse har egen omtale. Utflyttingen av spill og trikotillomani er de viktigste endringene å merke seg for kodevalget.",
+  "source": "editorial",
+  "status": "draft"
+}

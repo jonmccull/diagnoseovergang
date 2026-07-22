@@ -1,0 +1,17 @@
+{
+  "id": "fabrikkerte-lidelser-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Fabrikkerte lidelser: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F68.1", "label_nb": "Bevisst fremkalling eller simulering av symptomer (fabrikkert lidelse)" }
+  ],
+  "icd11": [
+    { "code": "6D50" },
+    { "code": "6D51" }
+  ],
+  "whatChanged_nb": "I ICD-10 lå bevisst fremkalling eller simulering av symptomer (F68.1) som en enkelt kode under «andre forstyrrelser av voksen personlighet og atferd». ICD-11 gir fabrikkerte lidelser en egen gruppering og skiller eksplisitt mellom fabrikkert lidelse påført seg selv (6D50) og fabrikkert lidelse påført en annen (6D51) – det siste tilsvarer det som tidligere ble omtalt som Münchhausen ved stedfortreder.",
+  "whatToDoNow_nb": "Velg mellom fabrikkert lidelse påført seg selv (6D50) og påført en annen (6D51) ut fra hvem symptomene fremstilles hos. Hold dette adskilt fra simulering for ytre vinning, som ikke er en psykisk lidelse. Ved påføring på en annen må hensynet til den utsatte parten vurderes særskilt.",
+  "caveats_nb": "Skillet mellom påføring på seg selv og på en annen er nytt på grupperingsnivå og har vesentlige konsekvenser der et barn eller en annen sårbar person er den utsatte.",
+  "source": "editorial",
+  "status": "draft"
+}

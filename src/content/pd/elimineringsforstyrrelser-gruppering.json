@@ -1,0 +1,18 @@
+{
+  "id": "elimineringsforstyrrelser-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Elimineringsforstyrrelser: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F98.0", "label_nb": "Ikke-organisk enurese" },
+    { "code": "F98.1", "label_nb": "Ikke-organisk enkoprese" }
+  ],
+  "icd11": [
+    { "code": "6C00" },
+    { "code": "6C01" }
+  ],
+  "whatChanged_nb": "I ICD-10 lå enurese og enkoprese inne i den store barnekapittel-blokken for atferds- og følelsesmessige forstyrrelser med start i barndommen (F98). ICD-11 løfter dem ut til en egen liten gruppering, elimineringsforstyrrelser, med enurese (6C00) og enkoprese (6C01). Kravet er at barnet har passert den alderen der kontinens forventes utviklingsmessig, og at det ikke skyldes en somatisk tilstand alene.",
+  "whatToDoNow_nb": "Kod enurese (6C00) og enkoprese (6C01) fra den egne grupperingen, ikke lenger som en undertype i barneblokken. Bekreft at forventet utviklingsmessig kontinensalder er passert, og at symptomene ikke fullt ut forklares av en somatisk årsak.",
+  "caveats_nb": "Grupperingen er liten, men flyttingen betyr at du ikke lenger finner disse kodene sammen med de øvrige barndomsforstyrrelsene.",
+  "source": "editorial",
+  "status": "draft"
+}

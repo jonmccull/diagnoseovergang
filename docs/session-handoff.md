@@ -1,8 +1,8 @@
 # Session handoff — current state & one-time context
 
-Last updated: 2026-07-22. This file carries decisions and state that are NOT in
-the briefs. Update it when a session materially changes project state; keep it
-current-state-only (no history log).
+Last updated: 2026-07-22 (Tier 2 grouping overviews built). This file carries
+decisions and state that are NOT in the briefs. Update it when a session
+materially changes project state; keep it current-state-only (no history log).
 
 ## Where the project stands
 
@@ -11,9 +11,19 @@ current-state-only (no history log).
 - Milestones 1–6 of the main brief are built, deployed, and verified. From
   Amendment 01: schema extension, derived entity cache, all 11 Tier 1 entries,
   and the WHO panel (B.1) are live.
-- **Not built yet:** Tier 2 grouping overviews (~15–19 entries, A.4 order) →
-  then milestone 7 compliance pass (now includes A.5.1 per-entry checks and
-  the B.2 no-translation audit) → milestone 8 (Vitest/Playwright, a11y pass).
+- **Tier 2 grouping overviews: DONE and complete** (all 17 built — the full
+  A.3/A.4 set, one per Chapter 06 grouping not already covered by Tier 1 or the
+  existing PD overview). Delivered in **PR #2**
+  (`content/tier2-grouping-overviews`), **open and awaiting Jon's merge** — not
+  yet merged or deployed. All ship `status: "draft"`. Every ICD-11 code was
+  verified live against the pinned `2025-01` release before writing.
+  `derived-codes.json` grew 25 → 76 codes, so **the worker must be redeployed
+  on merge** or the new codes stay `outside_scope` (§7.5 fallback in the WHO
+  panels until then) — CI-on-merge handles this. (PR #1 was auto-closed by
+  GitHub when its branch was renamed to drop `-batch1`; #2 supersedes it.)
+- **Not built yet:** milestone 7 compliance pass (now includes A.5.1 per-entry
+  checks and the B.2 no-translation audit) → milestone 8 (Vitest/Playwright,
+  a11y pass).
 - CI: push to `main` → GitHub Actions builds and deploys both targets
   (secrets `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` are set; pipeline
   verified green).

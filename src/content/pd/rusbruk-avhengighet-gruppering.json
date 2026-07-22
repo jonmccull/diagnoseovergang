@@ -1,0 +1,20 @@
+{
+  "id": "rusbruk-avhengighet-gruppering",
+  "kind": "grouping-overview",
+  "title_nb": "Lidelser som skyldes rusbruk eller avhengighetsatferd: hva grupperingen er nå",
+  "icd10": [
+    { "code": "F10", "label_nb": "Psykiske lidelser og atferdsforstyrrelser som skyldes bruk av alkohol" },
+    { "code": "F19", "label_nb": "Lidelser som skyldes bruk av flere stoffer" },
+    { "code": "F63.0", "label_nb": "Patologisk spillelidenskap" }
+  ],
+  "icd11": [
+    { "code": "6C40" },
+    { "code": "6C50" },
+    { "code": "6C51" }
+  ],
+  "whatChanged_nb": "ICD-10 samlet ruslidelser i F10–F19 per stoff, med skadelig bruk og avhengighet som hovedmønstre, mens patologisk spillelidenskap lå under impulslidelser (F63.0). ICD-11 utvider og omdøper grupperingen til å omfatte avhengighetsatferd. Stoffgrupperingen får et nytt mønster – enkeltepisode av skadelig bruk – ved siden av skadelig bruksmønster og avhengighet. Spillelidelse (6C50) flyttes inn som avhengighetsatferd, og dataspillavhengighet (6C51) kommer til som ny diagnose.",
+  "whatToDoNow_nb": "Angi både stoff og bruksmønster: enkeltepisode av skadelig bruk, skadelig bruksmønster eller avhengighet. Kod pengespillavhengighet (6C50) her som avhengighetsatferd, ikke lenger under impulslidelser. Vurder dataspillavhengighet (6C51) etter de samme prinsippene om vedvarende, funksjonsnedsettende mønster.",
+  "caveats_nb": "Dataspillavhengighet har egen omtale. Den nye enkeltepisode-koden gjør det mulig å registrere en enkelt skadelig rusepisode uten å antyde et vedvarende mønster.",
+  "source": "editorial",
+  "status": "draft"
+}
