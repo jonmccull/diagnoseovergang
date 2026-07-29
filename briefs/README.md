@@ -9,7 +9,7 @@ Timestamped snapshots of Claude Code working sessions, written by the `session-b
 
 ## Consumers
 
-- `find-skills` — weekly cross-repo scan for repetition patterns worth turning into skills. It runs from `deepcut-foundation` and scans this directory as one of six brief corpora; its cursor commits land here directly on `main`.
+- `find-skills` — weekly cross-repo scan for repetition patterns worth turning into skills. It runs from `deepcut-foundation` and scans this directory as one of the brief corpora in `find-skills`' source registry; its cursor commits land here directly on `main`.
 
 ## Format
 
