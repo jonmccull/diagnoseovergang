@@ -75,6 +75,13 @@ don't run them unprompted:
 - This shell resolves Node 20.9 but wrangler needs Node 22 — prefix wrangler
   and npm-script commands with
   `PATH="/Users/jon/.nvm/versions/node/v22.22.0/bin:$PATH"`.
+- **Cloudflare skills: load the matching one *before* the step, not after it
+  fails (wired 2026-09-20).** Any `wrangler` command or an edit to
+  `worker/wrangler.toml` → load the `wrangler` skill. Writing or reviewing
+  code in `worker/` → `workers-best-practices`. D1 schema or migrations, or a
+  "which Cloudflare product fits" question → `cloudflare`. Sessions here had
+  been doing Cloudflare work with none of these ever loading, because nothing
+  pointed at them.
 - Secrets live in `worker/.dev.vars` and `.env` (both gitignored). Never
   print, commit, or paste their values; production secrets go in via
   `wrangler secret put` (piped, not echoed into chat).
