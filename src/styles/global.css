@@ -1,6 +1,57 @@
 @import "tailwindcss";
 
 /*
+ * Foundations kit (vendored, pinned — see src/styles/foundations/VERSION.md).
+ * Loaded after the Tailwind import so the kit's :root variables (notably
+ * --font-sans / --font-mono) win over Tailwind's theme defaults; our own rules
+ * below load last, per the kit README's ordering.
+ */
+@import "./foundations/tokens.css";
+@import "./foundations/bundle.css";
+
+/*
+ * Map the kit tokens into Tailwind by name (kit README → Tailwind). `inline`
+ * keeps the var() reference in the emitted utility, so every colour utility
+ * switches with [data-theme="dark"] on its own. Never retype a kit value.
+ */
+@theme inline {
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-muted: var(--ink-muted);
+  --color-hairline: var(--hairline);
+  --color-underline: var(--underline);
+  --color-lime: var(--lime);
+  --color-lime-glow: var(--lime-glow);
+  --color-on-lime: var(--on-lime);
+  /* Project status colours — see :root below. */
+  --color-editorial: var(--editorial);
+  --color-who: var(--who);
+  --color-danger: var(--danger);
+}
+
+/*
+ * Project status colours the kit lacks (kit README: allowed when text-safe on
+ * both grounds and never a second light). They carry the compliance-critical
+ * distinction between editorial and WHO content (§3.3) as LABEL TEXT only —
+ * never a fill, never a border. Contrast on ground/surface, verified:
+ *   editorial light 5.32/5.67 · dark 8.16/7.56
+ *   who       light 6.79/7.24 · dark 8.10/7.51
+ *   danger    light 5.91/6.29 · dark 7.17/6.65
+ */
+:root {
+  --editorial: #8a5a00;
+  --who: #075985;
+  --danger: #b42318;
+}
+[data-theme="dark"] {
+  --editorial: #d9a94a;
+  --who: #74b9d6;
+  --danger: #f48771;
+}
+
+/*
  * Safari/WebKit text-selection bleed fix.
  *
  * WebKit paints the selection highlight ("selection gaps") across the widest

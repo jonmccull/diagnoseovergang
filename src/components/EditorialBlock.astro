@@ -3,6 +3,10 @@
  * Wraps ALL editorial (non-WHO) content — guardrail §3.3, the single most
  * important compliance UI pattern. Renders the verbatim §11 label, plus the
  * draft badge while status is "draft". Machine-readable via data-source.
+ *
+ * Foundations restyle: a flat block opened by a hairline, with the labels as
+ * mono caption text in the project's `editorial` status colour (text-safe on
+ * both grounds, never a fill or border — kit README, status colours).
  */
 interface Props {
   status: "draft" | "clinician-reviewed";
@@ -14,19 +18,13 @@ const { status } = Astro.props;
 <div
   data-source="editorial"
   data-status={status}
-  class="rounded-lg border border-amber-200 border-l-4 border-l-amber-400 bg-amber-50/50 p-5 sm:p-6"
+  class="border-t border-hairline pt-4"
 >
-  <p class="mb-4 flex flex-wrap gap-2 text-xs font-medium">
-    <span
-      class="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-amber-900"
-    >
-      Redaksjonelt innhold – ikke fra WHO
-    </span>
+  <p class="caption mb-5 flex flex-wrap gap-x-5 gap-y-1 uppercase">
+    <span class="text-editorial">Redaksjonelt innhold – ikke fra WHO</span>
     {
       status === "draft" && (
-        <span class="inline-flex items-center rounded-full bg-slate-200 px-3 py-1 text-slate-700">
-          Utkast – ikke klinisk kvalitetssikret
-        </span>
+        <span class="text-ink-muted">Utkast – ikke klinisk kvalitetssikret</span>
       )
     }
   </p>

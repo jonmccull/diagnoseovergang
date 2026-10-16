@@ -25,7 +25,7 @@ const hasCodes = (d.icd10?.length ?? 0) > 0 || (d.icd11?.length ?? 0) > 0;
   <EditorialBlock status={d.status}>
     <Heading
       data-field="title_nb"
-      class="text-2xl font-bold tracking-tight text-slate-900"
+      class="heading text-ink"
     >
       {d.title_nb}
     </Heading>
@@ -37,29 +37,25 @@ const hasCodes = (d.icd10?.length ?? 0) > 0 || (d.icd11?.length ?? 0) > 0;
           class="mt-5 grid gap-4 md:grid-cols-2"
         >
           <div>
-            <p class="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-600">
-              Før – ICD-10
-            </p>
+            <p class="caption mb-2 uppercase text-ink-muted">Før – ICD-10</p>
             {d.icd10?.length ? (
-              <ul class="space-y-2">
+              <ul>
                 {d.icd10.map((ref) => (
-                  <li class="rounded-lg border border-slate-200 bg-white p-4">
-                    <span class="font-mono font-semibold">{ref.code}</span>
+                  <li class="border-t border-hairline py-3">
+                    <span class="font-mono font-medium text-ink">{ref.code}</span>
                     <span aria-hidden="true"> · </span>
                     <span>{ref.label_nb}</span>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p class="text-sm text-slate-500">Ingen direkte ICD-10-motpart.</p>
+              <p class="text-sm text-ink-muted">Ingen direkte ICD-10-motpart.</p>
             )}
           </div>
           <div>
-            <p class="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-600">
-              Nå – ICD-11
-            </p>
+            <p class="caption mb-2 uppercase text-ink-muted">Nå – ICD-11</p>
             {d.icd11?.length ? (
-              <ul class="space-y-2">
+              <ul>
                 {d.icd11.map((ref) => (
                   <li>
                     <IcdEntityCard code={ref.code} />
@@ -67,7 +63,7 @@ const hasCodes = (d.icd10?.length ?? 0) > 0 || (d.icd11?.length ?? 0) > 0;
                 ))}
               </ul>
             ) : (
-              <p class="text-sm text-slate-500">Se løpende tekst.</p>
+              <p class="text-sm text-ink-muted">Se løpende tekst.</p>
             )}
           </div>
         </section>
@@ -75,20 +71,20 @@ const hasCodes = (d.icd10?.length ?? 0) > 0 || (d.icd11?.length ?? 0) > 0;
     }
 
     <section class="mt-6 max-w-prose" data-field="whatChanged_nb">
-      <Sub class="text-lg font-semibold text-slate-900">Hva endres?</Sub>
-      <p class="mt-2 text-slate-800">{d.whatChanged_nb}</p>
+      <Sub class="title text-ink">Hva endres?</Sub>
+      <p class="mt-2 text-ink-secondary">{d.whatChanged_nb}</p>
     </section>
 
     <section class="mt-5 max-w-prose" data-field="whatToDoNow_nb">
-      <Sub class="text-lg font-semibold text-slate-900">Hva gjør du nå?</Sub>
-      <p class="mt-2 text-slate-800">{d.whatToDoNow_nb}</p>
+      <Sub class="title text-ink">Hva gjør du nå?</Sub>
+      <p class="mt-2 text-ink-secondary">{d.whatToDoNow_nb}</p>
     </section>
 
     {
       d.caveats_nb && (
         <section class="mt-5 max-w-prose" data-field="caveats_nb">
-          <Sub class="text-lg font-semibold text-slate-900">Verdt å merke seg</Sub>
-          <p class="mt-2 text-slate-800">{d.caveats_nb}</p>
+          <Sub class="title text-ink">Verdt å merke seg</Sub>
+          <p class="mt-2 text-ink-secondary">{d.caveats_nb}</p>
         </section>
       )
     }
@@ -96,11 +92,11 @@ const hasCodes = (d.icd10?.length ?? 0) > 0 || (d.icd11?.length ?? 0) > 0;
     {
       d.sources?.length && (
         <section class="mt-5 max-w-prose">
-          <Sub class="text-lg font-semibold text-slate-900">Kilder</Sub>
-          <ul class="mt-2 list-disc pl-5 text-slate-800">
+          <Sub class="title text-ink">Kilder</Sub>
+          <ul class="mt-2 list-disc pl-5 text-ink-secondary">
             {d.sources.map((s) => (
               <li>
-                <a href={s.url} class="underline hover:text-slate-950">
+                <a href={s.url} class="fdn-link">
                   {s.label}
                 </a>
               </li>
@@ -113,13 +109,13 @@ const hasCodes = (d.icd10?.length ?? 0) > 0 || (d.icd11?.length ?? 0) > 0;
 
   {/* Feedback affordance (§9.1/§12): highlight-to-comment hint + fallback button.
       The FeedbackWidget island (mounted globally) wires the click. */}
-  <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-500">
+  <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ink-muted">
     <p>{FEEDBACK_HINT}</p>
     <button
       type="button"
       data-feedback-trigger
       data-entry-id={d.id}
-      class="underline hover:text-slate-800"
+      class="fdn-link"
     >
       Gi tilbakemelding
     </button>

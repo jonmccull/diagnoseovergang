@@ -49,7 +49,7 @@ export function CrosswalkExplorer({ items, genericCaveat_nb }: Props) {
     <div>
       <label
         htmlFor="crosswalk-input"
-        className="block font-medium text-slate-900"
+        className="block font-medium text-ink"
       >
         Slå opp en ICD-10-kode eller diagnose
       </label>
@@ -63,14 +63,14 @@ export function CrosswalkExplorer({ items, genericCaveat_nb }: Props) {
         }}
         placeholder="F60.31, borderline, tvangspreget …"
         autoComplete="off"
-        className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-slate-900 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-300"
+        className="mt-2 w-full border border-hairline bg-transparent px-4 py-2.5 text-ink placeholder:text-ink-muted focus:outline-2 focus:outline-ink focus:outline-offset-2"
       />
 
       <div aria-live="polite">
         {query.trim() && !selected && (
           <ul className="mt-3 space-y-1">
             {matches.length === 0 && (
-              <li className="text-sm text-slate-600">
+              <li className="text-sm text-ink-muted">
                 Ingen treff blant ICD-10-kodene for personlighetsforstyrrelser
                 (F60–F61).
               </li>
@@ -80,7 +80,7 @@ export function CrosswalkExplorer({ items, genericCaveat_nb }: Props) {
                 <button
                   type="button"
                   onClick={() => setSelectedCode(item.code)}
-                  className="w-full rounded-lg border border-slate-200 bg-white px-4 py-2 text-left hover:border-slate-400"
+                  className="fdn-row-link w-full border-t border-hairline px-1 py-3 text-left"
                 >
                   <span className="font-mono font-semibold">{item.code}</span>
                   <span aria-hidden="true"> · </span>
@@ -93,8 +93,8 @@ export function CrosswalkExplorer({ items, genericCaveat_nb }: Props) {
 
         {selected && (
           <div className="mt-4">
-            <div className="rounded-lg border border-slate-200 bg-white p-4">
-              <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-600">
+            <div className="border-t border-hairline pt-3">
+              <p className="caption mb-1 uppercase text-ink-muted">
                 Før – ICD-10
               </p>
               <p>
@@ -105,16 +105,16 @@ export function CrosswalkExplorer({ items, genericCaveat_nb }: Props) {
             </div>
 
             <div className="mt-4">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-600">
+              <p className="caption mb-2 uppercase text-ink-muted">
                 Nå – ICD-11
               </p>
 
-              <p className="text-sm text-slate-800">
+              <p className="text-sm text-ink-secondary">
                 Sett alltid alvorlighetsgrad først: lett (6D10.0), moderat
                 (6D10.1) eller alvorlig (6D10.2) — se{" "}
                 <a
                   href="/endringer/alvorlighetsgrad"
-                  className="underline hover:text-slate-950"
+                  className="fdn-link"
                 >
                   alvorlighetsgrad
                 </a>
@@ -126,20 +126,20 @@ export function CrosswalkExplorer({ items, genericCaveat_nb }: Props) {
                   {selected.entries.map((entry) => (
                     <li
                       key={entry.id}
-                      className="rounded-lg border border-slate-200 bg-white p-4"
+                      className="border-t border-hairline py-3"
                     >
-                      <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+                      <p className="caption uppercase text-ink-muted">
                         {KIND_LABEL[entry.kind]}
                       </p>
                       <p className="mt-1">
                         <a
                           href={`/endringer/${entry.id}`}
-                          className="font-medium text-slate-900 underline hover:text-slate-950"
+                          className="fdn-link font-medium"
                         >
                           {entry.title_nb}
                         </a>
                       </p>
-                      <p className="mt-2 text-sm text-slate-800">
+                      <p className="mt-2 text-sm text-ink-secondary">
                         {entry.whatToDoNow_nb}
                       </p>
                       {entry.icd11.length > 0 && (
@@ -153,14 +153,14 @@ export function CrosswalkExplorer({ items, genericCaveat_nb }: Props) {
                   ))}
                 </ul>
               ) : (
-                <div className="mt-3 rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-800">
+                <div className="mt-3 border-t border-hairline pt-3 text-sm text-ink-secondary">
                   <p>
                     Denne ICD-10-typen har ingen egen motpart i ICD-11. Vurder
                     alvorlighetsgrad (6D10) og angi fremtredende trekkdomener
                     (6D11) ut fra det kliniske bildet — se{" "}
                     <a
                       href="/"
-                      className="underline hover:text-slate-950"
+                      className="fdn-link"
                     >
                       oversikten over modellskiftet
                     </a>
@@ -170,8 +170,8 @@ export function CrosswalkExplorer({ items, genericCaveat_nb }: Props) {
               )}
             </div>
 
-            <div className="mt-4 rounded-lg bg-slate-100 p-4 text-sm text-slate-700">
-              <p className="font-medium text-slate-900">Verdt å merke seg</p>
+            <div className="mt-4 border-t border-hairline pt-3 text-sm text-ink-secondary">
+              <p className="caption uppercase text-ink-muted">Verdt å merke seg</p>
               {(caveats.length > 0 ? caveats : [genericCaveat_nb]).map(
                 (text) => (
                   <p key={text} className="mt-1">

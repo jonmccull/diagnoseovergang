@@ -10,10 +10,10 @@ const CONTACT_EMAIL = "hey@jonm.cc";
   title="Personvern"
   description="Hvordan tilbakemeldinger behandles: hva som samles inn, hvorfor, lagring og sletting."
 >
-  <h1 class="text-3xl font-bold tracking-tight text-slate-900">Personvern</h1>
-  <div class="mt-6 max-w-prose space-y-6 text-slate-800">
+  <h1 class="display-lg text-ink">Personvern</h1>
+  <div class="mt-6 max-w-prose space-y-6 text-ink-secondary">
     <section>
-      <h2 class="text-lg font-semibold text-slate-900">Hva samles inn</h2>
+      <h2 class="title text-ink">Hva samles inn</h2>
       <p class="mt-2">
         Når du sender en tilbakemelding, lagrer vi: selve tilbakemeldingen,
         eventuell markert tekst du kommenterte, e-postadressen din, rollen din
@@ -24,7 +24,7 @@ const CONTACT_EMAIL = "hey@jonm.cc";
     </section>
 
     <section>
-      <h2 class="text-lg font-semibold text-slate-900">Formål</h2>
+      <h2 class="title text-ink">Formål</h2>
       <p class="mt-2">
         Opplysningene brukes til å kvalitetssikre det redaksjonelle innholdet og
         til å svare deg om forslaget ditt. E-postadressen brukes kun til å svare
@@ -34,7 +34,7 @@ const CONTACT_EMAIL = "hey@jonm.cc";
     </section>
 
     <section>
-      <h2 class="text-lg font-semibold text-slate-900">Behandlingsgrunnlag</h2>
+      <h2 class="title text-ink">Behandlingsgrunnlag</h2>
       <p class="mt-2">
         Behandlingsgrunnlaget er samtykke, som du gir ved å krysse av i skjemaet
         når du sender inn. Du kan når som helst trekke samtykket tilbake ved å
@@ -43,7 +43,7 @@ const CONTACT_EMAIL = "hey@jonm.cc";
     </section>
 
     <section>
-      <h2 class="text-lg font-semibold text-slate-900">Lagring</h2>
+      <h2 class="title text-ink">Lagring</h2>
       <p class="mt-2">
         Tilbakemeldinger lagres i Cloudflare D1 (SQLite). Data behandles innenfor
         EU/EØS-jurisdiksjon. Tilbakemeldinger vises aldri offentlig – de går kun
@@ -52,7 +52,7 @@ const CONTACT_EMAIL = "hey@jonm.cc";
     </section>
 
     <section>
-      <h2 class="text-lg font-semibold text-slate-900">Sletting og oppbevaring</h2>
+      <h2 class="title text-ink">Sletting og oppbevaring</h2>
       <p class="mt-2">
         E-postadressen din slettes eller anonymiseres senest 12 måneder etter
         innsending, eller ved pilotens slutt – det som kommer først.
@@ -60,11 +60,11 @@ const CONTACT_EMAIL = "hey@jonm.cc";
     </section>
 
     <section>
-      <h2 class="text-lg font-semibold text-slate-900">Dine rettigheter</h2>
+      <h2 class="title text-ink">Dine rettigheter</h2>
       <p class="mt-2">
         Du har rett til innsyn i og sletting av opplysningene dine. Send en
         henvendelse til
-        <a href={`mailto:${CONTACT_EMAIL}`} class="underline hover:text-slate-950"
+        <a href={`mailto:${CONTACT_EMAIL}`} class="fdn-link"
           >{CONTACT_EMAIL}</a
         >, så håndterer vi forespørselen.
       </p>

@@ -23,11 +23,33 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} · {SITE_NAME}</title>
     {description && <meta name="description" content={description} />}
+    {/* Foundations kit: the one Google Fonts link (Outfit 300/400/500, JetBrains Mono 400/500). */}
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    {/* Kit dark theme: follow the OS by mapping prefers-color-scheme to
+        data-theme on the root, before first paint so there is no flash.
+        Light is the default and carries no attribute. */}
+    <script is:inline>
+      (function () {
+        var mq = window.matchMedia("(prefers-color-scheme: dark)");
+        function apply() {
+          if (mq.matches) {
+            document.documentElement.setAttribute("data-theme", "dark");
+          } else {
+            document.documentElement.removeAttribute("data-theme");
+          }
+        }
+        apply();
+        if (mq.addEventListener) mq.addEventListener("change", apply);
+      })();
+    </script>
   </head>
-  <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
-    <header class="border-b border-slate-200 bg-white">
-      <div class="mx-auto max-w-3xl px-4 py-4">
-        <a href="/" class="text-lg font-semibold text-slate-900">{SITE_NAME}</a>
+  <body class="fdn-page min-h-screen antialiased">
+    <header class="border-b border-hairline">
+      <div class="mx-auto flex h-[72px] max-w-3xl items-center px-4">
+        <a href="/" class="fdn-wordmark">{SITE_NAME}</a>
       </div>
     </header>
 
@@ -39,17 +61,17 @@ const { title, description } = Astro.props;
         buttons wherever editorial entries render. Inert on pages without them. */}
     <FeedbackWidget client:idle />
 
-    <footer class="mt-16 border-t border-slate-200 bg-white">
-      <div class="mx-auto max-w-3xl space-y-3 px-4 py-8 text-sm text-slate-600">
+    <footer class="mt-16 border-t border-hairline">
+      <div class="mx-auto max-w-3xl space-y-3 px-4 py-8 text-sm text-ink-muted">
         <p>{INDEPENDENCE_DISCLAIMER}</p>
         <p>
           {WHO_ATTRIBUTION}
-          <a href={WHO_SOURCE_URL} class="underline hover:text-slate-900">{WHO_SOURCE_URL}</a>
+          <a href={WHO_SOURCE_URL} class="fdn-link">{WHO_SOURCE_URL}</a>
         </p>
         <p id="release-note" hidden>
           Basert på ICD-11 MMS, versjon <span id="release-version"></span>.
         </p>
-        <p><a href="/personvern" class="underline hover:text-slate-900">Personvern</a></p>
+        <p><a href="/personvern" class="fdn-link">Personvern</a></p>
       </div>
       <script>
         import { fetchHealth } from "../lib/who";

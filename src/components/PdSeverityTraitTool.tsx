@@ -82,20 +82,18 @@ export function PdSeverityTraitTool() {
     <div>
       {/* Step 1: severity — required */}
       <fieldset>
-        <legend className="font-medium text-slate-900">
+        <legend className="font-medium text-ink">
           1. Velg alvorlighetsgrad
         </legend>
-        <p className="mt-1 text-sm text-slate-600">
+        <p className="mt-1 text-sm text-ink-muted">
           Alvorlighetsgrad settes alltid først i ICD-11.
         </p>
         <div className="mt-3 space-y-2">
           {SEVERITIES.map((s) => (
             <label
               key={s.code}
-              className={`flex cursor-pointer gap-3 rounded-lg border p-3 ${
-                severityCode === s.code
-                  ? "border-slate-500 bg-slate-50 ring-1 ring-slate-300"
-                  : "border-slate-200 bg-white hover:border-slate-300"
+              className={`flex cursor-pointer gap-3 border-t border-hairline p-3 ${
+                severityCode === s.code ? "bg-lime-glow" : ""
               }`}
             >
               <input
@@ -104,21 +102,21 @@ export function PdSeverityTraitTool() {
                 value={s.code}
                 checked={severityCode === s.code}
                 onChange={() => setSeverityCode(s.code)}
-                className="mt-1"
+                className="mt-1 accent-ink"
               />
               <span>
-                <span className="font-medium text-slate-900">
+                <span className="font-medium text-ink">
                   {s.label_nb}{" "}
-                  <span className="font-mono text-sm text-slate-500">
+                  <span className="font-mono text-sm text-ink-muted">
                     {s.code}
                   </span>
                 </span>
                 {!s.isDisorder && (
-                  <span className="ml-2 inline-flex items-center rounded-full bg-slate-200 px-2 py-0.5 text-xs text-slate-700">
+                  <span className="caption ml-2 inline-flex items-center uppercase text-ink-muted">
                     Ikke en psykisk lidelse
                   </span>
                 )}
-                <span className="mt-0.5 block text-sm text-slate-600">
+                <span className="mt-0.5 block text-sm text-ink-secondary">
                   {s.blurb_nb}
                 </span>
               </span>
@@ -129,34 +127,32 @@ export function PdSeverityTraitTool() {
 
       {/* Step 2: trait domains — optional, multi-select */}
       <fieldset className="mt-6">
-        <legend className="font-medium text-slate-900">
+        <legend className="font-medium text-ink">
           2. Velg fremtredende trekkdomener{" "}
-          <span className="font-normal text-slate-500">(valgfritt, flere mulig)</span>
+          <span className="font-normal text-ink-muted">(valgfritt, flere mulig)</span>
         </legend>
         <div className="mt-3 space-y-2">
           {TRAITS.map((t) => (
             <label
               key={t.code}
-              className={`flex cursor-pointer gap-3 rounded-lg border p-3 ${
-                traitCodes.has(t.code)
-                  ? "border-slate-500 bg-slate-50 ring-1 ring-slate-300"
-                  : "border-slate-200 bg-white hover:border-slate-300"
+              className={`flex cursor-pointer gap-3 border-t border-hairline p-3 ${
+                traitCodes.has(t.code) ? "bg-lime-glow" : ""
               }`}
             >
               <input
                 type="checkbox"
                 checked={traitCodes.has(t.code)}
                 onChange={() => toggleTrait(t.code)}
-                className="mt-1"
+                className="mt-1 accent-ink"
               />
               <span>
-                <span className="font-medium text-slate-900">
+                <span className="font-medium text-ink">
                   {t.label_nb}{" "}
-                  <span className="font-mono text-sm text-slate-500">
+                  <span className="font-mono text-sm text-ink-muted">
                     {t.code}
                   </span>
                 </span>
-                <span className="mt-0.5 block text-sm text-slate-600">
+                <span className="mt-0.5 block text-sm text-ink-secondary">
                   {t.blurb_nb}
                 </span>
               </span>
@@ -167,31 +163,29 @@ export function PdSeverityTraitTool() {
 
       {/* Step 3: borderline pattern — optional single qualifier */}
       <fieldset className="mt-6">
-        <legend className="font-medium text-slate-900">
+        <legend className="font-medium text-ink">
           3. Borderline-mønster{" "}
-          <span className="font-normal text-slate-500">(valgfritt)</span>
+          <span className="font-normal text-ink-muted">(valgfritt)</span>
         </legend>
         <label
-          className={`mt-3 flex cursor-pointer gap-3 rounded-lg border p-3 ${
-            borderline
-              ? "border-slate-500 bg-slate-50 ring-1 ring-slate-300"
-              : "border-slate-200 bg-white hover:border-slate-300"
+          className={`mt-3 flex cursor-pointer gap-3 border-t border-b border-hairline p-3 ${
+            borderline ? "bg-lime-glow" : ""
           }`}
         >
           <input
             type="checkbox"
             checked={borderline}
             onChange={() => setBorderline((b) => !b)}
-            className="mt-1"
+            className="mt-1 accent-ink"
           />
           <span>
-            <span className="font-medium text-slate-900">
+            <span className="font-medium text-ink">
               {BORDERLINE.label_nb}{" "}
-              <span className="font-mono text-sm text-slate-500">
+              <span className="font-mono text-sm text-ink-muted">
                 {BORDERLINE.code}
               </span>
             </span>
-            <span className="mt-0.5 block text-sm text-slate-600">
+            <span className="mt-0.5 block text-sm text-ink-secondary">
               {BORDERLINE.blurb_nb}
             </span>
           </span>
@@ -199,15 +193,15 @@ export function PdSeverityTraitTool() {
       </fieldset>
 
       {/* Assembled output */}
-      <div className="mt-6 rounded-lg border border-slate-300 bg-white p-4" aria-live="polite">
-        <h3 className="font-semibold text-slate-900">Sammensatt ICD-11-kodemønster</h3>
+      <div className="mt-6 border-t border-hairline pt-4" aria-live="polite">
+        <h3 className="title text-ink">Sammensatt ICD-11-kodemønster</h3>
         {!severity ? (
-          <p className="mt-2 text-sm text-slate-600">
+          <p className="mt-2 text-sm text-ink-muted">
             Velg alvorlighetsgrad for å se kodemønsteret.
           </p>
         ) : (
           <>
-            <p className="mt-2 font-mono text-lg font-semibold text-slate-900">
+            <p className="mt-2 font-mono text-lg font-medium text-ink">
               {patternCodes.join(" & ")}
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -216,7 +210,7 @@ export function PdSeverityTraitTool() {
               ))}
             </div>
             {guidance && (
-              <div className="mt-4 space-y-2 text-sm text-slate-800">
+              <div className="mt-4 space-y-2 text-sm text-ink-secondary">
                 {guidance.map((line) => (
                   <p key={line}>{line}</p>
                 ))}
@@ -227,7 +221,7 @@ export function PdSeverityTraitTool() {
       </div>
 
       {/* §11 disclaimer — verbatim, unmissable */}
-      <p className="mt-4 rounded-lg border-l-4 border-l-slate-400 bg-slate-100 p-4 text-sm font-medium text-slate-800">
+      <p className="mt-4 border-t border-hairline pt-3 text-sm font-medium text-ink">
         {DECISION_SUPPORT_DISCLAIMER}
       </p>
     </div>
