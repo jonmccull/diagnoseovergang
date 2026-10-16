@@ -55,6 +55,7 @@
   --motion-trail-fade: 1s;
   --motion-glow-width: 8px;
   --motion-bloom-size: 22px;
+  --motion-hover: 200ms;
   --font-sans: "Outfit", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
 }

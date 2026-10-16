@@ -52,6 +52,41 @@
 }
 
 /*
+ * Hover behaviour (lime underline and row fill) comes from the kit now —
+ * settled in the design system 2026-10-16, so no project-side departure here.
+ */
+
+/*
+ * Theme toggle (the jonm.cc treatment): ink-muted outline at rest, ink on
+ * hover; the icon fills lime on hover/focus. Sun shows in dark, moon in light.
+ */
+.theme-toggle {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+.theme-toggle svg path {
+  transition: fill 200ms ease;
+}
+.theme-toggle:hover svg path,
+.theme-toggle:focus-visible svg path {
+  fill: var(--lime);
+}
+html:not([data-theme="dark"]) .theme-toggle .icon-sun {
+  display: none;
+}
+html[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle,
+  .theme-toggle svg path {
+    transition: none;
+  }
+}
+
+/*
  * Safari/WebKit text-selection bleed fix.
  *
  * WebKit paints the selection highlight ("selection gaps") across the widest
