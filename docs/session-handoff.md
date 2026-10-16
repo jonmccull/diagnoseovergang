@@ -49,6 +49,11 @@ materially changes project state; keep it current-state-only (no history log).
    the `wrangler d1 execute` queries + export documented in README
    ("Tilbakemeldinger"). When a domain lands: route `/api/*` + `/admin/*` on
    it (kills CORS + enables Access) and build the §9.5 admin view.
+   **SEO side of the same move:** change `site` in `astro.config.mjs` (the one
+   place canonical, Open Graph, sitemap and robots.txt read the origin from),
+   301 the `pages.dev` host to the domain (Cloudflare Bulk Redirect), verify
+   the domain in Google Search Console + Bing, and submit `/sitemap.xml`.
+   Until then the canonical origin is `diagnoseovergang.pages.dev`.
 3. **Amendment 02 (public-repo gate) is queued, NOT started.** Do not begin it
    until Jon explicitly says the pause point is reached. When he does: §A–§D in
    order; if the §D history scrub finds any secret or real feedback data, STOP

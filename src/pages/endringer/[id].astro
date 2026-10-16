@@ -3,22 +3,80 @@ import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import EntryContent from "../../components/EntryContent.astro";
 import WhoOfficialPanel from "../../components/WhoOfficialPanel.astro";
+import { SITE_NAME } from "../../config";
+import { describe, entryTitle } from "../../lib/seo";
 
 export async function getStaticPaths() {
   const entries = await getCollection("pd");
   // The overview entry lives on the front page, not under /endringer/.
-  return entries
-    .filter((e) => e.data.kind !== "overview")
-    .map((e) => ({ params: { id: e.id }, props: { entry: e } }));
+  const pages = entries.filter((e) => e.data.kind !== "overview");
+  // Code families (6B4, F43): entries sharing one are about the same block.
+  const families = (e: (typeof pages)[number]) =>
+    new Set(
+      [...(e.data.icd10 ?? []), ...(e.data.icd11 ?? [])].map((r) => r.code.slice(0, 3))
+    );
+  // Every entry page links onward, not only back home: shared code families
+  // first, then entries of the same kind.
+  const relatedTo = (e: (typeof pages)[number]) => {
+    const mine = families(e);
+    return pages
+      .filter((o) => o.id !== e.id)
+      .map((o) => ({
+        o,
+        score:
+          2 * [...families(o)].filter((f) => mine.has(f)).length +
+          (o.data.kind === e.data.kind ? 1 : 0),
+      }))
+      .filter((x) => x.score > 0)
+      .sort(
+        (a, b) =>
+          b.score - a.score || a.o.data.title_nb.localeCompare(b.o.data.title_nb, "nb")
+      )
+      .slice(0, 6)
+      .map((x) => x.o);
+  };
+  return pages.map((e) => ({
+    params: { id: e.id },
+    props: { entry: e, related: relatedTo(e) },
+  }));
 }
 
-const { entry } = Astro.props;
+const { entry, related } = Astro.props;
 // Amendment B.1: one official WHO panel per ICD-11 code the entry references,
 // on diagnosis detail pages only (not the front-page overview).
 const icd11Codes = entry.data.icd11 ?? [];
+
+const title = entryTitle(entry);
+const description = describe(entry.data.whatChanged_nb);
+const url = new URL(`/endringer/${entry.id}/`, Astro.site).href;
+const home = new URL("/", Astro.site).href;
+// Codes only: official WHO titles never enter page data (CLAUDE.md compliance).
+const codes = [
+  ...(entry.data.icd10 ?? []).map((r) => ({ codeValue: r.code, codingSystem: "ICD-10" })),
+  ...icd11Codes.map((r) => ({ codeValue: r.code, codingSystem: "ICD-11" })),
+].map((c) => ({ "@type": "MedicalCode", ...c }));
+const jsonLd = [
+  {
+    "@type": "MedicalWebPage",
+    name: entry.data.title_nb,
+    description,
+    url,
+    inLanguage: "nb",
+    isPartOf: { "@type": "WebSite", name: SITE_NAME, url: home },
+    audience: { "@type": "MedicalAudience", audienceType: "Clinician" },
+    ...(codes.length ? { about: codes } : {}),
+  },
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: SITE_NAME, item: home },
+      { "@type": "ListItem", position: 2, name: entry.data.title_nb, item: url },
+    ],
+  },
+];
 ---
 
-<Base title={entry.data.title_nb}>
+<Base title={title} description={description} jsonLd={jsonLd}>
   <nav aria-label="Brødsmulesti" class="mb-6 text-sm">
     <a href="/" class="fdn-link text-sm"
       >← Til forsiden</a
@@ -32,6 +90,23 @@ const icd11Codes = entry.data.icd11 ?? [];
         {icd11Codes.map((ref) => (
           <WhoOfficialPanel code={ref.code} />
         ))}
+      </section>
+    )
+  }
+
+  {
+    related.length > 0 && (
+      <section class="mt-12">
+        <h2 class="heading text-ink">Les også</h2>
+        <ul class="mt-4 border-b border-hairline">
+          {related.map((e) => (
+            <li class="fdn-row">
+              <a href={`/endringer/${e.id}/`} class="fdn-row-link">
+                <span class="fdn-row-title font-medium">{e.data.title_nb}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
     )
   }

@@ -113,7 +113,7 @@ export function CrosswalkExplorer({ items, genericCaveat_nb }: Props) {
                 Sett alltid alvorlighetsgrad først: lett (6D10.0), moderat
                 (6D10.1) eller alvorlig (6D10.2) — se{" "}
                 <a
-                  href="/endringer/alvorlighetsgrad"
+                  href="/endringer/alvorlighetsgrad/"
                   className="fdn-link"
                 >
                   alvorlighetsgrad
@@ -133,7 +133,7 @@ export function CrosswalkExplorer({ items, genericCaveat_nb }: Props) {
                       </p>
                       <p className="mt-1">
                         <a
-                          href={`/endringer/${entry.id}`}
+                          href={`/endringer/${entry.id}/`}
                           className="fdn-link font-medium"
                         >
                           {entry.title_nb}

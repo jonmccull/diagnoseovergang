@@ -5,7 +5,7 @@ import EntryContent from "../components/EntryContent.astro";
 import EditorialBlock from "../components/EditorialBlock.astro";
 import { CrosswalkExplorer } from "../components/CrosswalkExplorer";
 import { buildCrosswalkItems } from "../lib/crosswalk";
-import { SITE_TAGLINE } from "../config";
+import { SITE_NAME, SITE_TAGLINE } from "../config";
 
 const entries = await getCollection("pd");
 const crosswalkItems = buildCrosswalkItems(entries);
@@ -32,12 +32,21 @@ const sections = [
   { heading: "Alvorlighetsgrad", items: byKind("severity") },
   { heading: "Trekkdomener og mønstre (6D11)", items: traits },
 ].filter((s) => s.items.length > 0);
+
+const description =
+  "Gratis norsk guide til hva som endres fra ICD-10 til ICD-11 for psykiske lidelser (kapittel 06): nye diagnoser, endrede koder og kodeoppslag.";
+const jsonLd = [
+  {
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: new URL("/", Astro.site).href,
+    inLanguage: "nb",
+    description,
+  },
+];
 ---
 
-<Base
-  title="Forside"
-  description="Norsk ressurs som forklarer hva som endres fra ICD-10 til ICD-11 for psykiske lidelser (kapittel 06)."
->
+<Base title={SITE_TAGLINE} description={description} jsonLd={jsonLd}>
   <h1 class="display-lg text-ink">
     {SITE_TAGLINE}
   </h1>
@@ -64,7 +73,7 @@ const sections = [
 
   <section class="mt-6 border-t border-b border-hairline">
     <a
-      href="/verktoy"
+      href="/verktoy/"
       class="fdn-row-link flex items-center justify-between gap-4 py-4"
     >
       <span>
@@ -95,7 +104,7 @@ const sections = [
         <ul class="mt-4 border-b border-hairline">
           {items.map((e) => (
             <li class="fdn-row">
-              <a href={`/endringer/${e.id}`} class="fdn-row-link">
+              <a href={`/endringer/${e.id}/`} class="fdn-row-link">
                 <span>
                   <span class="fdn-row-title font-medium">{e.data.title_nb}</span>
                   {e.data.status === "draft" && (
