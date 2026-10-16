@@ -11,3 +11,6 @@ dist/
 
 # generated at build time (git SHA changes every commit)
 src/content-version.ts
+
+# Claude Code agent worktrees (local only)
+.claude/worktrees/

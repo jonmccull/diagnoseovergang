@@ -1,6 +1,6 @@
 # Session handoff — current state & one-time context
 
-Last updated: 2026-07-22 (Milestone 7 compliance pass done). This file carries
+Last updated: 2026-10-16 (Foundations restyle live; kit check in CI). This file carries
 decisions and state that are NOT in the briefs. Update it when a session
 materially changes project state; keep it current-state-only (no history log).
 
@@ -27,6 +27,10 @@ materially changes project state; keep it current-state-only (no history log).
   `whatToDoNow_nb`). Left as deliberate judgment-keeps: `kompleks-ptsd-6b41`
   (6B40-vs-6B41 discriminator), `ptsd-6b40`, `csbd-6c72`,
   `overspisingslidelse-6b82`. Content-only, no schema/code/codes changed.
+- **Foundations restyle: DONE, merged (PR #12), deployed 2026-10-16.** Flat
+  ground, hairlines, lime as the one light, both themes, with a dark/light
+  toggle in the bar. No functional change. PR #12 lists the judgment calls
+  and the kit gaps it found.
 - **Not built yet:** milestone 8 (Vitest unit + Playwright e2e for the three
   islands incl. feedback, a11y pass, README).
 - CI: push to `main` → GitHub Actions builds and deploys both targets
@@ -95,13 +99,28 @@ materially changes project state; keep it current-state-only (no history log).
 - Feedback test data was written to remote D1 during deploy verification and
   deleted; production `feedback` table started clean 2026-07-22.
 
-- **Foundations design kit vendored (2026-10-16, PR: restyle/foundations-kit):**
-  pinned copies in `src/styles/foundations/` (see its `VERSION.md` for the kit
-  commit and update procedure). Tailwind maps the tokens via `@theme inline` in
-  `global.css`; dark theme = OS-followed `data-theme="dark"` set by an inline
-  script in `Base.astro`. Project status colours (`--editorial`, `--who`,
-  `--danger`) carry the editorial/WHO compliance distinction as label text —
-  contrast-verified both themes, documented in `global.css`.
+- **Foundations design kit vendored (PR #12):** pinned, byte-identical copies
+  in `src/styles/foundations/`. `VERSION.md` and `kit.lock.json` hold the pin
+  (PR #13); the `kit` CI workflow fails if they drift from the kit or each
+  other, but being behind does not fail it. Updates arrive as a "Foundations
+  kit update" PR from the kit repo (branch `kit/update`) once its
+  `KIT_BOT_TOKEN` is set — merge those rather than hand-copying files.
+  Tailwind maps the tokens via `@theme inline` in `global.css`. The link and
+  row hover (a 0.1em lime stroke growing from the centre) comes from the
+  kit's `bundle.css`; there is no project hover CSS.
+- **Theme:** `data-theme="dark"` on `<html>`. A pre-paint script in
+  `Base.astro` reads a stored `theme` from localStorage, else the OS; the bar's
+  toggle stores the choice; with nothing stored it follows the OS live. Same
+  semantics as jonm.cc. Kit issue jonmccull/foundations-kit#12 proposes moving
+  the toggle into the kit; retire the local copy when that lands.
+- **Project status colours** (`--editorial`, `--who`, `--danger` in
+  `global.css`) carry the editorial/WHO compliance distinction as label text
+  only, contrast-verified in both themes. `--danger` should retire when kit
+  issue jonmccull/foundations-kit#13 adds a kit danger colour.
+- **Dither header texture: parked.** Jon judged the first round (four variants)
+  "not quite there yet"; its worktree was discarded. The kit's dither-derived
+  Field component belongs to Foundations' own hero; don't drop it in here
+  without Jon's call on the kit's "never the hero" rule.
 
 ## Gotchas that cost time
 
