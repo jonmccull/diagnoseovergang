@@ -5,6 +5,7 @@ import {
   INDEPENDENCE_DISCLAIMER,
   WHO_ATTRIBUTION,
   WHO_SOURCE_URL,
+  SUPPORT_URL,
 } from "../config";
 import { FeedbackWidget } from "../components/FeedbackWidget";
 
@@ -138,7 +139,10 @@ const { title, description } = Astro.props;
         <p id="release-note" hidden>
           Basert på ICD-11 MMS, versjon <span id="release-version"></span>.
         </p>
-        <p><a href="/personvern" class="fdn-link">Personvern</a></p>
+        <p class="flex flex-wrap gap-x-5 gap-y-1">
+          <a href="/personvern" class="fdn-link">Personvern</a>
+          <a href={SUPPORT_URL} class="fdn-link" rel="noopener">Støtt prosjektet</a>
+        </p>
       </div>
       <script>
         import { fetchHealth } from "../lib/who";
