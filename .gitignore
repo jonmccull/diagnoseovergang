@@ -14,3 +14,10 @@ src/content-version.ts
 
 # Claude Code agent worktrees (local only)
 .claude/worktrees/
+
+# Feedback data must never enter version control (Amendment 02 §D.2):
+# local D1/SQLite files and `wrangler d1 export` dumps.
+*.sqlite
+*.sqlite3
+*.db
+feedback-backup*.sql
