@@ -1,0 +1,25 @@
+name: CI
+
+# Build and typecheck on every PR, so a broken build fails here rather than in the post-merge deploy.
+# Needs no secrets: the production API base is a public URL (same value deploy.yml uses).
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+        env:
+          PUBLIC_API_BASE: https://diagnoseovergang-api.hey-697.workers.dev
+
+      - run: npm run typecheck
