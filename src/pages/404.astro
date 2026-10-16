@@ -1,0 +1,19 @@
+---
+// Pages serves 404.html with a real 404 status. Without it, unknown paths
+// fell back to the front page with a 200 (a soft 404 to search engines).
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Siden finnes ikke"
+  description="Denne siden finnes ikke på Diagnoseovergang."
+  noindex
+>
+  <h1 class="display-lg text-ink">Siden finnes ikke</h1>
+  <p class="lead mt-4 max-w-prose text-ink-secondary">
+    Lenken kan være feil, eller siden kan ha flyttet.
+  </p>
+  <p class="mt-6">
+    <a href="/" class="fdn-link">Til forsiden</a>
+  </p>
+</Base>

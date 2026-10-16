@@ -11,10 +11,23 @@ import { FeedbackWidget } from "../components/FeedbackWidget";
 
 interface Props {
   title: string;
-  description?: string;
+  description: string;
+  /** Kept out of search results (the 404 page). */
+  noindex?: boolean;
+  /** schema.org objects, emitted as one JSON-LD graph. */
+  jsonLd?: Record<string, unknown>[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, noindex = false, jsonLd = [] } = Astro.props;
+const fullTitle = `${title} · ${SITE_NAME}`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+// JSON inside <script> must not be able to close the tag.
+const ldJson = jsonLd.length
+  ? JSON.stringify({ "@context": "https://schema.org", "@graph": jsonLd }).replace(
+      /</g,
+      "\\u003c"
+    )
+  : null;
 ---
 
 <!doctype html>
@@ -22,8 +35,18 @@ const { title, description } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} · {SITE_NAME}</title>
-    {description && <meta name="description" content={description} />}
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="nb_NO" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    {ldJson && <script is:inline type="application/ld+json" set:html={ldJson} />}
     {/* Foundations kit: the one Google Fonts link (Outfit 300/400/500, JetBrains Mono 400/500). */}
     <link
       rel="stylesheet"
@@ -140,7 +163,7 @@ const { title, description } = Astro.props;
           Basert på ICD-11 MMS, versjon <span id="release-version"></span>.
         </p>
         <p class="flex flex-wrap gap-x-5 gap-y-1">
-          <a href="/personvern" class="fdn-link">Personvern</a>
+          <a href="/personvern/" class="fdn-link">Personvern</a>
           <a href={SUPPORT_URL} class="fdn-link" rel="noopener">Støtt prosjektet</a>
         </p>
       </div>
