@@ -6,8 +6,13 @@ materially changes project state; keep it current-state-only (no history log).
 
 ## Where the project stands
 
-- **Live:** https://diagnoseovergang.pages.dev (Pages) +
+- **Live:** https://diagnoseovergang.no (Pages custom domain, registered
+  2026-10-16 to Jon via GoDaddy, DNS on Cloudflare) +
   https://diagnoseovergang-api.hey-697.workers.dev (Worker, cron 03:00 UTC).
+  `functions/_middleware.ts` 301s `diagnoseovergang.pages.dev` and `www` to
+  the apex; preview hashes are not redirected. Zone-scoped DNS-edit token at
+  `~/.config/cloudflare/diagnoseovergang.token` (Jon's Mac); wrangler's own
+  OAuth login has zone read only.
 - Milestones 1–6 of the main brief are built, deployed, and verified. From
   Amendment 01: schema extension, derived entity cache, all 11 Tier 1 entries,
   and the WHO panel (B.1) are live.
@@ -41,19 +46,18 @@ materially changes project state; keep it current-state-only (no history log).
 
 1. **Turnstile is on always-pass TEST keys in production.** Functional but no
    real bot protection. Before any public announcement: create a real
-   Turnstile site (hostname `diagnoseovergang.pages.dev`), put the site key in
+   Turnstile site (hostname `diagnoseovergang.no`), put the site key in
    `.env.production` (`PUBLIC_TURNSTILE_SITEKEY`), run
    `npx wrangler secret put TURNSTILE_SECRET` in `worker/`, redeploy.
-2. **No web admin for feedback** (deliberate decision): requires a custom
-   domain + Cloudflare Access, which don't exist yet. Owner review runs via
-   the `wrangler d1 execute` queries + export documented in README
-   ("Tilbakemeldinger"). When a domain lands: route `/api/*` + `/admin/*` on
-   it (kills CORS + enables Access) and build the §9.5 admin view.
-   **SEO side of the same move:** change `site` in `astro.config.mjs` (the one
-   place canonical, Open Graph, sitemap and robots.txt read the origin from),
-   301 the `pages.dev` host to the domain (Cloudflare Bulk Redirect), verify
-   the domain in Google Search Console + Bing, and submit `/sitemap.xml`.
-   Until then the canonical origin is `diagnoseovergang.pages.dev`.
+2. **No web admin for feedback** (deliberate decision): requires Cloudflare
+   Access on the custom domain, which now exists but is not set up. Owner
+   review runs via the `wrangler d1 execute` queries + export documented in
+   README ("Tilbakemeldinger"). Next: route `/api/*` + `/admin/*` on
+   `diagnoseovergang.no` (kills CORS + enables Access) and build the §9.5
+   admin view. The worker's CORS allowlist accepts the domain (PR #20).
+   **SEO:** `site` in `astro.config.mjs` is the one place canonical, Open
+   Graph, sitemap and robots.txt read the origin from. Still open: verify the
+   domain in Google Search Console + Bing and submit `/sitemap.xml`.
 3. **Amendment 02 (public-repo gate) is queued, NOT started.** Do not begin it
    until Jon explicitly says the pause point is reached. When he does: §A–§D in
    order; if the §D history scrub finds any secret or real feedback data, STOP
