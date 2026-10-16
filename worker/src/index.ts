@@ -14,6 +14,7 @@ app.use(
     origin: (origin) => {
       if (/^https:\/\/([a-z0-9-]+\.)?diagnoseovergang\.pages\.dev$/.test(origin))
         return origin;
+      if (/^https:\/\/(www\.)?diagnoseovergang\.no$/.test(origin)) return origin;
       if (/^http:\/\/localhost:\d+$/.test(origin)) return origin;
       return null;
     },
