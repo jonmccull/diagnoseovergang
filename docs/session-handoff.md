@@ -95,11 +95,20 @@ materially changes project state; keep it current-state-only (no history log).
 - Feedback test data was written to remote D1 during deploy verification and
   deleted; production `feedback` table started clean 2026-07-22.
 
+- **Foundations design kit vendored (2026-10-16, PR: restyle/foundations-kit):**
+  pinned copies in `src/styles/foundations/` (see its `VERSION.md` for the kit
+  commit and update procedure). Tailwind maps the tokens via `@theme inline` in
+  `global.css`; dark theme = OS-followed `data-theme="dark"` set by an inline
+  script in `Base.astro`. Project status colours (`--editorial`, `--who`,
+  `--danger`) carry the editorial/WHO compliance distinction as label text —
+  contrast-verified both themes, documented in `global.css`.
+
 ## Gotchas that cost time
 
-- The in-app browser pane doesn't paint screenshots for localhost tabs —
-  verify UI via `javascript_tool` DOM assertions instead; don't burn time on
-  blank screenshots.
+- ~~The in-app browser pane doesn't paint screenshots for localhost tabs~~
+  Fixed upstream by 2026-10-16: pane screenshots of localhost work again. DOM
+  assertions remain the precise check; for PR-quality captures use Playwright
+  (borrow `node_modules/playwright` from the blog repo — browsers are cached).
 - The Browser pane's managed preview server can't run npm in this repo
   (sandbox EPERM) — start `wrangler dev` / `npm run dev` via Bash in the
   background, then `preview_start` with `{url}`.
