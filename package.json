@@ -13,6 +13,7 @@
     "prebuild": "node scripts/derive-codes.mjs",
     "build": "astro build",
     "preview": "astro preview",
+    "pretypecheck": "node scripts/derive-codes.mjs",
     "typecheck": "astro check && npm run typecheck --workspace worker",
     "deploy:pages": "npm run build && wrangler pages deploy",
     "deploy:worker": "node scripts/derive-codes.mjs && npm run deploy --workspace worker"
