@@ -23,13 +23,102 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} · {SITE_NAME}</title>
     {description && <meta name="description" content={description} />}
+    {/* Foundations kit: the one Google Fonts link (Outfit 300/400/500, JetBrains Mono 400/500). */}
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    {/* These two mirror --ground in src/styles/foundations/tokens.css — the
+        kit's tolerated literals for places that cannot read a CSS variable. */}
+    <meta name="theme-color" content="#151a17" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f2f3f1" media="(prefers-color-scheme: light)" />
+    {/* Kit dark theme, the jonm.cc rule: the stored choice wins, else the OS.
+        Set before first paint so there is no flash. Light = no attribute. */}
+    <script is:inline>
+      (function () {
+        try {
+          var theme = localStorage.getItem("theme");
+          if (theme !== "dark" && theme !== "light") {
+            theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          }
+          if (theme === "dark")
+            document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
-    <header class="border-b border-slate-200 bg-white">
-      <div class="mx-auto max-w-3xl px-4 py-4">
-        <a href="/" class="text-lg font-semibold text-slate-900">{SITE_NAME}</a>
-      </div>
+  <body class="fdn-page min-h-screen antialiased">
+    {/* The kit bar, full window width: wordmark left, theme toggle at the
+        viewport's top right. Toggle semantics match jonm.cc: stored choice in
+        localStorage("theme"), sun shown in dark, moon in light. */}
+    <header class="fdn-bar">
+      <a href="/" class="fdn-wordmark">{SITE_NAME}</a>
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Bytt mellom lyst og mørkt tema"
+        class="theme-toggle flex h-9 w-9 items-center justify-center text-ink-muted hover:text-ink"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          class="h-5 w-5"
+          aria-hidden="true"
+        >
+          <path
+            class="icon-sun"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+          ></path>
+          <path
+            class="icon-moon"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          ></path>
+        </svg>
+      </button>
     </header>
+    <script is:inline>
+      (function () {
+        var btn = document.getElementById("theme-toggle");
+        if (!btn) return;
+        function apply(theme) {
+          if (theme === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+          } else {
+            document.documentElement.removeAttribute("data-theme");
+          }
+        }
+        btn.addEventListener("click", function () {
+          var next =
+            document.documentElement.getAttribute("data-theme") === "dark"
+              ? "light"
+              : "dark";
+          try {
+            localStorage.setItem("theme", next);
+          } catch (e) {}
+          apply(next);
+        });
+        // Follow OS changes only while no explicit choice is stored.
+        var mq = window.matchMedia("(prefers-color-scheme: dark)");
+        function onOsChange() {
+          var stored = null;
+          try {
+            stored = localStorage.getItem("theme");
+          } catch (e) {}
+          if (stored !== "dark" && stored !== "light")
+            apply(mq.matches ? "dark" : "light");
+        }
+        if (mq.addEventListener) mq.addEventListener("change", onOsChange);
+      })();
+    </script>
 
     <main class="mx-auto max-w-3xl px-4 py-10">
       <slot />
@@ -39,17 +128,17 @@ const { title, description } = Astro.props;
         buttons wherever editorial entries render. Inert on pages without them. */}
     <FeedbackWidget client:idle />
 
-    <footer class="mt-16 border-t border-slate-200 bg-white">
-      <div class="mx-auto max-w-3xl space-y-3 px-4 py-8 text-sm text-slate-600">
+    <footer class="mt-16 border-t border-hairline">
+      <div class="mx-auto max-w-3xl space-y-3 px-4 py-8 text-sm text-ink-muted">
         <p>{INDEPENDENCE_DISCLAIMER}</p>
         <p>
           {WHO_ATTRIBUTION}
-          <a href={WHO_SOURCE_URL} class="underline hover:text-slate-900">{WHO_SOURCE_URL}</a>
+          <a href={WHO_SOURCE_URL} class="fdn-link">{WHO_SOURCE_URL}</a>
         </p>
         <p id="release-note" hidden>
           Basert på ICD-11 MMS, versjon <span id="release-version"></span>.
         </p>
-        <p><a href="/personvern" class="underline hover:text-slate-900">Personvern</a></p>
+        <p><a href="/personvern" class="fdn-link">Personvern</a></p>
       </div>
       <script>
         import { fetchHealth } from "../lib/who";

@@ -19,37 +19,33 @@ const isFactorCode = code.startsWith("QE");
 <div
   data-source="who"
   data-icd-code={code}
-  class="rounded-lg border border-sky-200 bg-white p-4"
+  class="border-t border-hairline pt-3 pb-1"
 >
-  <p class="mb-1 text-xs font-medium uppercase tracking-wide text-sky-800">
-    Offisiell ICD-11 (WHO)
-  </p>
-  <p class="text-slate-900">
-    <span class="font-mono font-semibold">{code}</span>
+  <p class="caption mb-1 uppercase text-who">Offisiell ICD-11 (WHO)</p>
+  <p class="text-ink">
+    <span class="font-mono font-medium">{code}</span>
     <span aria-hidden="true"> · </span>
-    <span data-icd-title lang="en" class="italic text-slate-500"
+    <span data-icd-title lang="en" class="italic text-ink-muted"
       >henter offisiell tittel …</span
     >
   </p>
   {
     isFactorCode && (
-      <p class="mt-1 text-xs text-slate-600">
+      <p class="mt-1 text-xs text-ink-muted">
         Ikke en psykisk lidelse – kode for «faktorer som påvirker helsetilstand».
       </p>
     )
   }
   <p class="mt-2 text-sm" data-icd-link hidden>
-    <a href="#" class="text-sky-800 underline hover:text-sky-950"
-      >Se i WHOs ICD-11-nettleser</a
-    >
+    <a href="#" class="fdn-link">Se i WHOs ICD-11-nettleser</a>
   </p>
   <p
     data-icd-uri
     hidden
-    class="mt-2 break-all font-mono text-[0.7rem] text-slate-500"
+    class="mt-2 break-all font-mono text-[0.7rem] text-ink-muted"
   >
   </p>
-  <p class="mt-1 text-xs text-slate-500">
+  <p class="mt-1 text-xs text-ink-muted">
     Offisiell tittel vises på engelsk, hentet fra WHOs ICD-11 API.
   </p>
 </div>
@@ -69,7 +65,7 @@ const isFactorCode = code.startsWith("QE");
       try {
         const entity = await fetchIcdEntity(code);
         titleEl.textContent = entity.title;
-        titleEl.classList.remove("italic", "text-slate-500");
+        titleEl.classList.remove("italic", "text-ink-muted");
         if (linkWrap && link) {
           link.href = entity.browserUrl;
           linkWrap.hidden = false;

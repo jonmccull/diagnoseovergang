@@ -38,10 +38,10 @@ const sections = [
   title="Forside"
   description="Norsk ressurs som forklarer hva som endres fra ICD-10 til ICD-11 for psykiske lidelser (kapittel 06)."
 >
-  <h1 class="text-3xl font-bold tracking-tight text-slate-900">
+  <h1 class="display-lg text-ink">
     {SITE_TAGLINE}
   </h1>
-  <p class="mt-4 max-w-prose text-lg text-slate-700">
+  <p class="lead mt-4 max-w-prose text-ink-secondary">
     En fri, norskspråklig ressurs som forklarer hva som endres i overgangen fra
     ICD-10 til ICD-11 for psykiske lidelser (kapittel 06) – med offisielle
     ICD-11-koder og titler hentet direkte fra WHO.
@@ -49,7 +49,7 @@ const sections = [
 
   <section class="mt-10" aria-label="Krysskoblingsoppslag">
     <EditorialBlock status="draft">
-      <h2 class="text-xl font-semibold text-slate-900">
+      <h2 class="title text-ink">
         Fra ICD-10-kode til ICD-11
       </h2>
       <div class="mt-4">
@@ -62,21 +62,21 @@ const sections = [
     </EditorialBlock>
   </section>
 
-  <section class="mt-6">
+  <section class="mt-6 border-t border-b border-hairline">
     <a
       href="/verktoy"
-      class="flex items-center justify-between gap-4 rounded-lg border border-slate-300 bg-white p-4 hover:border-slate-500"
+      class="fdn-row-link flex items-center justify-between gap-4 py-4"
     >
       <span>
-        <span class="font-medium text-slate-900"
+        <span class="fdn-row-title font-medium"
           >Kodehjelp: alvorlighetsgrad og trekk</span
         >
-        <span class="mt-0.5 block text-sm text-slate-600"
+        <span class="mt-0.5 block text-sm text-ink-muted"
           >Sett sammen et ICD-11-kodemønster steg for steg. Pedagogisk
           hjelpemiddel.</span
         >
       </span>
-      <span aria-hidden="true" class="text-slate-400">→</span>
+      <span aria-hidden="true" class="text-ink-muted">→</span>
     </a>
   </section>
 
@@ -91,20 +91,17 @@ const sections = [
   {
     sections.map(({ heading, items }) => (
       <section class="mt-10">
-        <h2 class="text-xl font-semibold text-slate-900">{heading}</h2>
-        <ul class="mt-3 space-y-2">
+        <h2 class="heading text-ink">{heading}</h2>
+        <ul class="mt-4 border-b border-hairline">
           {items.map((e) => (
-            <li>
-              <a
-                href={`/endringer/${e.id}`}
-                class="block rounded-lg border border-slate-200 bg-white p-4 hover:border-slate-400"
-              >
-                <span class="font-medium text-slate-900">{e.data.title_nb}</span>
-                {e.data.status === "draft" && (
-                  <span class="ml-2 inline-flex items-center rounded-full bg-slate-200 px-2 py-0.5 text-xs text-slate-700">
-                    Utkast
-                  </span>
-                )}
+            <li class="fdn-row">
+              <a href={`/endringer/${e.id}`} class="fdn-row-link">
+                <span>
+                  <span class="fdn-row-title font-medium">{e.data.title_nb}</span>
+                  {e.data.status === "draft" && (
+                    <span class="caption ml-3 uppercase text-ink-muted">Utkast</span>
+                  )}
+                </span>
               </a>
             </li>
           ))}

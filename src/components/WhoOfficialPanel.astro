@@ -42,34 +42,32 @@ const NO_DEFINITION_NB =
   data-source="who"
   data-who-panel
   data-who-code={code}
-  class="group rounded-lg border border-sky-300 bg-sky-50/70"
+  class="group border-t border-b border-hairline"
 >
   <summary
-    class="flex cursor-pointer items-center justify-between gap-3 rounded-lg px-4 py-3 text-sky-900 marker:content-none hover:bg-sky-100/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+    class="flex cursor-pointer items-center justify-between gap-3 px-1 py-3 marker:content-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
   >
-    <span class="flex flex-col">
-      <span class="text-xs font-medium uppercase tracking-wide text-sky-800">
-        Offisiell WHO-tekst (engelsk)
-      </span>
-      <span class="text-sm text-slate-700">
-        <span class="font-mono font-semibold text-slate-900">{code}</span>
+    <span class="flex flex-col gap-0.5">
+      <span class="caption uppercase text-who">Offisiell WHO-tekst (engelsk)</span>
+      <span class="text-sm text-ink-secondary">
+        <span class="font-mono font-medium text-ink">{code}</span>
         <span aria-hidden="true"> · </span>
-        <span data-who-summary-title lang="en" class="italic text-slate-500"
+        <span data-who-summary-title lang="en" class="italic text-ink-muted"
           >henter offisiell tittel …</span
         >
       </span>
     </span>
     <span
       aria-hidden="true"
-      class="shrink-0 text-sky-700 transition-transform group-open:rotate-180"
+      class="shrink-0 text-ink-muted transition-transform group-open:rotate-180"
       >▾</span
     >
   </summary>
 
-  <div class="border-t border-sky-200 px-4 py-4">
+  <div class="border-t border-hairline px-1 py-4">
     {
       isFactorCode && (
-        <p class="mb-3 text-xs text-slate-600">
+        <p class="mb-3 text-xs text-ink-muted">
           Ikke en psykisk lidelse – kode for «faktorer som påvirker
           helsetilstand».
         </p>
@@ -78,41 +76,33 @@ const NO_DEFINITION_NB =
 
     <dl class="space-y-3 text-sm">
       <div>
-        <dt class="text-xs font-semibold uppercase tracking-wide text-sky-800">
-          Tittel
-        </dt>
-        <dd data-who-title lang="en" class="mt-0.5 text-slate-900 italic">
+        <dt class="caption uppercase text-who">Tittel</dt>
+        <dd data-who-title lang="en" class="mt-0.5 text-ink italic">
           henter offisiell tittel …
         </dd>
       </div>
 
       <div>
-        <dt class="text-xs font-semibold uppercase tracking-wide text-sky-800">
-          Definisjon
-        </dt>
+        <dt class="caption uppercase text-who">Definisjon</dt>
         <dd
           data-who-definition
           lang="en"
-          class="mt-0.5 text-slate-500 italic"
+          class="mt-0.5 text-ink-muted italic"
         >
           henter offisiell definisjon …
         </dd>
       </div>
 
       <div>
-        <dt class="text-xs font-semibold uppercase tracking-wide text-sky-800">
-          Kode
-        </dt>
-        <dd class="mt-0.5 font-mono font-semibold text-slate-900">{code}</dd>
+        <dt class="caption uppercase text-who">Kode</dt>
+        <dd class="mt-0.5 font-mono font-medium text-ink">{code}</dd>
       </div>
 
       <div>
-        <dt class="text-xs font-semibold uppercase tracking-wide text-sky-800">
-          URI
-        </dt>
+        <dt class="caption uppercase text-who">URI</dt>
         <dd
           data-who-uri
-          class="mt-0.5 break-all font-mono text-xs text-slate-500"
+          class="mt-0.5 break-all font-mono text-xs text-ink-muted"
         >
           henter kanonisk URI …
         </dd>
@@ -120,17 +110,13 @@ const NO_DEFINITION_NB =
     </dl>
 
     <p class="mt-3 text-sm" data-who-link hidden>
-      <a href="#" class="text-sky-800 underline hover:text-sky-950"
-        >Se i WHOs ICD-11-nettleser</a
-      >
+      <a href="#" class="fdn-link">Se i WHOs ICD-11-nettleser</a>
     </p>
 
     {/* WHO attribution block (§11) — rendered verbatim; source is a link. */}
-    <p class="mt-4 border-t border-sky-200 pt-3 text-xs text-slate-600">
+    <p class="mt-4 border-t border-hairline pt-3 text-xs text-ink-muted">
       {WHO_ATTRIBUTION}{" "}
-      <a href={WHO_SOURCE_URL} class="text-sky-800 underline hover:text-sky-950"
-        >{WHO_SOURCE_URL}</a
-      >
+      <a href={WHO_SOURCE_URL} class="fdn-link">{WHO_SOURCE_URL}</a>
     </p>
 
     {/*
@@ -138,7 +124,7 @@ const NO_DEFINITION_NB =
       only occurrence of "oversett" and it is descriptive, not an action button.
       No translate="no" anywhere in this panel: the browser may translate it.
     */}
-    <p class="mt-3 text-xs italic text-slate-500">{TRANSLATION_HINT}</p>
+    <p class="mt-3 text-xs italic text-ink-muted">{TRANSLATION_HINT}</p>
   </div>
 </details>
 
@@ -175,23 +161,23 @@ const NO_DEFINITION_NB =
 
         if (summaryTitleEl) {
           summaryTitleEl.textContent = entity.title;
-          summaryTitleEl.classList.remove("italic", "text-slate-500");
+          summaryTitleEl.classList.remove("italic", "text-ink-muted");
         }
         if (titleEl) {
           titleEl.textContent = entity.title;
-          titleEl.classList.remove("italic", "text-slate-500");
+          titleEl.classList.remove("italic", "text-ink-muted");
         }
         if (defEl) {
           if (entity.definition && entity.definition.trim().length > 0) {
             defEl.textContent = entity.definition;
-            defEl.classList.remove("italic", "text-slate-500");
-            defEl.classList.add("text-slate-800");
+            defEl.classList.remove("italic", "text-ink-muted");
+            defEl.classList.add("text-ink-secondary");
           } else {
             // Graceful absence — neutral Norwegian note (our own text, not WHO).
             defEl.textContent = noDefinition;
             defEl.removeAttribute("lang");
-            defEl.classList.remove("text-slate-500");
-            defEl.classList.add("text-slate-600");
+            defEl.classList.remove("text-ink-muted", "italic");
+            defEl.classList.add("text-ink-secondary");
           }
         }
         if (uriEl) {

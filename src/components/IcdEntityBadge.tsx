@@ -29,31 +29,31 @@ export function IcdEntityBadge({ code }: { code: string }) {
   return (
     <span
       data-source="who"
-      className="inline-flex flex-wrap items-baseline gap-x-2 rounded-md border border-sky-200 bg-white px-2.5 py-1.5 text-sm"
+      className="inline-flex flex-wrap items-baseline gap-x-2 border-t border-hairline pt-1.5 pb-1 text-sm"
     >
-      <span className="text-[0.65rem] font-medium uppercase tracking-wide text-sky-800">
+      <span className="caption uppercase text-who">
         ICD-11 (WHO)
       </span>
-      <span className="font-mono font-semibold text-slate-900">{code}</span>
+      <span className="font-mono font-medium text-ink">{code}</span>
       {state.status === "loading" && (
-        <span className="italic text-slate-500">henter tittel …</span>
+        <span className="italic text-ink-muted">henter tittel …</span>
       )}
       {state.status === "ok" && (
         <>
           <span lang="en">{state.entity.title}</span>
           <a
             href={state.entity.browserUrl}
-            className="text-sky-800 underline hover:text-sky-950"
+            className="fdn-link"
           >
             WHO-nettleser
           </a>
-          <span className="w-full break-all font-mono text-[0.65rem] text-slate-500">
+          <span className="w-full break-all font-mono text-[0.65rem] text-ink-muted">
             {state.entity.uri}
           </span>
         </>
       )}
       {state.status === "error" && (
-        <span className="italic text-slate-500">
+        <span className="italic text-ink-muted">
           kunne ikke hente offisiell tittel akkurat nå
         </span>
       )}

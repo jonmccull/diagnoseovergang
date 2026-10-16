@@ -155,7 +155,7 @@ export function FeedbackWidget() {
             top: floatPos.y,
             transform: "translate(-50%, -100%)",
           }}
-          className="z-50 rounded-full bg-slate-900 px-3 py-1.5 text-sm font-medium text-white shadow-lg hover:bg-slate-700"
+          className="z-50 bg-lime px-3 py-1.5 text-sm font-medium text-on-lime"
         >
           Foreslå en endring
         </button>
@@ -258,19 +258,19 @@ function FeedbackDialog({
       role="dialog"
       aria-modal="true"
       aria-labelledby="feedback-title"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-ground/80 p-4"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
-      <div className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl bg-white p-6 shadow-xl">
+      <div className="max-h-[90vh] w-full max-w-lg overflow-y-auto border border-hairline bg-ground p-6">
         <div className="mb-3 flex items-start justify-between">
-          <h2 id="feedback-title" className="text-lg font-semibold text-slate-900">
+          <h2 id="feedback-title" className="title text-ink">
             Foreslå en endring
           </h2>
           <button
             type="button"
             onClick={onClose}
             aria-label="Lukk"
-            className="text-slate-400 hover:text-slate-700"
+            className="text-ink-muted hover:text-ink"
           >
             ✕
           </button>
@@ -278,13 +278,13 @@ function FeedbackDialog({
 
         {status === "done" ? (
           <div>
-            <p className="text-slate-800">
+            <p className="text-ink-secondary">
               Takk! Forslaget er sendt og blir vurdert.
             </p>
             <button
               type="button"
               onClick={onClose}
-              className="mt-4 rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700"
+              className="mt-4 bg-lime px-4 py-2 text-sm font-medium text-on-lime"
             >
               Lukk
             </button>
@@ -292,19 +292,19 @@ function FeedbackDialog({
         ) : (
           <form onSubmit={onSubmit}>
             {anchor.selectedText && (
-              <p className="mb-3 rounded-md bg-slate-100 p-3 text-sm text-slate-700">
+              <p className="mb-3 border-l border-hairline pl-4 text-sm text-ink-secondary">
                 <span className="font-medium">Markert tekst: </span>
                 <span className="italic">«{anchor.selectedText}»</span>
               </p>
             )}
 
             {/* §11 mandatory microcopy, above the fields */}
-            <div className="mb-4 space-y-1 rounded-md border-l-4 border-l-amber-400 bg-amber-50 p-3 text-sm text-slate-700">
+            <div className="mb-4 space-y-1 border-t border-b border-hairline py-3 text-sm text-ink-secondary">
               <p className="font-medium">{FEEDBACK_NO_PATIENT_INFO}</p>
               <p>{FEEDBACK_EMAIL_PURPOSE}</p>
             </div>
 
-            <label className="block text-sm font-medium text-slate-900" htmlFor="fb-comment">
+            <label className="block text-sm font-medium text-ink" htmlFor="fb-comment">
               Kommentar
             </label>
             <textarea
@@ -314,10 +314,10 @@ function FeedbackDialog({
               rows={4}
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-300"
+              className="mt-1 w-full border border-hairline bg-transparent px-3 py-2 text-ink focus:outline-2 focus:outline-ink focus:outline-offset-2"
             />
 
-            <label className="mt-4 block text-sm font-medium text-slate-900" htmlFor="fb-email">
+            <label className="mt-4 block text-sm font-medium text-ink" htmlFor="fb-email">
               E-post
             </label>
             <input
@@ -326,10 +326,10 @@ function FeedbackDialog({
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-300"
+              className="mt-1 w-full border border-hairline bg-transparent px-3 py-2 text-ink focus:outline-2 focus:outline-ink focus:outline-offset-2"
             />
 
-            <label className="mt-4 block text-sm font-medium text-slate-900" htmlFor="fb-role">
+            <label className="mt-4 block text-sm font-medium text-ink" htmlFor="fb-role">
               Din rolle
             </label>
             <select
@@ -337,7 +337,7 @@ function FeedbackDialog({
               required
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-300"
+              className="mt-1 w-full border border-hairline bg-ground px-3 py-2 text-ink focus:outline-2 focus:outline-ink focus:outline-offset-2"
             >
               <option value="" disabled>
                 Velg rolle …
@@ -349,33 +349,33 @@ function FeedbackDialog({
               ))}
             </select>
 
-            <label className="mt-4 flex items-start gap-2 text-sm text-slate-800">
+            <label className="mt-4 flex items-start gap-2 text-sm text-ink-secondary">
               <input
                 type="checkbox"
                 required
                 checked={consent}
                 onChange={(e) => setConsent(e.target.checked)}
-                className="mt-1"
+                className="mt-1 accent-ink"
               />
               <span>{FEEDBACK_CONSENT_LABEL}</span>
             </label>
 
             <div ref={turnstileRef} className="mt-4" />
 
-            {error && <p className="mt-3 text-sm text-red-700">{error}</p>}
+            {error && <p className="mt-3 text-sm text-danger">{error}</p>}
 
             <div className="mt-5 flex gap-3">
               <button
                 type="submit"
                 disabled={!canSubmit}
-                className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-50"
+                className="bg-lime px-4 py-2 text-sm font-medium text-on-lime disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {status === "sending" ? "Sender …" : "Send forslag"}
               </button>
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                className="fdn-link px-2 py-2 text-sm font-medium"
               >
                 Avbryt
               </button>
