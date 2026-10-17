@@ -1,6 +1,6 @@
 # Session handoff — current state & one-time context
 
-Last updated: 2026-10-16 (Foundations restyle live; kit check in CI). This file carries
+Last updated: 2026-10-17 (canonical site moved to diagnoseovergang.no, verified in production). This file carries
 decisions and state that are NOT in the briefs. Update it when a session
 materially changes project state; keep it current-state-only (no history log).
 
@@ -10,7 +10,10 @@ materially changes project state; keep it current-state-only (no history log).
   2026-10-16 to Jon via GoDaddy, DNS on Cloudflare) +
   https://diagnoseovergang-api.hey-697.workers.dev (Worker, cron 03:00 UTC).
   `functions/_middleware.ts` 301s `diagnoseovergang.pages.dev` and `www` to
-  the apex; preview hashes are not redirected. Zone-scoped DNS-edit token at
+  the apex; preview hashes are not redirected. The apex has been canonical
+  since PR #21 (merged and deployed 2026-10-17, checks in its last comment):
+  Astro `site`, canonical tags, sitemap (39 URLs) and robots.txt all point at
+  `https://diagnoseovergang.no/`, and the www certificate is issued. Zone-scoped DNS-edit token at
   `~/.config/cloudflare/diagnoseovergang.token` (Jon's Mac); wrangler's own
   OAuth login has zone read only.
 - Milestones 1–6 of the main brief are built, deployed, and verified. From
