@@ -39,13 +39,20 @@ const ldJson = jsonLd.length
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={SITE_NAME} />
-    <meta property="og:locale" content="nb_NO" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    {/* Share previews only for indexable pages; a 404 has no URL worth sharing. */}
+    {
+      !noindex && (
+        <>
+          <meta property="og:type" content="website" />
+          <meta property="og:site_name" content={SITE_NAME} />
+          <meta property="og:locale" content="nb_NO" />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          <meta property="og:url" content={canonical} />
+          <meta name="twitter:card" content="summary" />
+        </>
+      )
+    }
     {ldJson && <script is:inline type="application/ld+json" set:html={ldJson} />}
     {/* Foundations kit: the one Google Fonts link (Outfit 300/400/500, JetBrains Mono 400/500). */}
     <link

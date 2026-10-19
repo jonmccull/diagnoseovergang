@@ -28,12 +28,18 @@ export function entryTitle(entry: CollectionEntry<"pd">): string {
   return t.includes("ICD-11") ? t : `${t} · ICD-11`;
 }
 
+// Static pages from the file tree, so a new page lands in the sitemap without
+// an edit here. Dynamic routes ([id]) come from the collection below; 404 is noindex.
+const staticPaths = Object.keys(import.meta.glob("../pages/**/*.astro"))
+  .map((f) => f.replace(/^\.\.\/pages/, "").replace(/\.astro$/, ""))
+  .filter((p) => !p.includes("[") && p !== "/404")
+  .map((p) => (p === "/index" ? "/" : `${p.replace(/\/index$/, "")}/`))
+  .sort();
+
 /** Every indexable path, for the sitemap. */
 export function sitePaths(entries: CollectionEntry<"pd">[]): string[] {
   return [
-    "/",
-    "/verktoy/",
-    "/personvern/",
+    ...staticPaths,
     ...entries
       .filter((e) => e.data.kind !== "overview")
       .map((e) => `/endringer/${e.id}/`),
