@@ -4,17 +4,22 @@ import { icd } from "./routes/icd";
 import { feedback } from "./routes/feedback";
 import { prewarmEntities, purgeExpiredFeedback } from "./cron";
 import type { Bindings } from "./bindings";
+import { PAGES_HOST, SITE_HOST } from "../../schema/site";
 
 const app = new Hono<{ Bindings: Bindings }>();
+
+const escape = (host: string) => host.replace(/\./g, "\\.");
+// Pages host plus preview hashes, and the site's apex plus www.
+const PAGES_ORIGIN = new RegExp(`^https://([a-z0-9-]+\\.)?${escape(PAGES_HOST)}$`);
+const SITE_ORIGIN = new RegExp(`^https://(www\\.)?${escape(SITE_HOST)}$`);
 
 // Unnecessary once /api/* routes on the same custom domain as the site.
 app.use(
   "/api/*",
   cors({
     origin: (origin) => {
-      if (/^https:\/\/([a-z0-9-]+\.)?diagnoseovergang\.pages\.dev$/.test(origin))
-        return origin;
-      if (/^https:\/\/(www\.)?diagnoseovergang\.no$/.test(origin)) return origin;
+      if (PAGES_ORIGIN.test(origin)) return origin;
+      if (SITE_ORIGIN.test(origin)) return origin;
       if (/^http:\/\/localhost:\d+$/.test(origin)) return origin;
       return null;
     },
