@@ -3,6 +3,9 @@ name: Deploy
 on:
   push:
     branches: [main]
+    # Brief and find-skills cursor commits land on main directly; they change no site code.
+    paths-ignore:
+      - 'briefs/**'
   workflow_dispatch:
 
 jobs:

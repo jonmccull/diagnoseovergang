@@ -47,6 +47,8 @@ current state and open threads.
 
 - **Feature branch + PR; Jon merges.** Merge to `main` deploys to production
   via GitHub Actions. Never push directly to `main`.
+  Exception: commits that touch only `briefs/` (session briefs, the find-skills
+  `reviewed.md` cursor) go straight to `main`; `deploy.yml` ignores `briefs/**`.
 - Deploys, remote D1 migrations, and `wrangler secret put` against production
   need Jon's explicit ok in-session — the normal ship path is CI-on-merge.
 - Before opening a PR: `npm run typecheck` and `npm run build` must pass; for
